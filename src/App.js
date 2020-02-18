@@ -1,12 +1,28 @@
 import React from 'react';
-import Dashboard from './templates/dashboard';
+import Nav from './templates/Nav';
+import Listings from './templates/Listings';
+import Dashboard from './templates/Dashboard';
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
+// export default function App() {
+//   return (
+//     <div>
+//       <Dashboard>
+//         My content goes here
+//       </Dashboard>
+//     </div>
+//   );
+// }
+
 
 export default function App() {
   return (
-    <div>
-      <Dashboard>
-        My content goes here
-      </Dashboard>
-    </div>
+    <Router>
+      <Nav />
+      <Switch>
+        <Route path="/Dashboard" component={Dashboard}></Route>
+        <Route path="/Listings" component={Listings}></Route>
+      </Switch>
+    </Router>
   );
 }
