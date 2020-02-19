@@ -16,8 +16,11 @@ import PeopleIcon from '@material-ui/icons/People';
 import HelpIcon from '@material-ui/icons/Help';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
+import { makeStyles, useTheme, withTheme } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
+
+
 
 const drawerWidth = 240;
 
@@ -118,6 +121,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap>
             App Bar
           </Typography>
+          <Button className="signInBtn" component={Link} to="/SignIn" >Sign In</Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
