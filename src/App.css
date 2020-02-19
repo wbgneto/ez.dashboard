@@ -37,19 +37,4 @@
   }
 }
 
-/*****************************************************/
-/*                      Nav.js                       */
-/*****************************************************/
-
-header {
-  position:relative;
-}
-
-.signInBtn {
-  color: white !important;
-  position: absolute !important;
-  top: 15px;
-  right: 20px;
-}
-
 
