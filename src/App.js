@@ -1,5 +1,7 @@
 import React from 'react';
-import Dashboard from './templates/dashboard';
+// import Dashboard from './templates/Dashboard';
+import ResponsiveDrawer from './templates/ResponsiveDrawer';
+
 
 export default function App() {
   return (
@@ -13,9 +15,12 @@ export default function App() {
 
       (We want to have different templates per route, because Sign In should not render the dashboard template) */}
 
-      <Dashboard>
+      {/* <Dashboard>
         My content goes here
-      </Dashboard>
+      </Dashboard> */}
+      <ResponsiveDrawer>
+        My content goes here
+      </ResponsiveDrawer>
     </div>
   );
 }
