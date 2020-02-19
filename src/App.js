@@ -7,13 +7,14 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 export default function App() {
   return (
-    <Router>
-      <Nav />
-      <Switch>
-        <Route path="/Dashboard" component={Dashboard}></Route>
-        <Route path="/Listings" component={Listings}></Route>
-      </Switch>
-    </Router>
-
+    <div>
+      <Router>
+        <Nav />
+        <Switch>
+          <Route path="/Dashboard" component={Dashboard}></Route>
+          <Route path="/Listings" component={Listings}></Route>
+        </Switch>
+      </Router>
+    </div>
   );
 }
