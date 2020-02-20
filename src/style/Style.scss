@@ -1,3 +1,22 @@
+/*****************************************************/
+/*                      Grid.js                       */
+/*****************************************************/
+
+.container {
+  width: 100vw;
+  height: calc(100vh - 48px) !important;
+  box-sizing: border-box;
+  padding: 50px 50px 0 280px;
+  background:#eee;
+  overflow: scroll;
+  
+  .title {
+    font-size: 36px !important;
+    padding: 0 0 20px 0;
+  }
+}
+
+
 
 
 /*****************************************************/
@@ -8,15 +27,16 @@ header {
     position:relative;
   }
   
-  .signInBtn {
-    color: white !important;
-    position: absolute !important;
-    top: 15px;
-    right: 20px;
-  }
+.signInBtn {
+  color: white !important;
+  position: absolute !important;
+  top: 15px;
+  right: 20px;
+}
 
 
 /*****************************************************/
-/*                     SignIn.js                     */
+/*                    Realtors.js                    */
 /*****************************************************/
+
 

@@ -121,7 +121,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap>
             App Bar
           </Typography>
-          <Button className="signInBtn" component={Link} to="/SignIn" >Sign In</Button>
+          <Button className="signInBtn">Username</Button>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
