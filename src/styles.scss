@@ -1,7 +1,6 @@
 body {
   background-color: darkgray;
 }
-
 button.MuiButton-contained {
   background-color: black;
   color: white;
@@ -9,15 +8,14 @@ button.MuiButton-contained {
   margin-top: 1rem;
   margin-left: 8rem;
 }
-
 .form {
+  //background-color: red($color: #bd2121);
   margin-left: 20rem;
   background-color: white;
   width: 40%;
   height: 500px;
   border: 1px Solid Black;
 }
-
 h3.MuiTypography-h3 {
   margin-left: 11rem;
   margin-top: 2rem;
@@ -28,28 +26,22 @@ label.MuiFormLabel-root {
   margin-left: 1.5rem;
   margin-top: 0.8rem;
 }
-
 div.MuiFormControl-root {
   width: 85%;
   margin-left: 1.5rem;
   margin-top: 0.8rem;
 }
-
 a.MuiTypography-root {
   color: black;
   text-decoration: underline;
   margin-left: 17rem;
   margin-top: 1rem;
 }
-
 p {
   margin-left: 7.5rem;
   margin-top: 2rem;
   letter-spacing: 0.1rem;
 }
-
 p a {
   color: black;
 }
-
-/*# sourceMappingURL=index.css.map */

@@ -32,12 +32,12 @@ import AssignmentIcon from '@material-ui/icons/Assignment';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
+      {/* {'Copyright © '} */}
       <Link color="inherit" href="https://material-ui.com/">
-        Your Website
+        {/* Your Website */}
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
+      {/* {new Date().getFullYear()} */}
+      {/* {'.'} */}
     </Typography>
   );
 }
