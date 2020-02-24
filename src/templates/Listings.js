@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { lighten, makeStyles } from '@material-ui/core/styles';
+import { fade, lighten, makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -18,8 +18,15 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
-import AddBoxIcon from '@material-ui/icons/AddBox';
+import SearchIcon from '@material-ui/icons/Search';
 import Button from '@material-ui/core/Button';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import Grid from "@material-ui/core/Grid";
+import TextField from '@material-ui/core/TextField';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 // function createData(name, calories, fat, carbs, protein) {
 //   return { name, calories, fat, carbs, protein };
@@ -65,66 +72,7 @@ function stableSort(array, comparator) {
   return stabilizedThis.map(el => el[0]);
 }
 
-// const headCells = [
-//   { id: 'image', numeric: false, disablePadding: true, label: '' },
-//   { id: 'housetit', numeric: true, disablePadding: false, label: 'House Title' },
-//   { id: 'site', numeric: true, disablePadding: false, label: 'Site' },
-//   { id: 'price', numeric: true, disablePadding: false, label: 'Price' },
-//    { id: 'protein', numeric: true, disablePadding: false, label: 'Protein (g)' },
-// ];
 
-function EnhancedTableHead(props) {
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = property => event => {
-    onRequestSort(event, property);
-  };
-
-  return (
-    <TableHead>
-      <TableRow>
-        {/*<TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
-          />
-        </TableCell>
-         {headCells.map(headCell => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
-          </TableCell> 
-        ))}*/}
-      </TableRow>
-    </TableHead>
-  );
-}
-
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
-};
 
 const useToolbarStyles = makeStyles(theme => ({
   root: {
@@ -146,26 +94,13 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
+
 const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
 
   return (
-    <Toolbar
-      className={clsx(classes.root, {
-        [classes.highlight]: numSelected > 0,
-      })}
-    >
-      {numSelected > 0 ? (
-        <Typography className={classes.title} color="inherit" variant="subtitle1">
-          {numSelected} selected
-        </Typography>
-      ) : (
-        <Typography className={classes.title} variant="h4" id="tableTitle">
-          {/* Listings */}
-        </Typography>
-      )}
-
+    <Toolbar className={clsx(classes.root)} > 
       {numSelected > 0 ? (
         <>
         <Tooltip title="Delete">
@@ -194,6 +129,8 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
+
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -215,6 +152,48 @@ const useStyles = makeStyles(theme => ({
     position: 'absolute',
     top: 20,
     width: 1,
+  },
+  formControl: {
+    margin: theme.spacing(1),
+    minWidth: 120,
+  },
+  selectEmpty: {
+    marginTop: theme.spacing(2),
+  },
+  search: {
+    position: 'relative',
+    borderRadius: theme.shape.borderRadius,
+    backgroundColor: fade(theme.palette.common.white, 0.15),
+    '&:hover': {
+      backgroundColor: fade(theme.palette.common.white, 0.25),
+    },
+    marginRight: theme.spacing(2),
+    marginLeft: 0,
+    width: '100%',
+    [theme.breakpoints.up('sm')]: {
+      marginLeft: theme.spacing(3),
+      width: 'auto',
+    },
+  },
+  searchIcon: {
+    width: theme.spacing(7),
+    height: '100%',
+    position: 'absolute',
+    pointerEvents: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  inputRoot: {
+    color: 'inherit',
+  },
+  inputInput: {
+    padding: theme.spacing(1, 1, 1, 7),
+    transition: theme.transitions.create('width'),
+    width: '100%',
+    [theme.breakpoints.up('md')]: {
+      width: 200,
+    },
   },
 }));
 
@@ -271,10 +250,24 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
- 
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
+  
+  // selecBox
+  const [age, setAge] = React.useState('');
+
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+  React.useEffect(() => {
+    setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
+  const handleChange = event => {
+    setAge(event.target.value);
+  };
+
+  //
+
 
   return (
     <div className={classes.root}>
@@ -282,21 +275,58 @@ export default function EnhancedTable() {
       <Typography variant="h4" className="listTit">
           Listings
       </Typography>
+      <div className="toolbarWrap">
+        {/* SelectBox */}
+        <Grid container spacing={2}>
+          <Grid item xs={2}>
+          <FormControl variant="outlined" className={classes.formControl}>
+            <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+              Option
+            </InputLabel>
+            <Select
+              labelId="demo-simple-select-outlined-label"
+              id="demo-simple-select-outlined"
+              onChange={handleChange}
+              labelWidth={labelWidth}
+            >
+              <MenuItem value="All">All</MenuItem>
+              <MenuItem value="Active">Active</MenuItem>
+              <MenuItem value="Inactive">Inactive</MenuItem>
+            </Select>
+          </FormControl>
+          </Grid>
+
+          {/* SearchBar */}
+          <Grid item xs={6}>
+              <div className={classes.search}>
+                <div className={classes.searchIcon}>
+                  <SearchIcon />
+                </div>
+                <TextField className={classes.searchInput} id="outlined-search" label="Search field" type="search" variant="outlined" />
+            </div>
+          </Grid>
+
+          {/* Icons */}
+          <Grid item xs={2}>
+            <EnhancedTableToolbar numSelected={selected.length} />
+          </Grid>
+          {/* Plus button */}
+          <Grid item xs={2}>
+            <IconButton aria-label="Add">
+              <AddCircleIcon fontSize="large" />
+            </IconButton>
+          </Grid>
+        </Grid>
+      </div>
+      {/* "toolbarWrap" ends*/}
+
       <Paper className={classes.paper}>
-        <EnhancedTableToolbar numSelected={selected.length} />
         <TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
             aria-label="enhanced table"
           >
-            <EnhancedTableHead
-              classes={classes}
-              numSelected={selected.length}
-              onSelectAllClick={handleSelectAllClick}
-              onRequestSort={handleRequestSort}
-              rowCount={rows.length}
-            />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -323,10 +353,10 @@ export default function EnhancedTable() {
                         <div>{row.housetit}</div>
                         <div>{row.site}</div>
                         <div>{row.price}</div>
-                        <Button margin="normal" size="small" variant="outlined" color="primary">
+                        <Button spacing={2} size="small" variant="outlined" color="primary">
                           Edit
                         </Button>
-                        <Button margin="normal" size="small" variant="outlined" color="primary">
+                        <Button spacing={2} size="small" variant="outlined" color="primary">
                           View
                         </Button>
                       </TableCell>
