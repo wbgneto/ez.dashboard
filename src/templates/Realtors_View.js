@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
-    padding: '16px',
+    padding: '20px',
   },
   bullet: {
     display: 'inline-block',
@@ -37,8 +37,8 @@ export default function CenteredGrid() {
       <Typography className="title">Realtors</Typography>
       <Paper className={classes.paper}>
         <Grid container spacing={1} className="viewGrid">
-          <Grid item md={4}>image</Grid>
-          <Grid item md>
+          <Grid item xs={12} sm={4}>image</Grid>
+          <Grid item xs={12} sm={8}>
             <div>Relator1</div>
             <div>xxx@gmail.com</div>
             <div>111-222-3333</div>
@@ -50,9 +50,9 @@ export default function CenteredGrid() {
 
       <Paper className={classes.paper}>
         <Grid container spacing={1}>
-          <Grid item md={4}>Home List1</Grid>
-          <Grid item md={4}>Home List2</Grid>
-          <Grid item md={4}>Home List3</Grid>
+          <Grid item xs={12} sm={4}>Home List1</Grid>
+          <Grid item xs={12} sm={4}>Home List2</Grid>
+          <Grid item xs={12} sm={4}>Home List3</Grid>
         </Grid>
       </Paper>
     </div>

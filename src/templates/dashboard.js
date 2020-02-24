@@ -21,6 +21,7 @@ export default function CenteredGrid() {
   return (
     <div className={classes.root} className="container">
       <Typography className="title">Dashboard</Typography>
+      <Paper className={classes.paper}></Paper>
     </div>
   );
 }

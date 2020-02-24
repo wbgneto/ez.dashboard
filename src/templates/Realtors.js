@@ -67,63 +67,13 @@ function stableSort(array, comparator) {
   return stabilizedThis.map(el => el[0]);
 }
 
-const headCells = [
-  { id: 'id', numeric: false, disablePadding: true, label: 'ID' },
-  { id: 'image', numeric: false, disablePadding: true, label: 'Dessert (100g serving)' },
-  { id: 'realtorName', numeric: true, disablePadding: false, label: 'calories' },
-  { id: 'email', numeric: true, disablePadding: false, label: 'Fat (g)' },
-  { id: 'phone', numeric: true, disablePadding: false, label: 'Carbs (g)' },
-  { id: 'address', numeric: true, disablePadding: false, label: 'Protein (g)' },
-];
 
 function EnhancedTableHead(props) {
-
   return (
-    <TableHead>
-      {/* <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            indeterminate={numSelected > 0 && numSelected < rowCount}
-            checked={rowCount > 0 && numSelected === rowCount}
-            onChange={onSelectAllClick}
-            inputProps={{ 'aria-label': 'select all desserts' }}
-          />
-        </TableCell>
-        {headCells.map(headCell => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'default'}
-            sortDirection={orderBy === headCell.id ? order : false}
-          >
-            <TableSortLabel
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <span className={classes.visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </span>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow> */}
-    </TableHead>
+    <TableHead></TableHead>
   );
 }
 
-EnhancedTableHead.propTypes = {
-  classes: PropTypes.object.isRequired,
-  numSelected: PropTypes.number.isRequired,
-  onRequestSort: PropTypes.func.isRequired,
-  onSelectAllClick: PropTypes.func.isRequired,
-  order: PropTypes.oneOf(['asc', 'desc']).isRequired,
-  orderBy: PropTypes.string.isRequired,
-  rowCount: PropTypes.number.isRequired,
-};
 
 const useToolbarStyles = makeStyles(theme => ({
   root: {
@@ -160,7 +110,7 @@ const EnhancedTableToolbar = props => {
         <Typography className={classes.title} color="inherit" variant="subtitle1">
           {numSelected} selected
         </Typography>
-        
+    
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle"></Typography>
       )}
@@ -362,11 +312,7 @@ export default function EnhancedTable() {
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
+
             </TableBody>
           </Table>
         </TableContainer>

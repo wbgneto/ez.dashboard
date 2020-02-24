@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
-    padding: '16px',
+    padding: '20px',
     position: 'relative',
   },
   bullet: {
@@ -49,9 +49,9 @@ export default function CenteredGrid() {
             <VisibilityOffIcon />
           </IconButton>
         </div>
-        <Grid container spacing={1} >
-          <Grid item md={4}>image</Grid>
-          <Grid item md>
+        <Grid container spacing={1} className="marginT">
+          <Grid item xs={12} sm={4}>image</Grid>
+          <Grid item xs={12} sm={8} class="inputEdit">
             <div><TextField id="outlined-basic" label="Name of Realtor" variant="outlined" /></div>
             <div><TextField id="outlined-basic" label="Email" variant="outlined" /></div>
             <div><TextField id="outlined-basic" label="Phone Number" variant="outlined" /></div>
@@ -66,9 +66,9 @@ export default function CenteredGrid() {
 
       <Paper className={classes.paper}>
         <Grid container spacing={1}>
-          <Grid item md={4}>Home List1</Grid>
-          <Grid item md={4}>Home List2</Grid>
-          <Grid item md={4}>Home List3</Grid>
+          <Grid item xs={12} sm={4}>Home List1</Grid>
+          <Grid item xs={12} sm={4}>Home List2</Grid>
+          <Grid item xs={12} sm={4}>Home List3</Grid>
         </Grid>
       </Paper>
     </div>
