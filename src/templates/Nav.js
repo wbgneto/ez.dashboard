@@ -70,7 +70,7 @@ function ResponsiveDrawer(props) {
     <div>
       <div className={classes.toolbar} />
 
-      <Typography variant="h6" align="center" >
+      <Typography align="center" display="block" variant="h6" component={Link} to={"/Dashboard"}>
             LOGO
       </Typography>
 

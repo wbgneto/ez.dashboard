@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { lighten, makeStyles } from '@material-ui/core/styles';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,7 +10,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
-import TableSortLabel from '@material-ui/core/TableSortLabel';
 import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -17,12 +17,15 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Switch from '@material-ui/core/Switch';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Button from '@material-ui/core/Button';
+import MenuItem from '@material-ui/core/MenuItem';
+import FormControl from '@material-ui/core/FormControl';
+import Select from '@material-ui/core/Select';
+import { Link } from 'react-router-dom';
+
 
 function createData(id, image, realtorName, email, phone, address) {
   return { id, image, realtorName, email, phone, address };
@@ -74,10 +77,6 @@ const headCells = [
 ];
 
 function EnhancedTableHead(props) {
-  const { classes, onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = property => event => {
-    onRequestSort(event, property);
-  };
 
   return (
     <TableHead>
@@ -146,6 +145,7 @@ const useToolbarStyles = makeStyles(theme => ({
   },
 }));
 
+
 const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
   const { numSelected } = props;
@@ -160,12 +160,24 @@ const EnhancedTableToolbar = props => {
         <Typography className={classes.title} color="inherit" variant="subtitle1">
           {numSelected} selected
         </Typography>
+        
       ) : (
         <Typography className={classes.title} variant="h6" id="tableTitle"></Typography>
       )}
 
       {numSelected > 0 ? (
         <>
+
+        <FormControl className="select">
+          <Select displayEmpty className={classes.width}>
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={10}>Active</MenuItem>
+            <MenuItem value={20}>Inactive</MenuItem>
+          </Select>
+        </FormControl>
+
         <Tooltip title="Delete">
           <IconButton aria-label="delete">
             <DeleteIcon/>
@@ -183,6 +195,7 @@ const EnhancedTableToolbar = props => {
         </Tooltip>
         </>
       ) : (
+        
         <Tooltip title="Add list">
           <IconButton aria-label="add list">
             <AddCircleOutlineIcon fontSize="large" />
@@ -200,6 +213,7 @@ EnhancedTableToolbar.propTypes = {
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    flexGrow: 1,
   },
   paper: {
     width: '100%',
@@ -316,31 +330,30 @@ export default function EnhancedTable() {
                       selected={isItemSelected}
                     >
                       <TableCell colSpan={7}>
-                        <Grid container spacing="1" direction="row">
-                          <Grid item>
+
+                        <Grid container component="main" className="realtorGrid">
+                          <CssBaseline />
+                          <Grid item md={1} >
                             <Checkbox
                               checked={isItemSelected}
                               onClick={event => handleClick(event, row.id)}
                               inputProps={{ 'aria-labelledby': labelId }}
                             />
                           </Grid>
-                          <Grid item id={labelId}>
-                            {row.id}
-                          </Grid>
-                          <Grid item xs="2">
+                          <Grid item md={2}>
                             {row.image}
                           </Grid>
-                          <Grid item xs="6">
+                          <Grid item md>
                             <div>{row.realtorName}</div>
                             <div>{row.email}</div>
                             <div>{row.phone}</div>
                             <div>{row.address}</div>
                           </Grid>
-                          <Grid item>
-                           <Button variant="outlined" color="primary">
+                          <Grid item md={2}>
+                           <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_Edit"}>
                               Edit
                            </Button>
-                           <Button variant="outlined" color="primary">
+                           <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_View"}>
                               View
                            </Button>
                           </Grid>
