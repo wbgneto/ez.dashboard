@@ -7,8 +7,10 @@ import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
 import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
 import TablePagination from '@material-ui/core/TablePagination';
 import TableRow from '@material-ui/core/TableRow';
+import Grid from '@material-ui/core/Grid';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -18,15 +20,16 @@ import Tooltip from '@material-ui/core/Tooltip';
 import DeleteIcon from '@material-ui/icons/Delete';
 import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import SearchIcon from '@material-ui/icons/Search';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import Button from '@material-ui/core/Button';
 import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import Grid from "@material-ui/core/Grid";
-import TextField from '@material-ui/core/TextField';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import { Link } from 'react-router-dom';
+
 
 function createData(id, image, realtorName, email, phone, address) {
   return { id, image, realtorName, email, phone, address };
@@ -69,6 +72,12 @@ function stableSort(array, comparator) {
 }
 
 
+function EnhancedTableHead(props) {
+  return (
+    <TableHead></TableHead>
+  );
+}
+
 
 const useToolbarStyles = makeStyles(theme => ({
   root: {
@@ -89,7 +98,6 @@ const useToolbarStyles = makeStyles(theme => ({
     flex: '1 1 100%',
   },
 }));
-
 
 const EnhancedTableToolbar = props => {
   const classes = useToolbarStyles();
@@ -121,15 +129,15 @@ const EnhancedTableToolbar = props => {
   );
 };
 
+
 EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-
-
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
+    flexGrow: 1,
   },
   paper: {
     width: '100%',
@@ -188,13 +196,12 @@ const useStyles = makeStyles(theme => ({
       paddingRight: 0,
     },
   },
-
 }));
 
 export default function EnhancedTable() {
   const classes = useStyles();
   const [order, setOrder] = React.useState('asc');
-  const [orderBy, setOrderBy] = React.useState('calories');
+  const [orderBy, setOrderBy] = React.useState('realtorName');
   const [selected, setSelected] = React.useState([]);
   const [page, setPage] = React.useState(0);
   const [dense, setDense] = React.useState(false);
@@ -208,19 +215,19 @@ export default function EnhancedTable() {
 
   const handleSelectAllClick = event => {
     if (event.target.checked) {
-      const newSelecteds = rows.map(n => n.num);
+      const newSelecteds = rows.map(n => n.name);
       setSelected(newSelecteds);
       return;
     }
     setSelected([]);
   };
 
-  const handleClick = (event, num) => {
-    const selectedIndex = selected.indexOf(num);
+  const handleClick = (event, name) => {
+    const selectedIndex = selected.indexOf(name);
     let newSelected = [];
 
     if (selectedIndex === -1) {
-      newSelected = newSelected.concat(selected, num);
+      newSelected = newSelected.concat(selected, name);
     } else if (selectedIndex === 0) {
       newSelected = newSelected.concat(selected.slice(1));
     } else if (selectedIndex === selected.length - 1) {
@@ -244,28 +251,27 @@ export default function EnhancedTable() {
     setPage(0);
   };
 
+ 
   const isSelected = name => selected.indexOf(name) !== -1;
 
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
-  
-  // selecBox
-  const [age, setAge] = React.useState('');
 
-  const inputLabel = React.useRef(null);
-  const [labelWidth, setLabelWidth] = React.useState(0);
-  React.useEffect(() => {
-    setLabelWidth(inputLabel.current.offsetWidth);
-  }, []);
-  const handleChange = event => {
-    setAge(event.target.value);
-  };
-  //
+   // selecBox
+   const [age, setAge] = React.useState('');
 
-
+   const inputLabel = React.useRef(null);
+   const [labelWidth, setLabelWidth] = React.useState(0);
+   React.useEffect(() => {
+     setLabelWidth(inputLabel.current.offsetWidth);
+   }, []);
+   const handleChange = event => {
+     setAge(event.target.value);
+   };
+   //
+ 
   return (
     <div className={classes.root} className="container">
-      {/* <div className="table_"> */}
-      <Typography className="title">Listings</Typography>
+      <Typography className="title">Realtors</Typography>
       <div className="toolbarWrap">
         {/* SelectBox */}
         <Grid container spacing={2}>
@@ -313,13 +319,24 @@ export default function EnhancedTable() {
       </div>
       {/* "toolbarWrap" ends*/}
 
+
       <Paper className={classes.paper}>
         <TableContainer>
           <Table
             className={classes.table}
             aria-labelledby="tableTitle"
+            size={dense ? 'small' : 'medium'}
             aria-label="enhanced table"
           >
+            <EnhancedTableHead
+              classes={classes}
+              numSelected={selected.length}
+              order={order}
+              orderBy={orderBy}
+              onSelectAllClick={handleSelectAllClick}
+              onRequestSort={handleRequestSort}
+              rowCount={rows.length}
+            />
             <TableBody>
               {stableSort(rows, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
@@ -330,6 +347,7 @@ export default function EnhancedTable() {
                   return (
                     <TableRow
                       hover
+                      aria-checked={isItemSelected}
                       tabIndex={-1}
                       key={row.id}
                       selected={isItemSelected}
@@ -355,23 +373,19 @@ export default function EnhancedTable() {
                             <div>{row.address}</div>
                           </Grid>
                           <Grid item md={2}>
-                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_Edit"}>
+                           <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_Edit"}>
                               Edit
-                          </Button>
-                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_View"}>
+                           </Button>
+                           <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_View"}>
                               View
-                          </Button>
+                           </Button>
                           </Grid>
                         </Grid>
-                        </TableCell>
+                      </TableCell>
                     </TableRow>
                   );
                 })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: (dense ? 33 : 53) * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
+
             </TableBody>
           </Table>
         </TableContainer>

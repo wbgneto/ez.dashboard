@@ -1,4 +1,7 @@
 /*****************************************************/
+/*                    variables                     */
+/*****************************************************/
+/*****************************************************/
 /*                      Nav.js                       */
 /*****************************************************/
 header {
@@ -14,10 +17,86 @@ header {
 /*                     SignIn.js                     */
 /*****************************************************/
 /*****************************************************/
-/*                     Listings.js                     */
+/*                     Listings.js                   */
 /*****************************************************/
-.table_ {
-  padding: 50px 50px 0 280px; }
+.labelFix label {
+  padding-left: 25px; }
 
-.listTit {
-  margin: 0 0 40px 0 !important; }
+.labelFix input {
+  padding-left: 40px; }
+
+/*****************************************************/
+/*                        Grid                       */
+/*****************************************************/
+.realtorGrid {
+  width: 100% !important;
+  display: grid !important;
+  grid-template-columns: 1fr 2fr 7fr auto !important;
+  grid-template-rows: 1fr; }
+  .realtorGrid div:nth-child(1) {
+    grid-column: 1/2; }
+  .realtorGrid div:nth-child(2) {
+    grid-column: 2/3; }
+  .realtorGrid div:nth-child(3) {
+    grid-column: 3/4; }
+  .realtorGrid div:nth-child(4) {
+    grid-column: 4/5; }
+  @media (max-width: 600px) {
+    .realtorGrid {
+      grid-template-columns: 1fr 4fr !important;
+      grid-template-rows: 1fr 1fr 1fr; }
+      .realtorGrid div:nth-child(1) {
+        grid-column: 1/2;
+        grid-row: 1/4; }
+      .realtorGrid div:nth-child(2) {
+        grid-column: 2/3;
+        grid-row: 1/2; }
+      .realtorGrid div:nth-child(3) {
+        grid-column: 2/3;
+        grid-row: 2/3; }
+      .realtorGrid div:nth-child(4) {
+        grid-column: 2/3;
+        grid-row: 3/4; } }
+
+/*****************************************************/
+/*                    Realtors.js                    */
+/*****************************************************/
+.select {
+  width: 300px; }
+
+.btnBox {
+  position: absolute;
+  top: 2px;
+  right: 5px; }
+
+.inputEdit div {
+  margin-bottom: 2px; }
+
+/*****************************************************/
+/*                     Layout                        */
+/*****************************************************/
+.marginT {
+  margin: 25px 0 0 0 !important; }
+
+.container {
+  width: 100vw;
+  height: calc(100vh - 48px) !important;
+  box-sizing: border-box;
+  padding: 50px 50px 0 280px;
+  background: #eee;
+  overflow: scroll; }
+  @media (max-width: 600px) {
+    .container {
+      padding: 30px; } }
+  .container .title {
+    font-size: 36px !important;
+    padding: 0 0 20px 0; }
+
+.blockBtn {
+  display: block !important;
+  width: 120px !important;
+  margin: 0 0 2px 0 !important;
+  text-align: center; }
+
+table {
+  min-width: 360px !important; }
