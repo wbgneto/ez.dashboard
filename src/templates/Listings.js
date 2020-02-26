@@ -355,10 +355,10 @@ export default function EnhancedTable() {
                             <div>{row.address}</div>
                           </Grid>
                           <Grid item md={2}>
-                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_Edit"}>
+                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Listings_Edit"}>
                               Edit
                           </Button>
-                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors_View"}>
+                          <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Listings_View"}>
                               View
                           </Button>
                           </Grid>
