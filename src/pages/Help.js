@@ -29,7 +29,7 @@ export default function CenteredGrid() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} className="container">
+    <div className={classes.root}>
       <Typography className="title">Help</Typography>
       <Paper className={classes.paper}>
 

@@ -1,36 +1,45 @@
 import React from 'react';
 import './App.css';
 import './style/Style.css';
-import Nav from './templates/Nav';
-import SignIn from './templates/SignIn';
-import SignUp from './templates/SignUp';
-import Dashboard from './templates/Dashboard';
-import Listings from './templates/Listings';
-import Realtors from './templates/Realtors';
-import Realtors_Edit from './templates/Realtors_Edit';
-import Realtors_View from './templates/Realtors_View';
-import Listings_Edit from './templates/Listings_Edit';
-import Listings_View from './templates/Listings_View';
-import Help from './templates/Help';
-import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import SignIn from './pages/SignIn';
+import Blank from './layouts/Blank';
+import Dashboard from './pages/Dashboard';
+import Listings from './pages/Listings';
+import Realtors from './pages/Realtors';
+import Realtors_Edit from './pages/Realtors_Edit';
+import Realtors_View from './pages/Realtors_View';
+import Listings_Edit from './pages/Listings_Edit';
+import Listings_View from './pages/Listings_View';
+import Help from './pages/Help';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import Admin from "./layouts/Admin";
+
 export default function App() {
-  return (
-    <div>
-      {/* <SignIn /> */}
-      {/* <SignUp />  */}
-      <Router>
-        <Nav />
-        <Switch>
-          <Route path="/Dashboard" component={Dashboard}></Route>
-          <Route path="/Listings" component={Listings}></Route>
-          <Route path="/Realtors" component={Realtors}></Route>
-          <Route path="/Realtors_Edit" component={Realtors_Edit}></Route>
-          <Route path="/Realtors_View" component={Realtors_View}></Route>
-          <Route path="/Listings_Edit" component={Listings_Edit}></Route>
-          <Route path="/Listings_View" component={Listings_View}></Route>
-          <Route path="/Help" component={Help}></Route>
-        </Switch>
-      </Router>
-    </div>
-  );
+    return (
+        <div>
+            <Router>
+                <Switch>
+                    <RouteWrapper path="/auth" layout={Blank} component={SignIn}></RouteWrapper>
+                    <RouteWrapper path="/dashboard" layout={Admin} component={Dashboard}></RouteWrapper>
+                    <RouteWrapper path="/realtors/edit" layout={Admin} component={Realtors_Edit}></RouteWrapper>
+                    <RouteWrapper path="/realtors/1" layout={Admin} component={Realtors_View}></RouteWrapper>
+                    <RouteWrapper path="/realtors" layout={Admin} component={Realtors}></RouteWrapper>
+                    <RouteWrapper path="/listings/edit/1" layout={Admin} component={Listings_Edit}></RouteWrapper>
+                    <RouteWrapper path="/listings/1" layout={Admin} component={Listings_View}></RouteWrapper>
+                    <RouteWrapper path="/listings" layout={Admin} component={Listings}></RouteWrapper>
+                    <RouteWrapper path="/help" layout={Admin} component={Help}></RouteWrapper>
+                </Switch>
+            </Router>
+        </div>
+    );
+}
+
+function RouteWrapper({component: Component, layout: Layout, ...rest}) {
+    return (
+        <Route {...rest} render={(props) =>
+            <Layout {...props}>
+                <Component {...props} />
+            </Layout>
+        }/>
+    );
 }

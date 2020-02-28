@@ -33,7 +33,7 @@ export default function CenteredGrid() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root} className="container">
+    <div className={classes.root}>
       <Typography className="title">Realtors</Typography>
       <Paper className={classes.paper}>
         <Grid container spacing={1} className="viewGrid">
