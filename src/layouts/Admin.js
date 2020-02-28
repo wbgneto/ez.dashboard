@@ -44,8 +44,8 @@ const useStyles = makeStyles(theme => ({
     content: {
         flexGrow: 1,
         padding: theme.spacing(3),
-        marginTop: 64,
     },
+    appBarSpacer: theme.mixins.toolbar,
 }));
 
 function ResponsiveDrawer(props) {
@@ -110,6 +110,7 @@ function ResponsiveDrawer(props) {
                 </Hidden>
             </div>
             <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
                 {props.children}
             </main>
         </div>
