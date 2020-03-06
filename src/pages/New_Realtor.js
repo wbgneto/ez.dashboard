@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -9,7 +9,12 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
+import Select from '@material-ui/core/Select';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import MenuItem from '@material-ui/core/MenuItem';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -50,6 +55,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function CenteredGrid() {
   const classes = useStyles();
+
 
   return (
     <div className={classes.root}>
@@ -93,29 +99,6 @@ export default function CenteredGrid() {
             <div>
               <Button variant="outlined" color="primary" component={Link} to={"/Realtors"}>Cancel</Button>
               <Button variant="outlined" color="primary" component={Link} to={"/Realtors"} style={{float:'right'}}>Save</Button>
-            </div>
-          </Grid>
-        </Grid>
-      </Paper>
-
-      <Paper className={classes.paper}>
-        <Grid container spacing={6} className="homeList">
-          <Grid item xs={12} sm={4}>
-            <div className="homePic">
-              <span><Typography>Home List1</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <div className="homePic">
-            <span><Typography>Home List2</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} sm={4}>
-            <div className="homePic">
-            <span><Typography>Home List3</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
             </div>
           </Grid>
         </Grid>

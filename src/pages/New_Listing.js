@@ -80,14 +80,14 @@ export default function CenteredGrid() {
               <ArrowBackIcon/>
             </IconButton>
           </div>
-          <div className="btnBox" style={{float:'right'}}>
+          {/* <div className="btnBox" style={{float:'right'}}>
             <IconButton aria-label="delete">
               <DeleteIcon/>
             </IconButton>
             <IconButton aria-label="visibility">
               <VisibilityOffIcon />
             </IconButton>
-          </div>
+          </div> */}
         </div>
         <Grid container spacing={2} className="marginT">
           <Grid item xs={12} sm={4}>

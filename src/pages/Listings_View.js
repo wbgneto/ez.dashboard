@@ -4,6 +4,10 @@ import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
+import IconButton from '@material-ui/core/IconButton';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
@@ -36,6 +40,14 @@ export default function CenteredGrid() {
     <div className={classes.root}>
       <Typography className="title">Listings</Typography>
       <Paper className={classes.paper}>
+
+        <div>
+          <div className="backtolist" style={{float:'left'}}>
+            <IconButton aria-label="back to list" component={Link} to={"/Listings"}>
+              <ArrowBackIcon/>
+            </IconButton>
+          </div>
+        </div>
         <Grid container spacing={1} className="viewGrid">
           <Grid item xs={12} sm={4}>image</Grid>
           <Grid item xs={12} sm={8}>
@@ -48,13 +60,6 @@ export default function CenteredGrid() {
         </Grid>
       </Paper>
 
-      <Paper className={classes.paper}>
-        <Grid container spacing={1}>
-          <Grid item xs={12} sm={4}>Home List1</Grid>
-          <Grid item xs={12} sm={4}>Home List2</Grid>
-          <Grid item xs={12} sm={4}>Home List3</Grid>
-        </Grid>
-      </Paper>
     </div>
   );
 }
