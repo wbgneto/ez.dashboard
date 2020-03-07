@@ -9,6 +9,9 @@ import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import { Link } from 'react-router-dom';
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { Carousel } from 'react-responsive-carousel';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -35,12 +38,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function CenteredGrid() {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
       <Typography className="title">Listings</Typography>
       <Paper className={classes.paper}>
-
         <div>
           <div className="backtolist" style={{float:'left'}}>
             <IconButton aria-label="back to list" component={Link} to={"/Listings"}>
@@ -49,7 +50,26 @@ export default function CenteredGrid() {
           </div>
         </div>
         <Grid container spacing={1} className="viewGrid">
-          <Grid item xs={12} sm={4}>image</Grid>
+          <Grid item xs={12} sm={4}>
+            <Carousel>
+              <div>
+                  <img src="https://dummyimage.com/600x400/000/fff" />
+                  <p className="legend">Picture 1</p>
+              </div>
+              <div>
+                  <img src="https://dummyimage.com/600x400/000/fff" />
+                  <p className="legend">Picture 2</p>
+              </div>
+              <div>
+                  <img src="https://dummyimage.com/600x400/000/fff" />
+                  <p className="legend">Picture 3</p>
+              </div>
+              <div>
+                  <img src="https://dummyimage.com/600x400/000/fff" />
+                  <p className="legend">Picture 3</p>
+              </div>
+            </Carousel>
+          </Grid>
           <Grid item xs={12} sm={8}>
             <div>Relator1</div>
             <div>xxx@gmail.com</div>
@@ -59,7 +79,6 @@ export default function CenteredGrid() {
           </Grid>
         </Grid>
       </Paper>
-
     </div>
   );
 }
