@@ -14,7 +14,8 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
-
+import Container from '@material-ui/core/Container';
+//import Image from 'material-ui-image';
 
 
 function Copyright() {
@@ -197,9 +198,12 @@ function Copyright() {
 //   );
 // }
 /***********************************************Template***************************************************************************************/
-export default function App() {
+export default function SignIn() {
   return (
     <div className="signin">
+      
+      <Container>
+      {/* <Image src={'../images/Logo2_LoginPage.png'} />  */}
       <div className="form">
         <Typography variant="h1">
           Log In
@@ -219,10 +223,9 @@ export default function App() {
           <Button variant="contained">Login</Button>
           <p>New Member?<a href="#">Register Now</a></p>
         </FormControl>
-      </div>
+      </div>   
+      </Container>
+     
     </div>
-
-    
-
   );
 } 
