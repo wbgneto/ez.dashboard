@@ -94,17 +94,17 @@ export default function EnhancedTable() {
 
 
 
-  useEffect(() => {
-    async function fetchData() {
-      setUsers(
-        await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
-        .then(res => res.json())
-        .then(res => res.data)
-        .catch(err => console.log(err, 'Fetch error'))
-      )
-    }
-    fetchData();
-  },[])
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     setUsers(
+  //       await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
+  //       .then(res => res.json())
+  //       .then(res => res.data)
+  //       .catch(err => console.log(err, 'Fetch error'))
+  //     )
+  //   }
+  //   fetchData();
+  // },[])
  //
  const myToolElement = React.useRef(null);
 
