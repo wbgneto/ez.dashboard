@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import './style/Style.css';
+//import './style/Style.css';
 import SignIn from './pages/SignIn';
 import Blank from './layouts/Blank';
 import Dashboard from './pages/Dashboard';
@@ -15,6 +15,7 @@ import New_Realtor from './pages/New_Realtor';
 import Help from './pages/Help';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Admin from "./layouts/Admin";
+import "./style/Style.scss";
 
 export default function App() {
     return (
