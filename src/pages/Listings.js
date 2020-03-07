@@ -92,11 +92,14 @@ export default function EnhancedTable() {
    // API
   const [users, setUsers] = useState([])
 
+
+
   useEffect(() => {
     async function fetchData() {
       setUsers(
-        await fetch('/listings.json')
+        await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
         .then(res => res.json())
+        .then(res => res.data)
         .catch(err => console.log(err, 'Fetch error'))
       )
     }
