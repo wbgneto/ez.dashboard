@@ -92,8 +92,6 @@ export default function EnhancedTable() {
    // API
   const [users, setUsers] = useState([])
 
-
-
   // useEffect(() => {
   //   async function fetchData() {
   //     setUsers(

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import GraphContainer from '../components/GraphContainer';
 const useStyles = makeStyles(theme => ({
   root: {
     flexGrow: 1,
@@ -11,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    padding: '50px 0'
   },
 }));
 export default function CenteredGrid() {
@@ -18,6 +20,9 @@ export default function CenteredGrid() {
   return (
     <div className={classes.root} >
       <Typography className="title">Dashboard</Typography>
+      <Paper className={classes.paper}>
+        <GraphContainer></GraphContainer>
+      </Paper>
     </div>
   );
 }

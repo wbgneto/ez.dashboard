@@ -10,14 +10,11 @@ import Checkbox from '@material-ui/core/Checkbox';
 import Typography from '@material-ui/core/Typography';
 
 
-
-
 export default function Listing_Table({status, title, type, square_foot, price}) {
     //you can pass only (props) above and pass {props.status} below
     const myDivElement = useRef(null);
     const [forceUpdate,setForceUpdate] = useState(true);
   
-
     return(
         <Table>
           <TableBody>
@@ -32,25 +29,25 @@ export default function Listing_Table({status, title, type, square_foot, price})
               </TableCell>
               <TableCell>
                 <Grid container component="main">
-                <Grid item xs={12} sm={2}>
-                    {/* <img src={avatar}></img> */}
-                    image
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                    <Typography>
-                    <ul className="PropertyList">
-                      {/* <li>{status}</li> */}
-                      <li><h3>{title}</h3></li>
-                      <li>Type : {type} Bed Room</li>
-                      <li>Size : {square_foot} sq</li>
-                      <li>Price : {price} CAD</li>
-                    </ul>
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/listings/edit/1"}> Edit</Button>
-                <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/listings/1"}>View</Button>
-                </Grid>
+                  <Grid item xs={12} sm={2}>
+                      {/* <img src={avatar}></img> */}
+                      image
+                  </Grid>
+                  <Grid item xs={12} sm={8}>
+                      <Typography>
+                      <ul className="PropertyList">
+                        <li>{status}</li>
+                        <li><h3>{title}</h3></li>
+                        <li>Type : {type} Bed Room</li>
+                        <li>Size : {square_foot} sq</li>
+                        <li>Price : {price} CAD</li>
+                      </ul>
+                      </Typography>
+                  </Grid>
+                  <Grid item xs={12} sm={2}>
+                  <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/listings/edit/1"}> Edit</Button>
+                  <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/listings/1"}>View</Button>
+                  </Grid>
                 </Grid>
               </TableCell>
             </TableRow>
