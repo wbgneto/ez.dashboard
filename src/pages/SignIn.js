@@ -205,23 +205,23 @@ export default function SignIn() {
       <Container>
       {/* <Image src={'../images/Logo2_LoginPage.png'} />  */}
       <div className="form">
-        <Typography variant="h1">
+        <Typography variant="h1" className="login_heading">
           Log In
         </Typography>
         <FormControl>
-          <FormLabel>
+          <FormLabel className="login_labels">
             Email
           </FormLabel>
-          <TextField type="email" variant="outlined"></TextField>
-          <FormLabel>
+          <TextField type="email" variant="outlined" className="login_input"></TextField>
+          <FormLabel className="login_labels">
             Password
           </FormLabel>
           <TextField type="password" variant="outlined"></TextField>
-          <Link href="#">
+          <Link href="#" className="forgot_password">
             Forgot Password?
           </Link>
-          <Button variant="contained">Login</Button>
-          <p>New Member?<a href="#">Register Now</a></p>
+          <Button variant="contained" className="login_button">Login</Button>
+          <p className="new_member">New Member?<a href="#">Register Now</a></p>
         </FormControl>
       </div>   
       </Container>

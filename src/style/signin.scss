@@ -6,7 +6,7 @@
      font-family: 'Open Sans';
      background-size: cover;
    }
-   button.MuiButton-contained {
+   .login_button {
      background-color:#2B879E;
      color: white;
      width: 40%;
@@ -26,7 +26,7 @@
      height: 460px;
      border: 1px Solid white;
    }
-   h1.MuiTypography-h1 {
+   .login_heading {
      margin-left: 12rem;
      margin-top: 2rem;
      color: #2B879E;
@@ -34,7 +34,7 @@
      font-weight: 700;
    }
    
-   label.MuiFormLabel-root {
+   .login_labels {
      color: black;
      margin-left: 1.5rem;
      margin-top: 0.8rem;
@@ -47,17 +47,19 @@
      margin-left: 1.5rem;
      margin-top: 0.8rem;
    }
-   a.MuiTypography-root {
+   .forgot_password {
      color: black;
      text-decoration: underline;
      margin-left: 17rem;
      margin-top: 1rem;
-     p {
-       margin-left: 7.5rem;
-       margin-top: 2rem;
-       letter-spacing: 0.1rem;
-     }
-     a {
-       color:#2B879E;
-     }
+     
    }
+   .new_member {
+    margin-left: 7.5rem;
+    margin-top: 2rem;
+    letter-spacing: 0.1rem;
+    a {
+      color:#2B879E;
+    }
+  }
+  
