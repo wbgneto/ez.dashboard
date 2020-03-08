@@ -7,9 +7,26 @@ import { makeStyles } from "@material-ui/core/styles";
 export default () => {
     const classes = useStyles();
   return (
-    <div class="graphFlex">
+    <div className="graphFlex">
       <Container maxWidth="sm">
-        <MainGraph></MainGraph>
+        <MainGraph
+        data={ {
+        labels: ["Realtor1", "Realtor2", "Realtor3", "Others"],
+        datasets: [
+          {
+            label: "No. of Houses Sold",
+            
+            data: [4, 5, 1, 10],
+            backgroundColor: [
+              "#2B879E",
+              "#34AAC7",
+              "#FCC29A",
+              "#fde9c9",
+            ]
+          }
+        ]          
+      }}
+        ></MainGraph>
       </Container>
       <Container fixed>
         <LineGraph></LineGraph>
