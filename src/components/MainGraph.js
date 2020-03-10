@@ -121,13 +121,11 @@ export default class MainGraph extends Component {
           style={{ position: "relative", width: 600, height: "auto", textAlign:"center" }}
           
         >
-          <form 
-          style={{marginBottom:'50px'}}
+          <form
           onSubmit={this.handleSubmit}>
             <label>
               Visualize sales by:
               <select
-                className="temSel"
                 value={this.state.show_by_type}
                 onChange={this.handleChange}
               >
@@ -135,7 +133,7 @@ export default class MainGraph extends Component {
                 <option value="quantity">No of Houses</option>
               </select>
             </label>
-            <input type="submit" value="Submit" className="temInput" />
+            <input type="submit" value="Submit" />
           </form>
           <h3>Top Sales</h3>
           <Doughnut
