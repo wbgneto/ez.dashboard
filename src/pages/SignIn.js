@@ -39,7 +39,7 @@ function Copyright() {
 //     top: 40,
 //     //left: 10,
 //     zIndex: 9999,
-    
+
 //   },
 //   background: {
 //     backgroundImage: 'url(https://images.unsplash.com/photo-1499092346589-b9b6be3e94b2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80)',
@@ -56,7 +56,7 @@ function Copyright() {
 //     flexDirection: 'column',
 //     alignItems: 'center',
 //     height: '40%',
-    
+
 //   },
 //   avatar: {
 //     margin: theme.spacing(1),
@@ -65,7 +65,7 @@ function Copyright() {
 //   form: {
 //     width: '100%', // Fix IE 11 issue.
 //     marginTop: theme.spacing(1),
-    
+
 //   },
 //   submit: {
 //     margin: theme.spacing(3, 0, 2),
@@ -74,7 +74,7 @@ function Copyright() {
 //     color: 'white',
 //     textTransform:'capitalize',
 //     width: '34%',
-    
+
 //   },
 //   Link:{
 //     color:'black',
@@ -112,7 +112,7 @@ function Copyright() {
 //   const classes = useStyles();
 
 //   return (
-    
+
 //     <Grid container component="main" className={classes.root}>
 //       <CssBaseline />
 //       <Grid item className={classes.background} />
@@ -157,7 +157,7 @@ function Copyright() {
 //               control={<Checkbox value="remember" color="primary" />}
 //               label="Remember me"
 //             /> */}
-            
+
 //             <Grid container>
 //               <Grid item xs>
 //                 {/* <Link href="#" variant="body2">
@@ -194,17 +194,24 @@ function Copyright() {
 //         </div>
 //       </Grid>
 //     </Grid>
-    
+
 //   );
 // }
 /***********************************************Template***************************************************************************************/
 export default function SignIn() {
   return (
     <div className="signin">
-      
-      <Container>
-      {/* <Image src={'../images/Logo2_LoginPage.png'} />  */}
-      <div className="form">
+
+      <div className="signin_child1">
+        <img src={require("../images/Logo2_Loginpage.png")} className="login_image" />
+        <img src={require("../images/Logo2_Mobile.png")} className="login_responsive" />
+        <div className="loginpage_intro">
+          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <h3>Easy Realty <br /> S y s t e m</h3>
+        </div>
+      </div>
+      <div className="signin_child2">
+
         <Typography variant="h1" className="login_heading">
           Log In
         </Typography>
@@ -216,16 +223,16 @@ export default function SignIn() {
           <FormLabel className="login_labels">
             Password
           </FormLabel>
-          <TextField type="password" variant="outlined"></TextField>
+          <TextField type="password" variant="outlined" className="login_input"></TextField>
           <Link href="#" className="forgot_password">
             Forgot Password?
           </Link>
           <Button variant="contained" className="login_button">Login</Button>
           <p className="new_member">New Member?<a href="#">Register Now</a></p>
         </FormControl>
-      </div>   
-      </Container>
-     
+
+
+      </div>
     </div>
   );
 } 
