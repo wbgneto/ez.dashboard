@@ -1,3 +1,4 @@
+
 import React, {useRef, useState} from 'react';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -27,38 +28,36 @@ export default function Listing_Table({email, firstname, lastname, avatar}) {
     }
 
     return(
-        <Table>
-          <TableBody>
-            <TableRow>
-              <TableCell>
-                <Checkbox 
-                value="uncontrolled" 
-                inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} 
-                ref={myDivElement} onChange={handleClick}
-                />
-                {/* <input type="checkbox" ref={myDivElement}  onClick={handleClick}></input> */}
-              </TableCell>
-              <TableCell>
-                <Grid container component="main">
-                <Grid item xs={12} sm={2}>
-                    <img src={avatar}></img>
-                </Grid>
-                <Grid item xs={12} sm={8}>
-                    <Typography>
-                        <ul>
-                            <liz>{email}</liz>
-                            <li>{firstname} {lastname}</li>
-                        </ul>
-                    </Typography>
-                </Grid>
-                <Grid item xs={12} sm={2}>
-                <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/realtors/edit"}> Edit</Button>
-                <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/realtors/1"}>View</Button>
-                </Grid>
-                </Grid>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
+      <>
+        <TableCell style={{width:'10px', padding:'0 8px'}}>
+          <Checkbox 
+          value="uncontrolled" 
+          inputProps={{ 'aria-label': 'uncontrolled-checkbox' }} 
+          ref={myDivElement} onChange={handleClick}
+          />
+          {/* <input type="checkbox" ref={myDivElement}  onClick={handleClick}></input> */}
+        </TableCell>
+        <TableCell>
+          <Grid container component="main" className="tableGrid">
+          <Grid item xs={12} md={3} className="tableElm01">
+              <img src={avatar}></img>
+          </Grid>
+          <Grid item xs={12} md={6} className="tableElm02">
+              <Typography>
+                  <ul>
+                      <liz>{email}</liz>
+                      <li>{firstname} {lastname}</li>
+                  </ul>
+              </Typography>
+          </Grid>
+          <Grid item xs={12} md={3} className="tableElm03 btnWrapper">
+            <div>
+              <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={"/realtors/edit"}> Edit</Button>
+              <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={"/realtors/1"}>View</Button>
+           </div>
+          </Grid>
+          </Grid>
+        </TableCell>
+      </>
     )
 }

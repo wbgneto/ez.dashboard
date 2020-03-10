@@ -1,3 +1,4 @@
+
 import React, { Component } from "react";
 import {  Doughnut } from "react-chartjs-2";
 
@@ -121,11 +122,13 @@ export default class MainGraph extends Component {
           style={{ position: "relative", width: 600, height: "auto", textAlign:"center" }}
           
         >
-          <form
+          <form 
+          style={{marginBottom:'50px'}}
           onSubmit={this.handleSubmit}>
             <label>
               Visualize sales by:
               <select
+                className="temSel"
                 value={this.state.show_by_type}
                 onChange={this.handleChange}
               >
@@ -133,7 +136,7 @@ export default class MainGraph extends Component {
                 <option value="quantity">No of Houses</option>
               </select>
             </label>
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" className="temInput" />
           </form>
           <h3>Top Sales</h3>
           <Doughnut
@@ -157,3 +160,4 @@ export default class MainGraph extends Component {
     );
   }
 }
+

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -14,6 +15,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import Box from '@material-ui/core/Box';
 
 
 const useStyles = makeStyles(theme => ({
@@ -80,74 +82,99 @@ export default function CenteredGrid() {
               <ArrowBackIcon/>
             </IconButton>
           </div>
-          {/* <div className="btnBox" style={{float:'right'}}>
-            <IconButton aria-label="delete">
-              <DeleteIcon/>
-            </IconButton>
-            <IconButton aria-label="visibility">
-              <VisibilityOffIcon />
-            </IconButton>
-          </div> */}
+          <span className="step">
+            <em className="on">1</em>
+            <em>2</em>
+            <em>3</em>
+          </span>
         </div>
         <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} sm={4}>
-          <input
-            accept="image/*"
-            className={classes.input}
-            id="contained-button-file"
-            multiple
-            type="file"
-          />
-          <label htmlFor="contained-button-file">
-            <Button component="span" className={classes.uploadBtn}>
-              Upload Pictures
-            </Button>
-          </label>
+          <Grid item xs={12} md={4} className="center">
+            <input
+              accept="image/*"
+              className={classes.input}
+              id="contained-button-file"
+              multiple
+              type="file"
+            />
+            <p>Add information about this property</p>
           </Grid>
-          <Grid item xs={12} sm={8} className="inputEdit">
+          <Grid item xs={12} md={8} className="inputEdit">
             <div><TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/></div>
             <div>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-                Realtor
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                onChange={handleChange}
-                labelWidth={labelWidth}
-              >
-                <MenuItem value="Michael">Michael</MenuItem>
-                <MenuItem value="Mark">Mark</MenuItem>
-                <MenuItem value="Lee">Lee</MenuItem>
-                <MenuItem value="Harry">Harry</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+                  Realtor
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  onChange={handleChange}
+                  labelWidth={labelWidth}
+                >
+                  <MenuItem value="Michael">Michael</MenuItem>
+                  <MenuItem value="Mark">Mark</MenuItem>
+                  <MenuItem value="Lee">Lee</MenuItem>
+                  <MenuItem value="Harry">Harry</MenuItem>
+                </Select>
+              </FormControl>
             </div>
             <div>
-            <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-                Type
-              </InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
-                onChange={handleChange}
-                labelWidth={labelWidth}
-              >
-                <MenuItem value="Condo">Condo</MenuItem>
-                <MenuItem value="House">House</MenuItem>
-                <MenuItem value="Townhouse">Townhouse</MenuItem>
-              </Select>
-            </FormControl>
+              <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
+                  Type
+                </InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  onChange={handleChange}
+                  labelWidth={labelWidth}
+                >
+                  <MenuItem value="Condo">Condo</MenuItem>
+                  <MenuItem value="House">House</MenuItem>
+                  <MenuItem value="Townhouse">Townhouse</MenuItem>
+                </Select>
+              </FormControl>
             </div>
-            <div><TextField id="outlined-basic" label="Size" variant="outlined"  className={classes.formControl}/></div>
-            <div><TextField id="outlined-basic" label="City / Neighborhood" variant="outlined"  className={classes.formControl}/></div>
             <div><TextField id="outlined-basic" label="Price" variant="outlined"  className={classes.formControl}/></div>
+
+            <Grid container spacing={1} className="twoColumnGrid">
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Size" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Created at" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Bedroom" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Garage" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Street" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Number" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="City" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Province" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Country" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <div><TextField id="outlined-basic" label="Postal Code" variant="outlined"  className={classes.formControl}/></div>
+              </Grid>
+            </Grid>
+
             <div><TextField id="outlined-multiline-static" label="Description" multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
             <div>
-              <Button variant="outlined" color="primary" component={Link} to={"/Listings"}>Cancel</Button>
-              <Button variant="outlined" color="primary" component={Link} to={"/Listings"} style={{float:'right'}}>Save</Button>
+              <Button variant="outlined" className="btnStyle" component={Link} to={"/Listings"}>Cancel</Button>
+              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/newlisting2"} style={{float:'right'}}>Next</Button>
             </div>
           </Grid>
         </Grid>

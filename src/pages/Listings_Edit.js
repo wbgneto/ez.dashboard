@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -90,7 +91,7 @@ export default function CenteredGrid() {
           </div>
         </div>
         <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
           <input
             accept="image/*"
             className={classes.input}
@@ -104,7 +105,7 @@ export default function CenteredGrid() {
             </Button>
           </label>
           </Grid>
-          <Grid item xs={12} sm={8} className="inputEdit">
+          <Grid item xs={12} md={8} className="inputEdit">
             <div><TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/></div>
             <div>
             <FormControl variant="outlined" className={classes.formControl}>
@@ -154,4 +155,5 @@ export default function CenteredGrid() {
       </Paper>
     </div>
   );
+
 }

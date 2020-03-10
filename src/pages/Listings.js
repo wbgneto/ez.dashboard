@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -20,6 +21,9 @@ import Select from '@material-ui/core/Select';
 import { Link } from 'react-router-dom';
 import Grid from "@material-ui/core/Grid";
 import Listing_Table, {myDivElement} from './Listing_Table'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
 
 
 
@@ -67,7 +71,7 @@ const useStyles = makeStyles(theme => ({
   
   searchInput: {
     width : 200,
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       width: '100%',
       paddingRight: 0,
     },
@@ -92,23 +96,24 @@ export default function EnhancedTable() {
    // API
   const [users, setUsers] = useState([])
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     setUsers(
-  //       await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
-  //       .then(res => res.json())
-  //       .then(res => res.data)
-  //       .catch(err => console.log(err, 'Fetch error'))
-  //     )
-  //   }
-  //   fetchData();
-  // },[])
- //
+  useEffect(() => {
+    async function fetchData() {
+      setUsers(
+        await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
+        .then(res => res.json())
+        .then(res => res.data)
+        .catch(err => console.log(err, 'Fetch error'))
+      )
+    }
+    fetchData();
+  },[])
+ 
  const myToolElement = React.useRef(null);
 
   return (
     <div className={classes.root}>
       <Typography className="title">Listings</Typography>
+      
       <div className="toolbarWrap">
         {/* SelectBox */}
         <div className="element01">
@@ -169,16 +174,21 @@ export default function EnhancedTable() {
       className={classes.paper}
       container
       >
-        {users.map( users =>
-        <Grid item xs={12}>
-          <Listing_Table
-          status={users.status}
-          title={users.title}
-          square_foot={users.square_foot}
-          price={users.price}
-          />
-        </Grid>
-        )}
+        <Table>
+          <TableBody>
+          {users.map( users =>
+           <TableRow>
+              <Listing_Table
+                status={users.status}
+                photos={users.photos}
+                title={users.title}
+                square_foot={users.square_foot}
+                price={users.price}
+                />
+           </TableRow>
+          )}
+          </TableBody>
+        </Table>
       </Paper>
     </div>
   );

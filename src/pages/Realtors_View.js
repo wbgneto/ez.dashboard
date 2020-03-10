@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect, useRef} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -63,8 +64,8 @@ export default function CenteredGrid() {
       </div>
 
         <Grid container spacing={1} className="viewGrid">
-          <Grid item xs={12} sm={4}>{users.avatar}image</Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} md={4}>{users.avatar}image</Grid>
+          <Grid item xs={12} md={8}>
             <div>{users.first_name} {users.last_name}Realtor1</div>
             <div>{users.email}realtor1#gmail.com</div>
             <div>111-222-3333</div>
@@ -76,19 +77,19 @@ export default function CenteredGrid() {
 
       <Paper className={classes.paper}>
         <Grid container spacing={6} className="homeList">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
               <span><Typography>Home List1</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
             </div>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
             <span><Typography>Home List2</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
             </div>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
             <span><Typography>Home List3</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -50,7 +51,7 @@ export default function CenteredGrid() {
           </div>
         </div>
         <Grid container spacing={1} className="viewGrid">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <Carousel>
               <div>
                   <img src="https://dummyimage.com/600x400/000/fff" />
@@ -70,7 +71,7 @@ export default function CenteredGrid() {
               </div>
             </Carousel>
           </Grid>
-          <Grid item xs={12} sm={8}>
+          <Grid item xs={12} md={8}>
             <div>Relator1</div>
             <div>xxx@gmail.com</div>
             <div>111-222-3333</div>

@@ -1,3 +1,4 @@
+
 import React from 'react';
 import './App.css';
 import './style/Style.css';
@@ -11,6 +12,8 @@ import Realtors_View from './pages/Realtors_View';
 import Listings_Edit from './pages/Listings_Edit';
 import Listings_View from './pages/Listings_View';
 import New_Listing from './pages/New_Listing';
+import New_Listing2 from './pages/New_Listing2';
+import New_Listing3 from './pages/New_Listing3';
 import New_Realtor from './pages/New_Realtor';
 import Help from './pages/Help';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
@@ -32,6 +35,8 @@ export default function App() {
                     <RouteWrapper path="/listings/1" layout={Admin} component={Listings_View}></RouteWrapper>
                     <RouteWrapper path="/listings" layout={Admin} component={Listings}></RouteWrapper>
                     <RouteWrapper path="/newlisting" layout={Admin} component={New_Listing}></RouteWrapper>
+                    <RouteWrapper path="/newlisting2" layout={Admin} component={New_Listing2}></RouteWrapper>
+                    <RouteWrapper path="/newlisting3" layout={Admin} component={New_Listing3}></RouteWrapper>
                     <RouteWrapper path="/help" layout={Admin} component={Help}></RouteWrapper>
                 </Switch>
             </Router>

@@ -1,3 +1,4 @@
+
 import React, { useRef } from 'react';
 import {makeStyles, useTheme, withTheme} from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
@@ -186,4 +187,5 @@ ResponsiveDrawer.propTypes = {
      */
     container: PropTypes.any,
 };
+
 export default ResponsiveDrawer;

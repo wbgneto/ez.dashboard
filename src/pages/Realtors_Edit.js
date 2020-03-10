@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -71,7 +72,7 @@ export default function CenteredGrid() {
           </div>
         </div>
         <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
           <input
             accept="image/*"
             className={classes.input}
@@ -85,7 +86,7 @@ export default function CenteredGrid() {
             </Button>
           </label>
           </Grid>
-          <Grid item xs={12} sm={8} className="inputEdit">
+          <Grid item xs={12} md={8} className="inputEdit">
             <div><TextField id="outlined-basic" label="Name of Realtor" variant="outlined" className={classes.formControl}/></div>
             <div><TextField id="outlined-basic" label="Email" variant="outlined"  className={classes.formControl}/></div>
             <div><TextField id="outlined-basic" label="Phone number" variant="outlined"  className={classes.formControl}/></div>
@@ -100,19 +101,19 @@ export default function CenteredGrid() {
 
       <Paper className={classes.paper}>
         <Grid container spacing={6} className="homeList">
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
               <span><Typography>Home List1</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
             </div>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
             <span><Typography>Home List2</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
             </div>
           </Grid>
-          <Grid item xs={12} sm={4}>
+          <Grid item xs={12} md={4}>
             <div className="homePic">
             <span><Typography>Home List3</Typography></span>
               <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>

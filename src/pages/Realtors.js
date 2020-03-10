@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect, useRef} from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -20,6 +21,9 @@ import Select from '@material-ui/core/Select';
 import { Link } from 'react-router-dom';
 import Grid from "@material-ui/core/Grid";
 import Realtor_Table, {myDivElement} from './Realtor_Table'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableRow from '@material-ui/core/TableRow';
 
 
 
@@ -169,16 +173,20 @@ export default function EnhancedTable() {
       className={classes.paper}
       container
       >
-        {users.map( users =>
-        <Grid item xs={12}>
-          <Realtor_Table
-          email={users.email}
-          firstname={users.first_name}
-          lastname={users.last_name}
-          avatar={users.avatar}
-          />
-        </Grid>
-        )}
+        <Table>
+          <TableBody>
+            {users.map( users =>
+            <TableRow>
+                <Realtor_Table
+                  email={users.email}
+                  firstname={users.first_name}
+                  lastname={users.last_name}
+                  avatar={users.avatar}
+                  />
+            </TableRow>
+            )}
+          </TableBody>
+        </Table>
       </Paper>
     </div>
   );
