@@ -69,8 +69,8 @@ export default function CenteredGrid() {
           </div>
           <span className="step">
             <em>1</em>
-            <em>2</em>
-            <em className="on">3</em>
+            <em className="on">2</em>
+            <em>3</em>
           </span>
         </div>
         <Grid container spacing={2} className="marginT">
