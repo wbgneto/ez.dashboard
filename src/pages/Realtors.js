@@ -1,17 +1,12 @@
 import React, {useState, useEffect, useRef} from 'react';
-import PropTypes from 'prop-types';
 import clsx from 'clsx';
 import { fade, lighten, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import SearchIcon from '@material-ui/icons/Search';
-import AddCircleIcon from '@material-ui/icons/AddCircle';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
@@ -38,6 +33,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -56,6 +68,23 @@ const useStyles = makeStyles(theme => ({
       marginLeft: theme.spacing(0),
       width: 'auto',
     },
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -65,6 +94,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: '#2B879E',
   },
   
   searchInput: {
@@ -84,6 +114,7 @@ export default function EnhancedTable() {
    const [age, setAge] = React.useState('');
    const inputLabel = React.useRef(null);
    const [labelWidth, setLabelWidth] = React.useState(0);
+
    React.useEffect(() => {
      setLabelWidth(inputLabel.current.offsetWidth);
    }, []);
@@ -143,7 +174,7 @@ export default function EnhancedTable() {
                 <SearchIcon />
               </div>
               <div class="labelFix">
-                <TextField className={classes.searchInput} id="outlined-search" label={"Search"} type="search" variant="outlined" />
+                <TextField className={classes.searchInput} id="outlined-search" type="search" variant="outlined" />
               </div>
           </div>
         </div>
@@ -193,7 +224,7 @@ export default function EnhancedTable() {
           </Toolbar>
           {/* Plus button */}
           <Tooltip title="Add Property">
-            <IconButton aria-label="Add" component={Link} to={"/newlisting"}>
+            <IconButton aria-label="Add" component={Link} to={"/newrealtor"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 200 200">
                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
                   <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM335,773a10.011,10.011,0,0,0-10,10V907a10.011,10.011,0,0,0,10,10H459a10.011,10.011,0,0,0,10-10V783a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>

@@ -1,9 +1,8 @@
-import React, {useState, useEffect, useRef} from 'react';
-import { fade, lighten, makeStyles } from '@material-ui/core/styles';
+import React, {useState, useEffect} from 'react';
+import { fade,  makeStyles, withStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
-import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import SearchIcon from '@material-ui/icons/Search';
@@ -13,12 +12,10 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { Link } from 'react-router-dom';
-import Grid from "@material-ui/core/Grid";
 import Listing_Table, {myDivElement} from './Listing_Table'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
-
 
 
 const useStyles = makeStyles(theme => ({
@@ -33,6 +30,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -51,6 +65,23 @@ const useStyles = makeStyles(theme => ({
       marginLeft: theme.spacing(0),
       width: 'auto',
     },
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   searchIcon: {
     width: theme.spacing(7),
@@ -60,6 +91,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    color: '#2B879E',
   },
   
   searchInput: {
@@ -75,10 +107,11 @@ export default function EnhancedTable() {
   const classes = useStyles();
   const [selected, setSelected] = React.useState([]);
 
-   // selecBox
+  // selectBox
    const [age, setAge] = React.useState('');
    const inputLabel = React.useRef(null);
    const [labelWidth, setLabelWidth] = React.useState(0);
+
    React.useEffect(() => {
      setLabelWidth(inputLabel.current.offsetWidth);
    }, []);
@@ -86,22 +119,7 @@ export default function EnhancedTable() {
      setAge(event.target.value);
    };
 
-   // API
-  // const [users, setUsers] = useState([])
-
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     setUsers(
-  //       await fetch('http://api.easyrealtysystem.wmdd.ca/listings?status=1&title=title')
-  //       .then(res => res.json())
-  //       .then(res => res.data)
-  //       .catch(err => console.log(err, 'Fetch error'))
-  //     )
-  //   }
-  //   fetchData();
-  // },[])
-
-
+  //Fetch API
   useEffect(() => {
     fetchItems();
   }, []);
@@ -144,12 +162,12 @@ export default function EnhancedTable() {
 
         {/* SearchBar */}
         <div className="element02">
-            <div className={classes.search}>
+           <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <div class="labelFix">
-                <TextField className={classes.searchInput} id="outlined-search" label={"Search"} type="search" variant="outlined" />
+                <TextField className={classes.searchInput} id="outlined-search" type="search" variant="outlined" placeholder="search" />
               </div>
           </div>
         </div>

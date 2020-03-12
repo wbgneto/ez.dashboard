@@ -37,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function CenteredGrid({match}) {
   const classes = useStyles();
-
   
   useEffect(() => { 
     fetchItem();
@@ -45,7 +44,8 @@ export default function CenteredGrid({match}) {
   }, []);
 
   const [item, setItem] = useState({
-    data : {}
+    address : {},
+    features : [ {} ]
   });
 
   const fetchItem = async () => {
@@ -55,11 +55,12 @@ export default function CenteredGrid({match}) {
       }`
     );
     const item = await fetchItem.json();
+  
     setItem(item.data[0]);
     console.log(item.data);
   }
 
-
+ 
 
 
   return (
@@ -110,10 +111,26 @@ export default function CenteredGrid({match}) {
               <li>Type : {item.type} Bed Room</li>
               <li>Price : {item.price} CAD</li>
               <li>Size : {item.square_foot} sq</li>
-              <li>Date : {item.created_at}</li>
-              {/* <li>{item} Bedroom / {item} Garage</li> */}
-              {/* <li>{item.address}</li> */}
-              <li>{item.description}</li>
+              <li>Date : {item.created_at}</li> 
+              <li>
+                Address : {item.address.street} 
+                {item.address.number}, 
+                {item.address.postal_code}, 
+                {item.address.city},
+                {item.address.province}, 
+                {item.address.country}     
+              </li> 
+              <li>Type : {item.features[0].type} Garage</li> 
+              <li>Description : {item.description}</li> 
+              {/* <li>Bedroom: {item.toString()} </li> */}
+              {/* {item.address.map(function (ad.d, i) {
+                return <li key={i}>
+                  <span>{add.street}</span>
+                  <span>{add.number}</span>
+                </li>
+              }
+              )}
+              <li>{item.description}</li> */}
             </ul>
             {/* <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Listings"}>Back</Button> */}
             </Typography>

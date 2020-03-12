@@ -45,8 +45,8 @@ return(
         </Grid>
         <Grid item xs={12} md={3} className="tableElm03 btnWrapper">
           <div>
-            <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={"/listings/edit/1"}> Edit</Button>
-            <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={"/listings/1"}>View</Button>
+            <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={`/listings/edit/${id}`}> Edit</Button>
+            <Button variant="outlined" color="primary" className="blockBtn btnStyle" component={Link} to={`/listings/${id}`}>View</Button>
           </div>
         </Grid>
       </Grid>

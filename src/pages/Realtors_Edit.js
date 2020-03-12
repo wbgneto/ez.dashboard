@@ -37,6 +37,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   input: {
     display: 'none',
@@ -130,8 +147,8 @@ export default function CenteredGrid() {
             <div><TextField id="outlined-basic" label="Phone number" variant="outlined"  className={classes.formControl}/></div>
             <div><TextField id="outlined-basic" label="Address" variant="outlined"  className={classes.formControl}/></div>
             <div>
-              <Button variant="outlined" color="primary" component={Link} to={"/Realtors"}>Cancel</Button>
-              <Button variant="outlined" color="primary" component={Link} to={"/Realtors"} style={{float:'right'}}>Save</Button>
+              <Button variant="outlined" className="btnStyle" component={Link} to={"/Realtors"}>Cancel</Button>
+              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/Realtors"} style={{float:'right'}}>Save</Button>
             </div>
           </Grid>
         </Grid>

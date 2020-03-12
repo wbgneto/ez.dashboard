@@ -76,7 +76,6 @@ export default function CenteredGrid() {
             <div>{users.email}realtor1#gmail.com</div>
             <div>111-222-3333</div>
             <div>Burnaby</div>
-            <Button variant="outlined" color="primary" className="blockBtn" component={Link} to={"/Realtors"}>Back</Button>
           </Grid>
         </Grid>
       </Paper>

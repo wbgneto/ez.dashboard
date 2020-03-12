@@ -41,6 +41,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   input: {
     display: 'none',
@@ -76,7 +93,8 @@ export default function CenteredGrid({match}) {
   }, []);
 
   const [item, setItem] = useState({
-    data : {}
+    address : {},
+    features : [ {} ]
   });
 
   const fetchItem = async () => {
@@ -180,7 +198,8 @@ export default function CenteredGrid({match}) {
           {/* input field*/}
           <Grid item xs={12} md={8} className="inputEdit">
             <div>
-              <TextField id="outlined-basic" label={item.title} variant="outlined" className={classes.formControl}/>
+              <TextField id="outlined-basic" variant="outlined" className={classes.formControl} placeholder={item.title}
+              />
             </div>
             <div>
               <FormControl variant="outlined" className={classes.formControl}>
@@ -217,43 +236,43 @@ export default function CenteredGrid({match}) {
                 </Select>
               </FormControl>
             </div>
-            <div><TextField id="outlined-basic" label={item.price} variant="outlined"  className={classes.formControl}/></div>
+            <div><TextField id="outlined-basic" placeholder={item.price} variant="outlined"  className={classes.formControl}/></div>
             <Grid container spacing={1} className="twoColumnGrid">
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label={item.square_foot} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.square_foot} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label={item.created_at} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.created_at} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Bedroom" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder="Bedroom" variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Garage" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder="Garage" variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Street" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.street} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Number" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.number} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="City" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.city} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Province" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.province} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Country" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.country} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" label="Postal Code" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" placeholder={item.address.postal_code} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
             </Grid>
-            <div><TextField id="outlined-multiline-static" label={item.description} multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
+            <div><TextField id="outlined-multiline-static" placeholder={item.description} multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
             <div>
-              <Button variant="outlined" color="primary" component={Link} to={"/Listings"}>Cancel</Button>
-              <Button variant="outlined" color="primary" component={Link} to={"/newlisting2"} style={{float:'right'}}>Next</Button>
+              <Button variant="outlined" className="btnStyle" color="primary" component={Link} to={"/Listings"}>Cancel</Button>
+              <Button variant="outlined" className="btnStyle btnOn" color="primary" component={Link} to={"/newlisting2"} style={{float:'right'}}>Save</Button>
             </div>
           </Grid>
         </Grid>

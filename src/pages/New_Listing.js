@@ -40,6 +40,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   input: {
     display: 'none',
@@ -104,7 +121,9 @@ export default function CenteredGrid() {
             <p>Add information about this property</p>
           </Grid>
           <Grid item xs={12} md={8} className="inputEdit">
-            <div><TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/></div>
+            <div>
+              <TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/>
+            </div>
             <div>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">

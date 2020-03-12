@@ -456,6 +456,12 @@ table {
   background-color: #2B879E !important;
   color: white !important; }
 
+.Mui-Checked, .MuiCheckbox-colorSecondary {
+  color: #2B879E !important; }
+
+.MuiIconButton-colorSecondary:hover {
+  background-color: rgba(220, 220, 220, 0.3) !important; }
+
 /*****************************************************/
 /*                     Toolbar                       */
 /*****************************************************/
@@ -509,6 +515,10 @@ table {
 /*****************************************************/
 /*                      input                        */
 /*****************************************************/
+::placeholder {
+  color: #7d7d7d !important;
+  opacity: 1 !important; }
+
 .inputStyle {
   width: 100%;
   display: block;
@@ -525,6 +535,13 @@ table {
     outline: none;
     border: 1px solid #212121; }
   .inputStyle:focus {
+    outline: none;
+    padding: 18px 13px;
+    border: 2px solid #2B879E; }
+
+.inputS {
+  width: 500px !important; }
+  .inputS:focus {
     outline: none;
     padding: 18px 13px;
     border: 2px solid #2B879E; }
