@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import './style/Style.css';
+//import './style/Style.css';
 import SignIn from './pages/SignIn';
 import Blank from './layouts/Blank';
 import Dashboard from './pages/Dashboard';
@@ -17,6 +17,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Admin from "./layouts/Admin";
 import New_Listing2 from './pages/New_Listing2';
 import New_Listing3 from './pages/New_Listing3';
+import "./style/Style.scss";
 
 export default function App() {
     return (

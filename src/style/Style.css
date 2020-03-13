@@ -157,14 +157,13 @@ header {
 /*                     SignIn.js                     */
 /*****************************************************/
 .signin {
-  background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
+  background-image: url(../images/Login.png);
   height: 100vh;
   width: 100vw;
-  position: relative;
   background-repeat: no-repeat;
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   background-size: cover;
-  overflow: hidden; }
+}
 
 button.MuiButton-contained {
   background-color: #2B879E;
@@ -172,7 +171,8 @@ button.MuiButton-contained {
   width: 40%;
   margin-top: 1rem;
   margin-left: 8rem;
-  text-transform: capitalize; }
+  text-transform: capitalize;
+}
 
 .form {
   margin-left: 20rem;
@@ -182,7 +182,8 @@ button.MuiButton-contained {
   background-color: white;
   width: 35%;
   height: 460px;
-  border: 1px Solid white; }
+  border: 1px Solid white;
+}
 
 h1.MuiTypography-h1 {
   margin-left: 12rem;
@@ -549,3 +550,36 @@ table {
 /*****************************************************/
 /*                temporary Graph style              */
 /*****************************************************/
+  /* font-weight: 700;
+} */
+
+label.MuiFormLabel-root {
+  color: black;
+  margin-left: 1.5rem;
+  margin-top: 0.8rem;
+  font-weight: 400;
+  font-size: 1em;
+}
+
+div.MuiFormControl-root {
+  width: 85%;
+  margin-left: 1.5rem;
+  margin-top: 0.8rem;
+}
+
+a.MuiTypography-root {
+  color: black;
+  text-decoration: underline;
+  margin-left: 17rem;
+  margin-top: 1rem;
+}
+a.MuiTypography-root p {
+  margin-left: 7.5rem;
+  margin-top: 2rem;
+  letter-spacing: 0.1rem;
+}
+a.MuiTypography-root a {
+  color: #2B879E;
+}
+
+/*# sourceMappingURL=Style.css.map */
