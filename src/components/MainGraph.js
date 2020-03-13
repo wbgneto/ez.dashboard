@@ -1,21 +1,8 @@
 import React, { Component, PureComponent } from "react";
 import { Doughnut } from "react-chartjs-2";
 import PropTypes from "prop-types";
+import Grid from "@material-ui/core/Grid";
 
-const listItemStyle = {
-  textAlign: "left",
-  justifyContent: "space-evenly",
-  display: "flex",
-  flexDirection: "row",
-  margin: "8px",
-  alignContent: "flex-start"
-};
-
-const options = {
-  legend: {
-    display: false
-  }
-};
 class MainGraph extends Component {
   state = {
     legend: []
@@ -30,17 +17,33 @@ class MainGraph extends Component {
     const { legend } = this.state;
     console.log(this.props.data);
     return (
-      <div>
-        <h3>Top Sales</h3>
+      <>
+        
+
+        
+        <Grid
+          container
+          direction="row"
+          justify="space-around"
+          alignItems="center"
+          spacing={4}
+          style={{ width: "100%", margin: "auto"  }}
+        >
+        {/* <div style={{display:"flex", flexDirection:"row", justifyContent:"space-evenly", alignContent:"center", alignItems:"center"}}> */}
+        <Grid  item xs={12} sm={12} md={12} lg={6} xl={6} >
         <Doughnut
+          
           ref={ref => (this.doughnut = ref)}
           data={this.props.data}
           options={options}
         />
-        <ul className="mt-8">
+      </Grid>
+      <Grid item xs={12} sm={12} md={12} lg={6} xl={6} >
+      <ul className="mt-8">
           {legend.length &&
             legend.map((item, key) => {
               return (
+                <>
                 <li key={item.text} style={listItemStyle}>
                   <div
                     style={{
@@ -60,10 +63,17 @@ class MainGraph extends Component {
                     Details
                   </label>
                 </li>
+                <hr style={{margin:"10px 0"}}/>
+                </>
               );
             })}
         </ul>
-      </div>
+      </Grid>
+        </Grid>
+        
+        {/* </div> */}
+        
+      </>
     );
   }
 }
@@ -72,4 +82,18 @@ MainGraph.propTypes = {
   data: PropTypes.object
 };
 
+const listItemStyle = {
+  textAlign: "left",
+  justifyContent: "space-between",
+  display: "flex",
+  flexDirection: "row",
+  // margin: "8px",
+  alignContent: "flex-start"
+};
+
+const options = {
+  legend: {
+    display: false
+  }
+};
 export default MainGraph;
