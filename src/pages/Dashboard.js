@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
+    padding: '50px 0'
   },
   title:{
     fontSize:"3.157em",

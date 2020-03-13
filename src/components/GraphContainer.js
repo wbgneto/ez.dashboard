@@ -3,7 +3,6 @@ import LineGraph from "./LineGraph";
 import MainGraph from "./MainGraph";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import "react-datepicker/dist/react-datepicker.css";
 import { createMuiTheme } from "@material-ui/core/styles";
 import { ThemeProvider } from "@material-ui/styles";
 
