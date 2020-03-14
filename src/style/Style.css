@@ -7,6 +7,7 @@
 /*****************************************************/
 /*                       Reset                       */
 /*****************************************************/
+@import url("https://fonts.googleapis.com/css?family=Open+Sans&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -25,7 +26,8 @@ time, mark, audio, video {
   border: 0;
   font-size: 100%;
   font: inherit;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+  font-family: 'Open Sans', sans-serif !important; }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -49,6 +51,9 @@ q:before, q:after {
 table {
   border-collapse: collapse;
   border-spacing: 0; }
+
+input {
+  font-family: 'Open Sans', sans-serif !important; }
 
 /*****************************************************/
 /*                      Nav.js                       */
@@ -157,13 +162,14 @@ header {
 /*                     SignIn.js                     */
 /*****************************************************/
 .signin {
-  background-image: url(../images/Login.png);
+  background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
   height: 100vh;
   width: 100vw;
+  position: relative;
   background-repeat: no-repeat;
-  font-family: "Open Sans";
+  font-family: 'Open Sans';
   background-size: cover;
-}
+  overflow: hidden; }
 
 button.MuiButton-contained {
   background-color: #2B879E;
@@ -171,8 +177,7 @@ button.MuiButton-contained {
   width: 40%;
   margin-top: 1rem;
   margin-left: 8rem;
-  text-transform: capitalize;
-}
+  text-transform: capitalize; }
 
 .form {
   margin-left: 20rem;
@@ -182,8 +187,7 @@ button.MuiButton-contained {
   background-color: white;
   width: 35%;
   height: 460px;
-  border: 1px Solid white;
-}
+  border: 1px Solid white; }
 
 h1.MuiTypography-h1 {
   margin-left: 12rem;
@@ -340,9 +344,22 @@ h1.MuiTypography-h1 {
   width: 30%;
   height: 30%; }
 
+.addImage label span {
+  padding: 10px 0px !important;
+  width: 100% !important; }
+
 @media (max-width: 600px) {
   .addImage div {
     height: auto !important; } }
+
+.oneImage {
+  width: 300px; }
+  .oneImage img {
+    width: 100%;
+    height: 100%; }
+  @media (max-width: 600px) {
+    .oneImage {
+      width: 100%; } }
 
 .step {
   height: 48px;
@@ -546,40 +563,3 @@ table {
     outline: none;
     padding: 18px 13px;
     border: 2px solid #2B879E; }
-
-/*****************************************************/
-/*                temporary Graph style              */
-/*****************************************************/
-  /* font-weight: 700;
-} */
-
-label.MuiFormLabel-root {
-  color: black;
-  margin-left: 1.5rem;
-  margin-top: 0.8rem;
-  font-weight: 400;
-  font-size: 1em;
-}
-
-div.MuiFormControl-root {
-  width: 85%;
-  margin-left: 1.5rem;
-  margin-top: 0.8rem;
-}
-
-a.MuiTypography-root {
-  color: black;
-  text-decoration: underline;
-  margin-left: 17rem;
-  margin-top: 1rem;
-}
-a.MuiTypography-root p {
-  margin-left: 7.5rem;
-  margin-top: 2rem;
-  letter-spacing: 0.1rem;
-}
-a.MuiTypography-root a {
-  color: #2B879E;
-}
-
-/*# sourceMappingURL=Style.css.map */

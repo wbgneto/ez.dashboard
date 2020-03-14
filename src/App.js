@@ -17,6 +17,7 @@ import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Admin from "./layouts/Admin";
 import New_Listing2 from './pages/New_Listing2';
 import New_Listing3 from './pages/New_Listing3';
+import New_Listing4 from './pages/New_Listing4';
 import "./style/Style.scss";
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
                     <RouteWrapper path="/help" layout={Admin} component={Help}></RouteWrapper>
                     <RouteWrapper path="/newlisting2" layout={Admin} component={New_Listing2}></RouteWrapper>
                     <RouteWrapper path="/newlisting3" layout={Admin} component={New_Listing3}></RouteWrapper>
+                    <RouteWrapper path="/newlisting4" layout={Admin} component={New_Listing4}></RouteWrapper>
                 </Switch>
             </Router>
         </div>

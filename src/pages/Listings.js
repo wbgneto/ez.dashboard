@@ -167,7 +167,7 @@ export default function EnhancedTable() {
                 <SearchIcon />
               </div>
               <div class="labelFix">
-                <TextField className={classes.searchInput} id="outlined-search" type="search" variant="outlined" placeholder="search" />
+                <TextField className={classes.searchInput} id="outlined-search" type="search" variant="outlined" placeholder="Search" />
               </div>
           </div>
         </div>

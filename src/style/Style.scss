@@ -5,8 +5,8 @@
 
 @import 'Variables';
 @import 'Reset';
-@import 'Signin';
 
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 /*****************************************************/
 /*                      Nav.js                       */
@@ -393,10 +393,26 @@ h1.MuiTypography-h1 {
     width: 30%;
     height: 30%;
   }
+  label {
+    span {
+      padding: 10px 0px !important;
+      width: 100% !important;
+    }
+  }
   @media (max-width: $bp-small) {
     div {
       height: auto !important;
     }
+  }
+}
+.oneImage {
+  width: 300px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: $bp-small) {
+    width: 100%;
   }
 }
 .step {
@@ -640,20 +656,3 @@ table {
 }
 
 
-
-/*****************************************************/
-/*                temporary Graph style              */
-/*****************************************************/
-// .temSel {
-//   border: 1px solid#999;
-//   border-radius: 4px;
-//   padding: 10px;
-//   margin-right:20px;
-// }
-// .temInput {
-//   border: 1px solid $primary-teal-blue;
-//   border-radius: 4px;
-//   padding: 10px;
-//   background-color: #fff;
-//   outline: none;
-// }
