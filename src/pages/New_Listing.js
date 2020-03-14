@@ -95,9 +95,11 @@ export default function CenteredGrid() {
           <Tooltip title="" component={Link} to={"/Listings"}>
             <IconButton aria-label="back to list">
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
-              <g id="Group_1437" data-name="Group 1437" transform="translate(-947 -5839)">
-                <path id="Subtraction_27" data-name="Subtraction 27" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM335,773a10.011,10.011,0,0,0-10,10V907a10.011,10.011,0,0,0,10,10H459a10.011,10.011,0,0,0,10-10V783a10.011,10.011,0,0,0-10-10Z" transform="translate(650 5094)" fill="#2b879e"/>
-                <path id="Union_22" data-name="Union 22" d="M332.356,825.619l-28.284-28.284a14.154,14.154,0,0,1,0-16.978l28.284-28.284a10,10,0,0,1,14.142,0l2.121,2.121a10,10,0,0,1,0,14.142l-20.511,20.511,20.511,20.51a10,10,0,0,1,0,14.142l-2.121,2.121a10,10,0,0,1-14.142,0Z" transform="translate(718.609 5151.701)" fill="#2b879e"/>
+              <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
+                <g id="Group_1441" data-name="Group 1441" transform="translate(266 1)">
+                  <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>
+                </g>
+                <path id="Union_25" data-name="Union 25" d="M333.77,827.033,302.656,795.92a12.4,12.4,0,0,1,0-14.151l31.113-31.113a8,8,0,0,1,11.314,11.314l-26.874,26.874,26.874,26.874a8,8,0,0,1-11.314,11.314Z" transform="translate(720.686 5150.686)" fill="#2b879e"/>
               </g>
             </svg>
             </IconButton>

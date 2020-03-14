@@ -220,10 +220,12 @@ export default function EnhancedTable() {
             <IconButton aria-label="Add" component={Link} to={"/newlisting"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 200 200">
                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
-                  <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM335,773a10.011,10.011,0,0,0-10,10V907a10.011,10.011,0,0,0,10,10H459a10.011,10.011,0,0,0,10-10V783a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>
-                  <g id="Group_79" data-name="Group 79" transform="translate(-1 1293)">
-                    <rect id="Rectangle_152" data-name="Rectangle 152" width="23" height="87" rx="10" transform="translate(768 4604)" fill="#2b879e"/>
-                    <rect id="Rectangle_153" data-name="Rectangle 153" width="23" height="87" rx="10" transform="translate(736 4659) rotate(-90)" fill="#2b879e"/>
+                  <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>
+                  <g id="Group_1440" data-name="Group 1440">
+                    <g id="Group_79" data-name="Group 79" transform="translate(-1 1293)">
+                      <rect id="Rectangle_152" data-name="Rectangle 152" width="16" height="87" rx="8" transform="translate(772 4604)" fill="#2b879e"/>
+                      <rect id="Rectangle_153" data-name="Rectangle 153" width="16" height="87" rx="8" transform="translate(736 4656) rotate(-90)" fill="#2b879e"/>
+                    </g>
                   </g>
                 </g>
               </svg>
