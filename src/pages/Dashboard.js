@@ -9,7 +9,6 @@ const useStyles = makeStyles(theme => ({
     // height:"150vh"
   },
   paper: {
-    padding: theme.spacing(2),
     textAlign: 'center',
     color: theme.palette.text.secondary,
     padding: '50px 0'
