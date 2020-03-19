@@ -1,5 +1,5 @@
-import React, { Component, PureComponent } from "react";
-import { Doughnut } from "react-chartjs-2";
+import React, {Component} from "react";
+import {Doughnut} from "react-chartjs-2";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 

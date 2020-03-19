@@ -1,14 +1,14 @@
-import React, { useState, useEffect, useRef } from "react";
-import { makeStyles } from '@material-ui/core/styles';
-import { Carousel } from 'react-responsive-carousel';
+import React from "react";
+import {makeStyles} from '@material-ui/core/styles';
+import {Carousel} from 'react-responsive-carousel';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { Link } from 'react-router-dom';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',

@@ -1,15 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
-import { Link } from 'react-router-dom';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
 
 const useStyles = makeStyles(theme => ({

@@ -1,6 +1,6 @@
-import React, { Component, useState } from "react";
+import React, {Component} from "react";
 import "../App.js";
-import { Line } from "react-chartjs-2";
+import {Line} from "react-chartjs-2";
 
 export default class LineGraph extends Component {
   constructor(props) {

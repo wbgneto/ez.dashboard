@@ -1,10 +1,9 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import LineGraph from "./LineGraph";
 import MainGraph from "./MainGraph";
-import { makeStyles } from "@material-ui/core/styles";
+import {createMuiTheme, makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
-import { createMuiTheme } from "@material-ui/core/styles";
-import { ThemeProvider } from "@material-ui/styles";
+import {ThemeProvider} from "@material-ui/styles";
 
 const theme = createMuiTheme({
   breakpoints: {

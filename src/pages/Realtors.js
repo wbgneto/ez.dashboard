@@ -1,6 +1,5 @@
-import React, {useState, useEffect, useRef} from 'react';
-import clsx from 'clsx';
-import { fade, lighten, makeStyles } from '@material-ui/core/styles';
+import React, {useEffect, useState} from 'react';
+import {fade, makeStyles} from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
@@ -12,13 +11,11 @@ import TextField from '@material-ui/core/TextField';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
-import { Link } from 'react-router-dom';
-import Grid from "@material-ui/core/Grid";
-import Realtor_Table, {myDivElement} from './Realtor_Table'
+import {Link} from 'react-router-dom';
+import Realtor_Table from './Realtor_Table'
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableRow from '@material-ui/core/TableRow';
-
 
 
 const useStyles = makeStyles(theme => ({

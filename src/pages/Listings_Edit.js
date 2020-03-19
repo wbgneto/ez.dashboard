@@ -99,12 +99,12 @@ export default function CenteredGrid({match}) {
 
   const fetchItem = async () => {
     const fetchItem = await fetch(
-      `http://api.easyrealtysystem.wmdd.ca/listings/?id=${
+      `http://api.easyrealtysystem.wmdd.ca/listings/${
         match.params.id
       }`
     );
     const item = await fetchItem.json();
-    setItem(item.data[0]);
+    setItem(item.data);
     console.log(item.data);
   }
 
@@ -200,7 +200,7 @@ export default function CenteredGrid({match}) {
           {/* input field*/}
           <Grid item xs={12} md={8} className="inputEdit">
             <div>
-              <TextField id="outlined-basic" variant="outlined" className={classes.formControl} placeholder={item.title}
+              <TextField id="outlined-basic" variant="outlined" className={classes.formControl} defaultValue={item.title}
               />
             </div>
             <div>
@@ -238,40 +238,40 @@ export default function CenteredGrid({match}) {
                 </Select>
               </FormControl>
             </div>
-            <div><TextField id="outlined-basic" placeholder={item.price} variant="outlined"  className={classes.formControl}/></div>
+            <div><TextField id="outlined-basic" defaultValue={item.price} variant="outlined"  className={classes.formControl}/></div>
             <Grid container spacing={1} className="twoColumnGrid">
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.square_foot} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.square_foot} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.created_at} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.created_at} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder="Bedroom" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue="Bedroom" variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder="Garage" variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue="Garage" variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.street} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.street} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.number} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.number} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.city} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.city} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.province} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.province} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.country} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.country} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
               <Grid item xs={12} md={6}>
-                <div><TextField id="outlined-basic" placeholder={item.address.postal_code} variant="outlined"  className={classes.formControl}/></div>
+                <div><TextField id="outlined-basic" defaultValue={item.address.postal_code} variant="outlined"  className={classes.formControl}/></div>
               </Grid>
             </Grid>
-            <div><TextField id="outlined-multiline-static" placeholder={item.description} multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
+            <div><TextField id="outlined-multiline-static" defaultValue={item.description} multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
             <div>
               <Button variant="outlined" className="btnStyle" color="primary" component={Link} to={"/Listings"}>Cancel</Button>
               <Button variant="outlined" className="btnStyle btnOn" color="primary" component={Link} to={"/newlisting2"} style={{float:'right'}}>Save</Button>
