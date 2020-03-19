@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function CenteredGrid({match}) {
+export default function ListingView({match}) {
   const classes = useStyles();
   
   useEffect(() => { 
