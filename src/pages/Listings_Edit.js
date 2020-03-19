@@ -99,12 +99,12 @@ export default function CenteredGrid({match}) {
 
   const fetchItem = async () => {
     const fetchItem = await fetch(
-      `http://api.easyrealtysystem.wmdd.ca/listings/?id=${
+      `http://api.easyrealtysystem.wmdd.ca/listings/${
         match.params.id
       }`
     );
     const item = await fetchItem.json();
-    setItem(item.data[0]);
+    setItem(item.data);
     console.log(item.data);
   }
 
@@ -200,8 +200,7 @@ export default function CenteredGrid({match}) {
           {/* input field*/}
           <Grid item xs={12} md={8} className="inputEdit">
             <div>
-              <TextField id="outlined-basic" variant="outlined" className={classes.formControl} placeholder={item.title}
-              />
+              <TextField id="outlined-basic" variant="outlined" className={classes.formControl} placeholder={item.title} />
             </div>
             <div>
               <FormControl variant="outlined" className={classes.formControl}>

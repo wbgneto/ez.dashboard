@@ -1,20 +1,13 @@
+
 import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
-import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
-import Select from '@material-ui/core/Select';
-import FormControl from '@material-ui/core/FormControl';
-import InputLabel from '@material-ui/core/InputLabel';
-import MenuItem from '@material-ui/core/MenuItem';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Tooltip from '@material-ui/core/Tooltip';
+
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
@@ -51,16 +44,23 @@ const useStyles = makeStyles(theme => ({
     padding:'26% 0',
   }
 }));
+
 export default function CenteredGrid() {
   const classes = useStyles();
+  // selectBox
+  const [age, setAge] = React.useState('');
+  const inputLabel = React.useRef(null);
+
+
+  //
+
   return (
     <div className={classes.root}>
       <Typography className="title">Realtors</Typography>
       <Paper className={classes.paper}>
         <div>
           <div className="backtolist" style={{float:'left'}}>
-          <Tooltip title="" component={Link} to={"/Realtors"}>
-            <IconButton aria-label="back to list">
+            <IconButton aria-label="back to list" component={Link} to={"/newrealtor3"}>
               <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
                   <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
                     <g id="Group_1441" data-name="Group 1441" transform="translate(266 1)">
@@ -70,52 +70,37 @@ export default function CenteredGrid() {
                   </g>
                 </svg>
             </IconButton>
-          </Tooltip>
           </div>
           <span className="step">
-            <em className="on">1</em>
+            <em>1</em>
             <em>2</em>
-            <em>3</em>
+            <em className="on">3</em>
           </span>
         </div>
         <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} md={4} className="center">
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              multiple
-              type="file"
-            />
-            <p>Add information about this property</p>
-          </Grid>
-          <Grid item xs={12} md={8} className="inputEdit">
-            <div><TextField id="outlined-basic" label="Name of Realtor" variant="outlined" className={classes.formControl}/></div>
-            <div><TextField id="outlined-basic" label="Email" variant="outlined"  className={classes.formControl}/></div>
-            <div><TextField id="outlined-basic" label="Phone Number" variant="outlined" className={classes.formControl}/></div>
-            <Grid container spacing={1} className="twoColumnGrid">
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Street" variant="outlined"  className={classes.formControl}/></div>
+          <Grid item xs={12}>
+            <Grid container spacing={4} className="viewGrid">
+              <Grid item xs={12} md={4}>
+                  <div>
+                    <img style={{width:'100%', height:'100%'}} src="https://dummyimage.com/300x200/000/fff&text=picture"></img>
+                  </div>
               </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Number" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="City" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Province" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Country" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Postal Code" variant="outlined"  className={classes.formControl}/></div>
+              <Grid item xs={12} md={8}>
+                <Typography>
+                  <ul className="PropertyList PropertyView">
+                    <li className="propertyTitle"><h3>Realtor Name</h3></li>
+                    <li>Phone Number </li>
+                    <li>Email </li>
+                    <li>Address </li>
+                  </ul>
+                </Typography>
               </Grid>
             </Grid>
+          </Grid>
+          <Grid item xs={12} className="inputEdit">
             <div>
               <Button variant="outlined" className="btnStyle" component={Link} to={"/Realtors"}>Cancel</Button>
-              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/newrealtor2"} style={{float:'right'}}>Next</Button>
+              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/Realtors"} style={{float:'right'}}>Save</Button>
             </div>
           </Grid>
         </Grid>

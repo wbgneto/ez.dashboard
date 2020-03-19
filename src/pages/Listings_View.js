@@ -50,13 +50,13 @@ export default function CenteredGrid({match}) {
 
   const fetchItem = async () => {
     const fetchItem = await fetch(
-      `http://api.easyrealtysystem.wmdd.ca/listings?id=${
+      `http://api.easyrealtysystem.wmdd.ca/listings/${
         match.params.id
       }`
     );
     const item = await fetchItem.json();
   
-    setItem(item.data[0]);
+    setItem(item.data);
     console.log(item.data);
   }
 
