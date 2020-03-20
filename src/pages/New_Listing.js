@@ -1,12 +1,9 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
-import DeleteIcon from '@material-ui/icons/Delete';
-import VisibilityOffIcon from '@material-ui/icons/VisibilityOff';
 import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import { Link } from 'react-router-dom';
@@ -15,7 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import Box from '@material-ui/core/Box';
+import Tooltip from '@material-ui/core/Tooltip';
 
 
 const useStyles = makeStyles(theme => ({
@@ -43,6 +40,23 @@ const useStyles = makeStyles(theme => ({
   formControl: {
     margin: theme.spacing(0),
     minWidth: "100%",
+    '& label.Mui-focused': {
+      color: '#2B879E',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#2B879E',
+    },
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&:hover fieldset': {
+        borderColor: '#2B879E',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#2B879E',
+      },
+    },
   },
   input: {
     display: 'none',
@@ -78,9 +92,18 @@ export default function CenteredGrid() {
       <Paper className={classes.paper}>
         <div>
           <div className="backtolist" style={{float:'left'}}>
-            <IconButton aria-label="back to list" component={Link} to={"/Listings"}>
-              <ArrowBackIcon/>
+          <Tooltip title="" component={Link} to={"/Listings"}>
+            <IconButton aria-label="back to list">
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
+              <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
+                <g id="Group_1441" data-name="Group 1441" transform="translate(266 1)">
+                  <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>
+                </g>
+                <path id="Union_25" data-name="Union 25" d="M333.77,827.033,302.656,795.92a12.4,12.4,0,0,1,0-14.151l31.113-31.113a8,8,0,0,1,11.314,11.314l-26.874,26.874,26.874,26.874a8,8,0,0,1-11.314,11.314Z" transform="translate(720.686 5150.686)" fill="#2b879e"/>
+              </g>
+            </svg>
             </IconButton>
+          </Tooltip>
           </div>
           <span className="step">
             <em className="on">1</em>
@@ -100,7 +123,9 @@ export default function CenteredGrid() {
             <p>Add information about this property</p>
           </Grid>
           <Grid item xs={12} md={8} className="inputEdit">
-            <div><TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/></div>
+            <div>
+              <TextField id="outlined-basic" label="House Title" variant="outlined" className={classes.formControl}/>
+            </div>
             <div>
               <FormControl variant="outlined" className={classes.formControl}>
                 <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
@@ -137,7 +162,6 @@ export default function CenteredGrid() {
               </FormControl>
             </div>
             <div><TextField id="outlined-basic" label="Price" variant="outlined"  className={classes.formControl}/></div>
-
             <Grid container spacing={1} className="twoColumnGrid">
               <Grid item xs={12} sm={6}>
                 <div><TextField id="outlined-basic" label="Size" variant="outlined"  className={classes.formControl}/></div>
@@ -170,7 +194,6 @@ export default function CenteredGrid() {
                 <div><TextField id="outlined-basic" label="Postal Code" variant="outlined"  className={classes.formControl}/></div>
               </Grid>
             </Grid>
-
             <div><TextField id="outlined-multiline-static" label="Description" multiline rows="4" variant="outlined"  className={classes.formControl}/></div>
             <div>
               <Button variant="outlined" className="btnStyle" component={Link} to={"/Listings"}>Cancel</Button>

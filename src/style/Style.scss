@@ -1,5 +1,4 @@
 
-
 /*****************************************************/
 /*                      import                       */
 /*****************************************************/
@@ -7,32 +6,49 @@
 @import 'Variables';
 @import 'Reset';
 
-
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 /*****************************************************/
 /*                      Nav.js                       */
 /*****************************************************/
-
-
-
 header {
-    position:relative;
-  }
-  
+  position:relative;
+}
 .userBox {
   position: absolute;
-  top: 15px;
+  top: 5px;
   right: 20px;
   color: white;
-}
-
-.logo {
-  display:block;
-  img {
-    height: 40px;
+  @media (max-width: $bp-small) {
+    top:0;
+  }
+  span {
+    line-height: 1;
+  }
+  .spanMar {
+   margin: 0 10px 
+  }
+  .displayNone {
+    @media (max-width: $bp-small) {
+      display: none;
+    } 
   }
 }
-
+.alarmIcon {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  display:none;
+    @media (max-width: $bp-small) {
+    display: block;
+  } 
+}
+.logo {
+display:block;
+img {
+  height: 40px;
+}
+}
 .listStyle {
   &:hover {
     background-color: $primary-teal-blue !important;
@@ -49,68 +65,155 @@ header {
     padding-top: 5px;
   }
 }
-
 .menu01 {
   &:hover {
     #Rectangle_106 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_106-2 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_106-3 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
   }
 }
-
 .menu02 {
   &:hover {
     #Rectangle_104 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_105 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_106 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Exclusion_4 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
   }
 }
-
 .menu03 {
   &:hover {
     #Rectangle_104 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_105 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_106 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Subtraction_15 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
   }
 }
-
 .menu04 {
   &:hover {
     #Subtraction_16 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_132 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
     #Rectangle_133 {
-      fill: #ffffff;
+      fill: #FFFFFF;
     }
   }
 }
+.menu05 {
+  visibility: hidden;
+  &:hover {
+    #Subtraction_28 {
+      fill: #FFFFFF;
+    }
+    #Rectangle_132 {
+      fill: #FFFFFF;
+    }
+    #Group_1372 {
+      fill: #FFFFFF;
+    }
+  }
+  @media (max-width: $bp-small) {
+    visibility: visible;
+  } 
+}
+/*****************************************************/
+/*                     SignIn.js                     */
+/*****************************************************/
+.signin{
+ background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
+  height: 100vh;
+  width: 100vw;
+  //border: 2px Solid black;
+  position: relative;
+  background-repeat: no-repeat;
+  font-family: 'Open Sans';
+  background-size: cover;
+  overflow: hidden;
+}
+button.MuiButton-contained {
+  background-color:#2B879E;
+  color: white;
+  width: 40%;
+  margin-top: 1rem;
+  margin-left: 8rem;
+  text-transform: capitalize;
+}
+.form {
+  //background-color: red($color: #bd2121);
+  margin-left: 20rem;
+  position: absolute;
+  top: 6rem;
+  left: 20rem;
+  //margin-top: 10rem;
+  background-color: white;
+  width: 35%;
+  height: 460px;
+  border: 1px Solid white;
+}
+h1.MuiTypography-h1 {
+  margin-left: 12rem;
+  margin-top: 2rem;
+  color: #2B879E;
+  font-size: 3.157em;
+  font-weight: 700;
+}
+
+// label.MuiFormLabel-root {
+//   color: black;
+//   margin-left: 1.5rem;
+//   margin-top: 0.8rem;
+//   //font-family: 'Open Sans';
+//   font-weight: 400;
+//   font-size: 1em;
+// }
+// div.MuiFormControl-root {
+//   width: 85%;
+//   margin-left: 1.5rem;
+//   margin-top: 0.8rem;
+// }
+// a.MuiTypography-root {
+//   color: black;
+//   text-decoration: underline;
+//   margin-left: 17rem;
+//   margin-top: 1rem;
+//   p {
+//     margin-left: 7.5rem;
+//     margin-top: 2rem;
+//     letter-spacing: 0.1rem;
+//     a {
+//       color:#2B879E;
+//     }
+     
+//   }
+  
+// }
+
+
+
 
 
 /*****************************************************/
@@ -179,24 +282,36 @@ header {
     }
   }
   .sold {
-    background-color: #ae0306;
+    background-color: #AE0306;
     &:before{
       content: "sold";
     }
   }
 }
 
+.PropertyView {
+  li {
+    color:$secondary-grey;
+    h3 {
+      font-weight: bold;
+      font-size: 18px;
+      padding-bottom: 5px;
+      color:$primary-teal-blue;
+    }
+  } 
+  .propertyRealtor {
+    color:#212121;
+  }
+}
 
 .twoColumnGrid {
   div {
     margin-bottom: 0px !important;
   }
 }
-
 .center {
   position: relative;
   color: #888;
-
   p {
     margin: 0;
     position: absolute;
@@ -205,8 +320,7 @@ header {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
   }
-
-  @media (max-width: $bp-medium) {
+  @media (max-width: $bp-small) {
     height: 50px;
     p {
       width:100%;
@@ -218,12 +332,10 @@ header {
     }
   }
 }
-
 .addFileBox {
   width: 100%;
   height: 400px;
   position: relative;
-
   .addFile {
     position: absolute;
     top: 50px;
@@ -233,20 +345,18 @@ header {
     width: 60%;
     padding: 30px 30px;
     border-radius: 3px;
-    border: 1px solid #f9f9f9;
+    border: 1px solid #F9F9F9;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.05);
     @media (max-width: $bp-small){
       width: 90%;
     }
   }
-
   h3 {
     width: 100%;
     text-align: center;
     font-size: 22px;
     padding-bottom: 20px;
   }
-
   label {
     span {
       padding: 10px 0px !important;
@@ -254,7 +364,6 @@ header {
     }
   }
 }
-
 .addImage {
   div {
     height: 50% !important;
@@ -268,7 +377,6 @@ header {
     height: 100% !important;
     display: inline-block;
     position: relative;
-
     span {
       padding: 0 !important;
       width: 100% !important;
@@ -285,14 +393,28 @@ header {
     width: 30%;
     height: 30%;
   }
-
+  label {
+    span {
+      padding: 10px 0px !important;
+      width: 100% !important;
+    }
+  }
   @media (max-width: $bp-small) {
     div {
       height: auto !important;
     }
   }
 }
-
+.oneImage {
+  width: 300px;
+  img {
+    width: 100%;
+    height: 100%;
+  }
+  @media (max-width: $bp-small) {
+    width: 100%;
+  }
+}
 .step {
   height: 48px;
   line-height: 48px;
@@ -313,7 +435,6 @@ header {
     }
   }
 }
-
 
 /*****************************************************/
 /*                        Grid                       */
@@ -339,19 +460,17 @@ header {
     }
   }
 }
-
-
 .btnWrapper {
   position: relative;
   div {
     position: absolute;
-    top: 25%; 
+    top: 25%;
     right: 10%;
   }
   .blockBtn {
     display: block !important;
-    margin: 0 0 10px 0 !important; 
-  }  
+    margin: 0 0 10px 0 !important;
+  }
   @media (max-width: $bp-medium) {
     position: static;
     div {
@@ -362,7 +481,6 @@ header {
       display: inline-block !important;
       width: 70% !important;
       padding: 10px 0;
-
     }
   }
 }
@@ -388,7 +506,6 @@ header {
 
 .marginT {
   margin: 25px 0 0 0 !important;
-
 }
 
 .container {
@@ -407,10 +524,9 @@ header {
 .title {
   color: $primary-teal-blue;
   font-weight: bold !important;
-  font-size: 35px !important;
+  font-size: 28px !important;
   padding: 0 0 20px 0;
 }
-
 
 table {
   min-width: 360px !important;
@@ -423,8 +539,6 @@ table {
     background-color: $primary-teal-blue !important;
   }
 }
-
-
 .btnStyle {
   width: 120px;
   text-align: center;
@@ -437,12 +551,16 @@ table {
     color: white !important;
   }
 }
-
 .btnOn {
   background-color: $primary-teal-blue !important;
   color: white !important;
 }
-
+.Mui-Checked, .MuiCheckbox-colorSecondary {
+  color: $primary-teal-blue !important;
+}
+.MuiIconButton-colorSecondary:hover {
+  background-color: rgba(220,220,220, .3)!important;
+}
 /*****************************************************/
 /*                     Toolbar                       */
 /*****************************************************/
@@ -500,19 +618,41 @@ table {
 }
 
 /*****************************************************/
-/*                temporary Graph style              */
+/*                      input                        */
 /*****************************************************/
-.temSel {
-  border: 1px solid#999;
-  border-radius: 4px;
-  padding: 10px;
-  margin-right:20px;
+::placeholder {
+  color:#7d7d7d !important;
+  opacity: 1 !important;
 }
-.temInput {
-  border: 1px solid $primary-teal-blue;
-  border-radius: 4px;
-  padding: 10px;
-  background-color: #fff;
-  outline: none;
+.inputStyle {
+    width: 100%;
+    display: block;
+    padding: 19px 14px;
+    border: 1px solid #c4c4c4;
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 4px;
+    font-size: 1rem;
+    line-height: 19px;
+    box-sizing: border-box !important;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    letter-spacing: 0.00938em;
+    &:hover {
+      outline: none;
+      border:1px solid #212121
+    }
+    &:focus {
+      outline:none;
+      padding:18px 13px;
+      border:2px solid $primary-teal-blue;
+    }
+}
+.inputS {
+  width : 500px !important;
+  &:focus {
+    outline:none;
+    padding:18px 13px;
+    border:2px solid $primary-teal-blue;
+  }
+}
 
-}
+
