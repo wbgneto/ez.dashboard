@@ -1,4 +1,5 @@
-import React from "react";
+
+import React, { Component, useState ,useEffect, useRef } from "react";
 import LineGraph from "./LineGraph";
 import MainGraph from "./MainGraph";
 import {createMuiTheme, makeStyles} from "@material-ui/core/styles";
@@ -59,40 +60,130 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default () => {
+const GraphContainer = () => {
   const classes = useStyles();
+  var todayDate = new Date();
+  var defaultStartDate = new Date(todayDate.getFullYear(),todayDate.getMonth(),todayDate.getDate())
+  var defaultEndDate = new Date(todayDate.getFullYear(),todayDate.getMonth()+3,todayDate.getDate())
 
-  const [state, setState] = React.useState({
-    startDate: dateToday,
-    endDate: dateToday.setMonth(dateToday.getMonth() + 8),
-    graphDataMeasure: "qty",
-    graphDistributionFactor: "realtor"
-  });
+  const [MainGraphdata, setMainGraphData] = React.useState([])
+  const [LineGraphdata, setLineGraphData] = React.useState([])
 
-  const handleStartDateChange = startDate => event => {
-    setState({
-      ...state,
-      [startDate]: event.target.value
-    });
+  const [startDate,setStartDate] = React.useState(defaultStartDate.toISOString().slice(0,10))
+  const [endDate,setEndDate] = React.useState(defaultEndDate.toISOString().slice(0,10))
+  const [salesType,setSalesType] = React.useState("quantity")
+  const [distributionType,setDistributionType] = React.useState("realtor")
 
-    alert(
-      `${state.startDate} ${state.endDate} ${state.graphDistributionFactor}`
-    );
-  };
+  let graphDataLabels =[];
+  let graphDataset=[];
 
-  const handleEndDateChange = endDate => event => {
-    setState({
-      ...state,
-      [endDate]: event.target.value
-    });
+  
 
-    alert(state);
-  };
+  
+  let getDefaultData =() => {
+    // graphDataLabels = [];
+    // graphDataset =[];
+    fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
+        .then(res => res.json())
+        .then(res => {
+
+          res.data.forEach(item => {
+            // setMainGraphDataLabels([...mainGraphDataLabels,item.label])
+            graphDataLabels.push(item.label);
+            graphDataset.push(item.value);
+
+          })
+          })
+        .catch(err => console.log(err, 'Fetch error'))
+  }
+
+  getDefaultData();
+
+  const [mainGraphDataLabels, setMainGraphDataLabels] = React.useState(graphDataLabels)
+  const [mainGraphDatasetsData, setMainGraphDatasetsData] = React.useState(graphDataset)
+  // let mainGraphDataLabels=[]
+  // let mainGraphDatasetsLabel = ""
+  // let mainGraphDatasetsData= []
+
+  // const getOverAllSales = (type,id,display) => {
+    //   fetch(`http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?${type}&${id}&${display}`)
+    //   .then(response => response.json())
+    
+    // }
+  const [isLoading,setisLoading] = useState(false)
+  useEffect(() => {
+    setisLoading(true)
+    graphDataLabels = [];
+    graphDataset =[];
+    // console.log("input updated")
+    // getData();
+    fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
+        .then(res => res.json())
+        .then(res => {
+          // console.log("res.data")
+          // console.log(res.data)
+          setMainGraphData(res.data)
+          setisLoading(false)
+        })
+        .catch(err => {
+          console.log(err, 'Fetch error')
+          setisLoading(false)
+        })
+  },[startDate,endDate,distributionType,salesType])
+  
+  
+
+  useEffect(() => {
+    
+    graphDataLabels = [];
+    graphDataset =[];
+    MainGraphdata.forEach(item => {
+      // console.log("in useeffect ")
+      // console.log(item)
+      graphDataLabels.push(item.label);
+      graphDataset.push(item.value)
+      
+      // console.log("new data")
+      // console.log(mainGraphDatasetsData);
+      // console.log("new labels")
+      // console.log(mainGraphDataLabels)
+    })
+
+    setMainGraphDataLabels(graphDataLabels)
+    setMainGraphDatasetsData(graphDataset)
+    console.log("labels")
+      console.log(mainGraphDataLabels)
+    // console.log(mainGraphDataLabels)
+      // MainGraphdata.forEach(item=>{
+      //   setMainGraphDataLabels([...mainGraphDataLabels,item.label])
+      //   setMainGraphDatasetsData([...mainGraphDatasetsData,item.value])
+      // })  
+  },[MainGraphdata])
+
+  // const getData = () => {
+  //   // console.log("get data called")
+  //   fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
+  //       .then(res => res.json())
+  //       .then(res => {
+  //         // console.log("res.data")
+  //         // console.log(res.data)
+  //         setMainGraphData(res.data)
+  //       })
+  //       .catch(err => console.log(err, 'Fetch error'))
+  // }
+
+  // useEffect(()=>{
+  //   MainGraphdata.forEach(item => {
+  //       console.log(item.label)
+  //       // setMainGraphDataLabels([...mainGraphDataLabels,item.label])
+  //     })
+  // },[MainGraphdata])
+
 
   return (
     <ThemeProvider theme={theme}>
       <div className="graphFlex">
-        <div style={{ width: "90%", margin: "auto", backgroundColor: "white" }}>
+        <div style={{ width: "100%", margin: "auto"}}>
           <div className={classes.formContainer}>
             <Grid container>
               <Grid
@@ -111,8 +202,8 @@ export default () => {
                   type="date"
                   id="startDate"
                   label="start date"
-                  value={state.startDate}
-                  onChange={handleStartDateChange("startDate")}
+                  value={startDate}
+                  onChange={(e)=>{setStartDate(e.target.value)}}
                 />
               </Grid>
 
@@ -132,8 +223,8 @@ export default () => {
                   type="date"
                   id="endDate"
                   label="end date"
-                  value={state.endDate}
-                  onChange={handleEndDateChange("endDate")}
+                  value= {endDate}
+                  onChange={(e)=>{setEndDate(e.target.value)}}
                 />
               </Grid>
             </Grid>
@@ -150,9 +241,9 @@ export default () => {
                 xl={6}
               >
                 Show Sales By:
-                <select id="datameasure" className={classes.formElements}>
-                  <option value="qty">Quantity</option>
-                  <option value="val">Value</option>
+                <select id="datameasure" className={classes.formElements} defaultValue={salesType} onChange={(e)=>{setSalesType(e.target.value)}}>
+                  <option value="quantity">Quantity</option>
+                  <option value="revenue">Value</option>
                 </select>
               </Grid>
               <Grid
@@ -169,41 +260,39 @@ export default () => {
                 <select
                   id="distributionFactor"
                   className={classes.formElements}
+                  defaultValue={distributionType}
+                  onChange={(e)=>{setDistributionType(e.target.value)}}
                 >
                   <option value="realtor">Realtor</option>
-                  <option value="houseType">Type of Property</option>
+                  <option value="house">Type of Property</option>
                 </select>
               </Grid>
             </Grid>
           </div>
-
+          
+          
+          <div style={{backgroundColor:"white" , marginTop: "1em"}}>
           <h2>Sales Distribution</h2>
           <MainGraph
+            
+            isLoading={isLoading}
             data={{
-              labels: ["Realtor1", "Realtor2", "Realtor3", "Others"],
+              // labels: ["a","b","c","d"],
+              labels: mainGraphDataLabels,
               datasets: [
                 {
-                  label: "No. of Houses Sold",
-
-                  data: [4, 5, 1, 10],
+                  data: mainGraphDatasetsData,
                   backgroundColor: ["#2B879E", "#34AAC7", "#FCC29A", "#fde9c9"]
                 }
               ]
             }}
           ></MainGraph>
+          </div>
         </div>
-        <div
-          style={{
-            width: "90%",
-            margin: "auto",
-            marginTop: "2em",
-            backgroundColor: "white"
-          }}
-        >
-          <h2>Overall Sales</h2>
-          <LineGraph maxWidth="lg" minWidth="sm"></LineGraph>
-        </div>
+       
       </div>
     </ThemeProvider>
   );
 };
+
+export default GraphContainer;
