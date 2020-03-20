@@ -55,6 +55,11 @@ table {
 input {
   font-family: 'Open Sans', sans-serif !important; }
 
+.propertyTitle {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2B879E; }
+
 /*****************************************************/
 /*                      Nav.js                       */
 /*****************************************************/
@@ -381,21 +386,24 @@ h1.MuiTypography-h1 {
 /*****************************************************/
 /*                        Grid                       */
 /*****************************************************/
-.tableGrid img {
-  width: 100%;
-  height: auto; }
-
-.tableGrid .tableElm01 {
-  padding-right: 30px; }
-
-.tableGrid .tableElm02 {
-  padding-top: 1.1%; }
-
-@media (max-width: 960px) {
-  .tableGrid .tableElm03 {
-    padding-top: 15px;
-    margin-top: 15px;
-    border-top: 1px solid #ccc; } }
+.tableGrid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .tableGrid img {
+    width: 100%;
+    height: auto; }
+  .tableGrid .tableElm01 {
+    padding: 1%; }
+  .tableGrid .tableElm02 {
+    padding: 3% 0 1% 2%; }
+  @media (max-width: 960px) {
+    .tableGrid .tableElm01 {
+      padding: 4%; }
+    .tableGrid .tableElm02 {
+      padding: 2% 4% 2%; }
+    .tableGrid .tableElm03 {
+      padding-top: 15px;
+      margin-top: 15px;
+      border-top: 1px solid #ccc; } }
 
 .btnWrapper {
   position: relative; }
