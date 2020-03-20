@@ -1,8 +1,10 @@
+$login-background: url('../images/Login.png');
+
 * {
   box-sizing: border-box;
 }
 .signin {
-  background-image: url(../images/Login.png);
+  background-image: $login-background;
   height: 100vh;
   width: 100vw;
   display: grid;
@@ -138,10 +140,11 @@
         width: 100% !important;
         background-color: rgba(255,255,255,255);
         margin-left: 5em !important;
+        border-radius: 15px;
       }
       .login_heading {
-        margin-top: 0.1em !important;
-        margin-left: 1.8em !important;
+        //margin-top: 0.1em !important;
+        margin-left: 4.5em !important;
       }
       .forgot_password {
         color: white !important;
