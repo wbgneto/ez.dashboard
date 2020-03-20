@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, { Component, useState ,useEffect, useRef} from "react";
 import "../App.js";
 import {Line} from "react-chartjs-2";
 

@@ -2,25 +2,90 @@ import React, {Component} from "react";
 import {Doughnut} from "react-chartjs-2";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
+import LineGraph from "./LineGraph";
 
 class MainGraph extends Component {
-  state = {
-    legend: []
-  };
 
+  
+  constructor(props){
+    super(props)
+    console.log("constructor")
+    console.log(props)
+    this.defaultData = {
+      
+        labels: props.data.labels,
+        datasets: 
+          {
+            label: props.data.datasets[0].label,
+            data: props.data.datasets[0].data,
+            backgroundColor: props.data.datasets[0].backgroundColor // Line color
+          }
+        
+      
+    }
+    this.state = {
+      graphData:{labels: this.props.data.labels,
+        datasets: [{
+          label: props.data.datasets[0].label,
+          data: props.data.datasets[0].data,
+          backgroundColor: props.data.datasets[0].backgroundColor // Line color
+        }]
+          }
+    };
+  
+    
+  }
+  
+  // componentWillReceiveProps=(props)=> {
+  //   let newData = {
+      
+  //     labels: this.props.data.labels[0],
+  //       datasets: [{
+  //         label: props.data.datasets[0].label,
+  //         data: props.data.datasets[0].data[0],
+  //         backgroundColor: props.data.datasets[0].backgroundColor // Line color
+  //       }]
+      
+    
+  // }
+  //   this.setState( newData)
+  // }
+  
+  // componentWillReceiveProps(someProp) {
+  //   // console.log(someProp)
+  //   // this.setState({...this.state,someProp})
+  // }
   componentDidMount() {
-    const component = this.doughnut;
-    this.setState({ legend: component.chartInstance.legend.legendItems });
+    // const component = this.doughnut;
+//     console.log("props")
+//     console.log(component.props)
+//     this.setState({graphData : {
+      
+//       labels: this.props.data.labels,
+//       datasets: 
+//         {
+//           label: this.props.data.datasets.label,
+//           data: this.props.data.datasets.data,
+//           backgroundColor:this.props.data.datasets.backgroundColor // Line color
+//         }       
+//   } 
+// });
+//     console.log(this.state.graphData)
   }
 
+  // shouldComponentUpdate(prevProps,nextProps){
+    // console.log(prevProps)
+    // console.log(nextProps)
+    // return (
+    //   nextProps.data == prevProps.data
+    // )
+  // }
+
   render() {
-    const { legend } = this.state;
-    console.log(this.props.data);
+    // console.log("graphdata")
+    // console.log(this.state.graphData);
     return (
       <>
-        
-
-        
         <Grid
           container
           direction="row"
@@ -34,44 +99,59 @@ class MainGraph extends Component {
         <Doughnut
           
           ref={ref => (this.doughnut = ref)}
-          data={this.props.data}
+          data={{
+            labels : this.props.data.labels,
+            datasets : [{
+              label: this.props.data.datasets[0].label,
+              data: this.props.data.datasets[0].data,
+              backgroundColor: ["#2B879E", "#34AAC7", "#FCC29A", "#fde9c9"]
+            }
+              
+            ]
+          }}
           options={options}
         />
       </Grid>
       <Grid item xs={12} sm={12} md={12} lg={6} xl={6} >
-      <ul className="mt-8">
-          {legend.length &&
-            legend.map((item, key) => {
+      {!this.props.isLoading && <ul className="mt-8">
+          {this.props.data.labels.length &&
+            this.props.data.labels.map((item, key) => {
               return (
                 <>
-                <li key={item.text} style={listItemStyle}>
+                <li key={key} style={listItemStyle}>
                   <div
                     style={{
                       display: "inline",
                       marginRight: "8px",
                       width: "20px",
                       height: "20px",
-                      border: `2px solid ${item.fillStyle}`,
+                      border: `2px solid ${this.props.data.datasets[0].backgroundColor[key]}`,
                       borderRadius: "100%"
                     }}
                   />
-                  <label>{item.text}</label>
+                  <label>{item}</label>
                   <label>{this.props.data.datasets[0].data[key]}</label>
-                  <label
-                    style={{ color: "blue", textDecoration: "underline" }}
-                  >
-                    Details
-                  </label>
+
+                  <button style={{border:"none" , backgroundColor:"white", color: "blue", textDecoration: "underline" , fontWeight:"bold" }}>Details</button>
                 </li>
                 <hr style={{margin:"10px 0"}}/>
                 </>
               );
             })}
-        </ul>
+        </ul>}
       </Grid>
         </Grid>
-        
-        {/* </div> */}
+        <div
+          style={{
+            width: "90%",
+            margin: "auto",
+            marginTop: "2em",
+            backgroundColor: "white"
+          }}
+        >
+          <h2>Overall Sales</h2>
+          <LineGraph maxWidth="lg" minWidth="sm"></LineGraph>
+        </div>
         
       </>
     );
