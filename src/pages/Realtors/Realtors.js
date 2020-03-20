@@ -144,7 +144,7 @@ export default function EnhancedTable() {
       <Typography className="title">Realtors</Typography>
       <div className="toolbarWrap">
         {/* SelectBox */}
-        <div className="element01">
+        <div className="element00" >
         <FormControl variant="outlined" className={classes.formControl}>
           <InputLabel ref={inputLabel} id="status">
               Status
@@ -164,7 +164,7 @@ export default function EnhancedTable() {
         </div>
 
         {/* SearchBar */}
-        <div className="element02" style={{paddingBottom: 10 + 'px'}}>
+        <div className="element04" style={{paddingBottom: 10 + 'px'}}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
@@ -182,7 +182,7 @@ export default function EnhancedTable() {
               </div>
           </div>
         </div>
-        <div className="element03">
+        <div className="element05">
           {/* Plus button */}
           <Tooltip title="Add Property">
             <IconButton aria-label="Add" component={Link} to={"/newrealtor"}>
