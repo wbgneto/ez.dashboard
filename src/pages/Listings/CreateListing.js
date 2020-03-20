@@ -68,10 +68,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CenteredGrid() {
+export default function CreateListing() {
   const classes = useStyles();
   // selectBox
-  const [age, setAge] = React.useState('');
 
   const inputLabel = React.useRef(null);
   const [labelWidth, setLabelWidth] = React.useState(0);
