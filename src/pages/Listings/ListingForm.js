@@ -163,7 +163,7 @@ export default function ListingForm({ onChange }) {
                     >
                         {
                             realtors.map(realtor => {
-                                return <MenuItem value={realtor.id}>{realtor.name}</MenuItem>
+                                return <MenuItem key={realtor.id} value={realtor.id}>{realtor.name}</MenuItem>
                             })
                         }
                     </Select>
@@ -181,7 +181,7 @@ export default function ListingForm({ onChange }) {
                     >
                         {
                             ListingType.map(type => {
-                                return <MenuItem value={type.value}>{type.label}</MenuItem>
+                                return <MenuItem key={type.value} value={type.value}>{type.label}</MenuItem>
                             })
                         }
                     </Select>
