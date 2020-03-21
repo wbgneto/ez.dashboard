@@ -159,9 +159,9 @@ export default function Listings() {
                             labelWidth={labelWidth}
                         >
                             <MenuItem value="">All</MenuItem>
-                            <MenuItem value={0}>Active</MenuItem>
-                            <MenuItem value={1}>Inactive</MenuItem>
+                            <MenuItem value={1}>Active</MenuItem>
                             <MenuItem value={2}>Sold</MenuItem>
+                            <MenuItem value={0}>Inactive</MenuItem>
                         </Select>
                     </FormControl>
                 </div>
