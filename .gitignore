@@ -23,5 +23,11 @@ yarn-debug.log*
 yarn-error.log*
 =======
 node_modules
+<<<<<<< HEAD
 .env
 >>>>>>> ca3e3425b1f72a454129fbffb68cbd5274600d64
+=======
+build
+.idea
+.env
+>>>>>>> fa715d083ee2c5ed4e7483006a38d78ffb005505

@@ -1,14 +1,11 @@
-
-import React, { useState, useEffect, useRef } from "react";
-import { makeStyles } from '@material-ui/core/styles';
+import React from "react";
+import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import { Link } from 'react-router-dom';
-import AddIcon from '@material-ui/icons/Add';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
+import {Link} from 'react-router-dom';
 
 
 const useStyles = makeStyles(theme => ({
@@ -63,7 +60,7 @@ export default function CenteredGrid() {
       <Paper className={classes.paper}>
         <div>
           <div className="backtolist" style={{float:'left'}}>
-            <IconButton aria-label="back to list" component={Link} to={"/newlisting2"}>
+            <IconButton aria-label="back to list" component={Link} to={"/newlisting"}>
             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
               <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
                 <g id="Group_1441" data-name="Group 1441" transform="translate(266 1)">
@@ -81,43 +78,27 @@ export default function CenteredGrid() {
           </span>
         </div>
         <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} sm container>
-            <Grid item xs container spacing={2} className="addImage">
-              <Grid item xs={6} sm={3}>
-                <img src="https://dummyimage.com/250x180/000/fff.jpg"></img>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <img src="https://dummyimage.com/250x180/000/fff.jpg"></img>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <img src="https://dummyimage.com/250x180/000/fff.jpg"></img>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <img src="https://dummyimage.com/250x180/000/fff.jpg"></img>
-              </Grid>
-              <Grid item xs={6} sm={3}>
-                <img src="https://dummyimage.com/250x180/000/fff.jpg"></img>
-              </Grid>
-              <Grid item xs={6} sm={3} className="addPicture">
-                  <input
+          <Grid item xs={12} style={{height:400}} className="addFileBox">
+              <div class="addFile">
+                <h3>Upload your picture</h3>
+                <input
                     accept="image/*"
                     className={classes.input}
                     id="contained-button-file"
                     multiple
                     type="file"
                   />
-                  <label htmlFor="contained-button-file">
-                    <Button component="span" className={classes.uploadBtn}>
-                      <AddIcon className="iconWhite"></AddIcon>
-                    </Button>
-                  </label>
-              </Grid>
-            </Grid>
+                <label htmlFor="contained-button-file">
+                  <Button component="span" className={classes.uploadBtn}>
+                    Add from file
+                  </Button>
+                </label>
+              </div>
           </Grid>
           <Grid item xs={12} className="inputEdit">
             <div>
               <Button variant="outlined" className="btnStyle" component={Link} to={"/Listings"}>Cancel</Button>
-              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/newlisting4"} style={{float:'right'}}>Next</Button>
+              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/newlisting3"} style={{float:'right'}}>Next</Button>
             </div>
           </Grid>
         </Grid>
