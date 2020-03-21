@@ -55,6 +55,11 @@ table {
 input {
   font-family: 'Open Sans', sans-serif !important; }
 
+.propertyTitle {
+  font-weight: bold;
+  font-size: 1.2em;
+  color: #2B879E; }
+
 /*****************************************************/
 /*                      Nav.js                       */
 /*****************************************************/
@@ -162,7 +167,7 @@ header {
 /*                     SignIn.js                     */
 /*****************************************************/
 .signin {
-  background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
+  
   height: 100vh;
   width: 100vw;
   position: relative;
@@ -381,21 +386,24 @@ h1.MuiTypography-h1 {
 /*****************************************************/
 /*                        Grid                       */
 /*****************************************************/
-.tableGrid img {
-  width: 100%;
-  height: auto; }
-
-.tableGrid .tableElm01 {
-  padding-right: 30px; }
-
-.tableGrid .tableElm02 {
-  padding-top: 1.1%; }
-
-@media (max-width: 960px) {
-  .tableGrid .tableElm03 {
-    padding-top: 15px;
-    margin-top: 15px;
-    border-top: 1px solid #ccc; } }
+.tableGrid {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+  .tableGrid img {
+    width: 100%;
+    height: auto; }
+  .tableGrid .tableElm01 {
+    padding: 1%; }
+  .tableGrid .tableElm02 {
+    padding: 3% 0 1% 2%; }
+  @media (max-width: 960px) {
+    .tableGrid .tableElm01 {
+      padding: 4%; }
+    .tableGrid .tableElm02 {
+      padding: 2% 4% 2%; }
+    .tableGrid .tableElm03 {
+      padding-top: 15px;
+      margin-top: 15px;
+      border-top: 1px solid #ccc; } }
 
 .btnWrapper {
   position: relative; }
@@ -503,13 +511,29 @@ table {
 
 .element03 {
   grid-row: 1/3;
-  grid-column: 3/4; }
-
-.element03 {
+  grid-column: 3/4;
   justify-content: flex-end;
   display: flex; }
 
 .element03 > span {
+  display: block;
+  width: 20px;
+  height: 20px; }
+
+.element00 {
+  display: none; }
+
+.element04 {
+  grid-row: 1/3;
+  grid-column: 1/2; }
+
+.element05 {
+  grid-row: 1/3;
+  grid-column: 3/4;
+  justify-content: flex-end;
+  display: flex; }
+
+.element05 > span {
   display: block;
   width: 20px;
   height: 20px; }
@@ -529,6 +553,12 @@ table {
   .element03 {
     grid-row: 2/3;
     grid-column: 2/3; } }
+
+@media (max-width: 960px) {
+  .element04 {
+    grid-column: 1/3; }
+  .element05 {
+    grid-column: 3/4; } }
 
 /*****************************************************/
 /*                      input                        */

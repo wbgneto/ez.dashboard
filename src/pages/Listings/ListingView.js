@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function ListingView({match}) {
     const classes = useStyles();
+    console.log(match);
 
     useEffect(() => {
         fetchListing().then(listing => setItem(listing));
@@ -47,7 +48,7 @@ export default function ListingView({match}) {
     const fetchListing = async () => {
         let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`);
         response = await response.json();
-
+        console.log(response)
         return response.data;
     };
 

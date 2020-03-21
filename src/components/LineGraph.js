@@ -1,45 +1,18 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import "../App.js";
-import {Line} from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 export default class LineGraph extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       show_by_type: "quantity",
-      data: {
-        labels: [
-          "Jan",
-          "Feb",
-          "March",
-          "Apr",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ],
-        datasets: [
-          {
-            label: "No. of Houses Sold",
-            data: [32, 30, 26, 31, 29, 33, 30, 24, 29, 30, 23, 38]
-          }
-        ]
-      },
+      lineGraphLabel: props.lineGraphLabel,
+      data: props.data,
       options: {
         responsive: true,
         scales: {
           xAxes: [
-            {
-              gridLines: {
-                display: false
-              }
-            }
-          ],
-          yAxes: [
             {
               gridLines: {
                 display: false
@@ -50,11 +23,17 @@ export default class LineGraph extends Component {
       }
     };
   }
-
+  componentWillReceiveProps(prevProps, prevState) {
+    if (prevState.data !== prevProps.data) {
+      this.state.data = this.props.data;
+    } else {
+      return null;
+    }
+  }
   setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext("2d");
     const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(0.70, color);
+    gradient.addColorStop(0.7, color);
     gradient.addColorStop(0.95, "white");
     return gradient;
   };
@@ -78,15 +57,16 @@ export default class LineGraph extends Component {
         style={{
           display: "flex",
           alignContent: "center",
-          justifyContent: "space-around"
+          justifyContent: "space-between"
         }}
       >
-        <div style={{ width: "70%", textAlign: "center" }}>
-         
+        <div style={{ width: "100%", textAlign: "center" }}>
           <Line
+            style={{}}
             options={{
               responsive: true
             }}
+            label={this.lineGraphLabel}
             data={this.getChartData}
             options={this.state.options}
           />

@@ -6,6 +6,7 @@
 @import 'Variables';
 @import 'Reset';
 @import 'Listings';
+@import 'signin';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -144,44 +145,6 @@ img {
 /*****************************************************/
 /*                     SignIn.js                     */
 /*****************************************************/
-.signin{
- background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
-  height: 100vh;
-  width: 100vw;
-  //border: 2px Solid black;
-  position: relative;
-  background-repeat: no-repeat;
-  font-family: 'Open Sans';
-  background-size: cover;
-  overflow: hidden;
-}
-button.MuiButton-contained {
-  background-color:#2B879E;
-  color: white;
-  width: 40%;
-  margin-top: 1rem;
-  margin-left: 8rem;
-  text-transform: capitalize;
-}
-.form {
-  //background-color: red($color: #bd2121);
-  margin-left: 20rem;
-  position: absolute;
-  top: 6rem;
-  left: 20rem;
-  //margin-top: 10rem;
-  background-color: white;
-  width: 35%;
-  height: 460px;
-  border: 1px Solid white;
-}
-h1.MuiTypography-h1 {
-  margin-left: 12rem;
-  margin-top: 2rem;
-  color: #2B879E;
-  font-size: 3.157em;
-  font-weight: 700;
-}
 
 // label.MuiFormLabel-root {
 //   color: black;
@@ -444,18 +407,23 @@ h1.MuiTypography-h1 {
 
 .tableGrid {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-
   img {
     width: 100%;
     height: auto;
   }
   .tableElm01 {
-    padding-right: 30px;
+    padding: 1%;
   }
   .tableElm02 {
-    padding-top: 1.1%;
+    padding: 3% 0 1% 2%;
   }
   @media (max-width : $bp-medium){
+    .tableElm01 {
+      padding: 4%;
+    }
+    .tableElm02 {
+      padding: 2% 4% 2%;
+    }
     .tableElm03 {
       padding-top: 15px;
       margin-top: 15px;
@@ -588,8 +556,6 @@ table {
 .element03 {
   grid-row: 1/3;
   grid-column: 3/4;
-}
-.element03{
   justify-content: flex-end;
   display: flex;
 }
@@ -598,6 +564,26 @@ table {
   width: 20px;
   height: 20px;
 }
+.element00 {
+  display: none;
+}
+.element04 {
+  grid-row: 1/3;
+  grid-column: 1/2;
+}
+.element05 {
+  grid-row: 1/3;
+  grid-column: 3/4;
+  justify-content: flex-end;
+  display: flex;
+}
+.element05 > span {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+
 
 @media (max-width: $bp-medium) {
   .toolbarWrap {
@@ -618,6 +604,14 @@ table {
       grid-row: 2/3;
       grid-column: 2/3;
    }
+}
+@media (max-width: $bp-medium) {
+  .element04 {
+    grid-column: 1/3;
+  }
+  .element05 {
+    grid-column: 3/4;
+ }
 }
 
 /*****************************************************/
