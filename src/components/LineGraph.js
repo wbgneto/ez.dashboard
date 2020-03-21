@@ -5,30 +5,11 @@ import {Line} from "react-chartjs-2";
 export default class LineGraph extends Component {
   constructor(props) {
     super(props);
-
+    console.log("in line graph")
+    console.log(props)
     this.state = {
       show_by_type: "quantity",
-      data: {
-        labels: [
-          "Jan",
-          "Feb",
-          "March",
-          "Apr",
-          "Jun",
-          "Jul",
-          "Aug",
-          "Sep",
-          "Oct",
-          "Nov",
-          "Dec"
-        ],
-        datasets: [
-          {
-            label: "No. of Houses Sold",
-            data: [32, 30, 26, 31, 29, 33, 30, 24, 29, 30, 23, 38]
-          }
-        ]
-      },
+      data:props.data,
       options: {
         responsive: true,
         scales: {
@@ -39,13 +20,6 @@ export default class LineGraph extends Component {
               }
             }
           ],
-          yAxes: [
-            {
-              gridLines: {
-                display: false
-              }
-            }
-          ]
         }
       }
     };
@@ -84,6 +58,7 @@ export default class LineGraph extends Component {
         <div style={{ width: "70%", textAlign: "center" }}>
          
           <Line
+          style={{}}
             options={{
               responsive: true
             }}
