@@ -7,16 +7,6 @@ import LineGraph from "./LineGraph";
 class MainGraph extends Component {
   constructor(props) {
     super(props);
-    console.log("constructor");
-    console.log(props);
-    this.defaultData = {
-      labels: props.data.labels,
-      datasets: {
-        label: props.data.datasets[0].label,
-        data: props.data.datasets[0].data,
-        backgroundColor: props.data.datasets[0].backgroundColor // Line color
-      }
-    };
     this.state = {
       graphData: {
         labels: this.props.data.labels,
@@ -28,88 +18,82 @@ class MainGraph extends Component {
           }
         ]
       },
-      graphDataRealtorIds : props.graphDataId,
-      lineGraphData:{},
-      isLineGraphDataLoading : true
+      graphDataRealtorIds: props.graphDataId,
+      lineGraphData: {},
+      isLineGraphDataLoading: true
     };
 
-    let display = this.props.salesType
-    let labels = []
-    let dataSet=[]
-    let data={}
-  
-    fetch(`http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?null&null&${display}`)
-    .then(res => res.json())
-    .then(res => {
-      res.data.forEach(item => {
-        labels.push(item.label);
-        dataSet.push(item.value);
+    let display = this.props.salesType;
+    let labels = [];
+    let dataSet = [];
+    let data = {};
+
+    fetch(
+      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?null&null&${display}`
+    )
+      .then(res => res.json())
+      .then(res => {
+        res.data.forEach(item => {
+          labels.push(item.label);
+          dataSet.push(item.value);
+        });
+        data = {
+          labels: labels,
+          datasets: [
+            {
+              data: dataSet
+            }
+          ]
+        };
+        this.setState({ lineGraphData: data });
+        this.setState({ isLineGraphDataLoading: false });
       })
-      data = {
-        labels: labels,
-        datasets: [
-          {
-            data: dataSet
-          }
-        ]
-      }
-      this.state.lineGraphData= data
-      this.state.isLineGraphDataLoading =false
-      console.log("main constructor")
-      console.log(this.state.lineGraphData)
-    })
-    .catch(err => {
-      console.log(err, 'Fetch error')
-    })
-   
+      .catch(err => {
+        console.log(err, "Fetch error");
+      });
   }
 
-
-  getOverallSales = (e) => {
-    this.state.isLineGraphDataLoading=true
-    let type = this.props.distributionType
-    let display = this.props.salesType
-    let id=[]
-    let outputGraphDataLabels = []
-    let outputGraphDataSet=[]
-    let outputGraphData={}
-    if(type=="house"){
-      id=null
+  getOverallSales = e => {
+    this.setState({ isLineGraphDataLoading: true });
+    let type = this.props.distributionType;
+    let display = this.props.salesType;
+    let id = [];
+    let outputGraphDataLabels = [];
+    let outputGraphDataSet = [];
+    let outputGraphData = {};
+    if (type == "house") {
+      id = null;
     }
-    if(type=="realtor"){
-      id=this.props.graphDataId[e.target.id]
+    if (type == "realtor") {
+      id = this.props.graphDataId[e.target.id];
     }
 
-    console.log(id);
-    console.log(type)
-    console.log(display)
-    fetch(`http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?${type}&${id}&${display}`)
-    .then(res => res.json())
-    .then(res => {
-      res.data.forEach(item => {
-        outputGraphDataLabels.push(item.label);
-        outputGraphDataSet.push(item.value);
+    fetch(
+      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?${type}&${id}&${display}`
+    )
+      .then(res => res.json())
+      .then(res => {
+        res.data.forEach(item => {
+          outputGraphDataLabels.push(item.label);
+          outputGraphDataSet.push(item.value);
+        });
+        outputGraphData = {
+          labels: outputGraphDataLabels,
+          datasets: [
+            {
+              data: outputGraphDataSet
+            }
+          ]
+        };
+        this.setState({ lineGraphData: outputGraphData });
+        this.setState({ isLineGraphDataLoading: false });
       })
-      outputGraphData = {
-        labels: outputGraphDataLabels,
-        datasets: [
-          {
-            data: outputGraphDataSet
-          }
-        ]
-      }
-      this.state.lineGraphData= outputGraphData
-      console.log(this.state.lineGraphData)
-      this.state.isLineGraphDataLoading = false
-    })
-    .catch(err => {
-      console.log(err, 'Fetch error')
-    })
-  }
+      .catch(err => {
+        console.log(err, "Fetch error");
+      });
+  };
 
   render() {
-    
-   
     return (
       <>
         <Grid
@@ -163,7 +147,7 @@ class MainGraph extends Component {
                           <label>{this.props.data.datasets[0].data[key]}</label>
 
                           <button
-                          id={key}
+                            id={key}
                             style={{
                               border: "none",
                               backgroundColor: "white",
@@ -171,8 +155,7 @@ class MainGraph extends Component {
                               textDecoration: "underline",
                               fontWeight: "bold"
                             }}
-
-                            onClick = {(e) => this.getOverallSales(e)}
+                            onClick={e => this.getOverallSales(e)}
                           >
                             Details
                           </button>
@@ -195,7 +178,11 @@ class MainGraph extends Component {
         >
           <h2>Overall Sales</h2>
           {!this.props.isLoading && (
-          <LineGraph maxWidth="lg" minWidth="sm" data={this.state.lineGraphData}></LineGraph>
+            <LineGraph
+              maxWidth="lg"
+              minWidth="sm"
+              data={this.state.lineGraphData}
+            ></LineGraph>
           )}
         </div>
       </>
@@ -212,7 +199,6 @@ const listItemStyle = {
   justifyContent: "space-between",
   display: "flex",
   flexDirection: "row",
-  // margin: "8px",
   alignContent: "flex-start"
 };
 
