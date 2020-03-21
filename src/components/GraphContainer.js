@@ -1,6 +1,5 @@
 
 import React, { Component, useState ,useEffect, useRef } from "react";
-import LineGraph from "./LineGraph";
 import MainGraph from "./MainGraph";
 import {createMuiTheme, makeStyles} from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
@@ -73,55 +72,46 @@ const GraphContainer = () => {
   const [endDate,setEndDate] = React.useState(defaultEndDate.toISOString().slice(0,10))
   const [salesType,setSalesType] = React.useState("quantity")
   const [distributionType,setDistributionType] = React.useState("realtor")
+  const [isLoading,setisLoading] = useState(false)
 
-  let graphDataLabels =[];
-  let graphDataset=[];
-
+  let graphDataLabels =[]
+  let graphDataset=[]
+  let graphDataId =[]
   
 
   
   let getDefaultData =() => {
-    // graphDataLabels = [];
-    // graphDataset =[];
+    // setisLoading(true);
     fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
         .then(res => res.json())
         .then(res => {
 
           res.data.forEach(item => {
-            // setMainGraphDataLabels([...mainGraphDataLabels,item.label])
             graphDataLabels.push(item.label);
             graphDataset.push(item.value);
-
+            graphDataId.push(item.ids)
           })
+          // setisLoading(false)
           })
-        .catch(err => console.log(err, 'Fetch error'))
+        .catch(err => {
+          console.log(err, 'Fetch error')
+          // setisLoading(false)
+        })
   }
-
-  getDefaultData();
 
   const [mainGraphDataLabels, setMainGraphDataLabels] = React.useState(graphDataLabels)
   const [mainGraphDatasetsData, setMainGraphDatasetsData] = React.useState(graphDataset)
-  // let mainGraphDataLabels=[]
-  // let mainGraphDatasetsLabel = ""
-  // let mainGraphDatasetsData= []
-
-  // const getOverAllSales = (type,id,display) => {
-    //   fetch(`http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?${type}&${id}&${display}`)
-    //   .then(response => response.json())
-    
-    // }
-  const [isLoading,setisLoading] = useState(false)
+  const [mainGraphDataId, setMainGraphDataId] = React.useState(graphDataId)
+  // const [isLoading,setisLoading] = useState(false)
+  // graphDataLabels = [];
+  // graphDataset =[];
+  // graphDataId=[]
   useEffect(() => {
+    getDefaultData();
     setisLoading(true)
-    graphDataLabels = [];
-    graphDataset =[];
-    // console.log("input updated")
-    // getData();
     fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
         .then(res => res.json())
         .then(res => {
-          // console.log("res.data")
-          // console.log(res.data)
           setMainGraphData(res.data)
           setisLoading(false)
         })
@@ -135,50 +125,23 @@ const GraphContainer = () => {
 
   useEffect(() => {
     
-    graphDataLabels = [];
-    graphDataset =[];
+    // graphDataLabels = [];
+    // graphDataset =[];
+    // graphDataId=[]
+    console.log(MainGraphdata)
     MainGraphdata.forEach(item => {
-      // console.log("in useeffect ")
-      // console.log(item)
       graphDataLabels.push(item.label);
       graphDataset.push(item.value)
-      
-      // console.log("new data")
-      // console.log(mainGraphDatasetsData);
-      // console.log("new labels")
-      // console.log(mainGraphDataLabels)
+      graphDataId.push(item.ids)
     })
 
     setMainGraphDataLabels(graphDataLabels)
     setMainGraphDatasetsData(graphDataset)
+    setMainGraphDataId(graphDataId)
     console.log("labels")
       console.log(mainGraphDataLabels)
-    // console.log(mainGraphDataLabels)
-      // MainGraphdata.forEach(item=>{
-      //   setMainGraphDataLabels([...mainGraphDataLabels,item.label])
-      //   setMainGraphDatasetsData([...mainGraphDatasetsData,item.value])
-      // })  
+      
   },[MainGraphdata])
-
-  // const getData = () => {
-  //   // console.log("get data called")
-  //   fetch(`http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`)
-  //       .then(res => res.json())
-  //       .then(res => {
-  //         // console.log("res.data")
-  //         // console.log(res.data)
-  //         setMainGraphData(res.data)
-  //       })
-  //       .catch(err => console.log(err, 'Fetch error'))
-  // }
-
-  // useEffect(()=>{
-  //   MainGraphdata.forEach(item => {
-  //       console.log(item.label)
-  //       // setMainGraphDataLabels([...mainGraphDataLabels,item.label])
-  //     })
-  // },[MainGraphdata])
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -274,8 +237,10 @@ const GraphContainer = () => {
           <div style={{backgroundColor:"white" , marginTop: "1em"}}>
           <h2>Sales Distribution</h2>
           <MainGraph
-            
+            salesType={salesType}
+            distributionType={distributionType}
             isLoading={isLoading}
+            graphDataId = {mainGraphDataId}
             data={{
               // labels: ["a","b","c","d"],
               labels: mainGraphDataLabels,
