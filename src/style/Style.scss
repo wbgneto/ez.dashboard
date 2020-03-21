@@ -6,6 +6,7 @@
 @import 'Variables';
 @import 'Reset';
 @import 'Listings';
+@import 'signin';
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
@@ -144,44 +145,6 @@ img {
 /*****************************************************/
 /*                     SignIn.js                     */
 /*****************************************************/
-.signin{
- background-image: url(https://storage.needpix.com/rsynced_images/new-york-2420538_1280.jpg);
-  height: 100vh;
-  width: 100vw;
-  //border: 2px Solid black;
-  position: relative;
-  background-repeat: no-repeat;
-  font-family: 'Open Sans';
-  background-size: cover;
-  overflow: hidden;
-}
-button.MuiButton-contained {
-  background-color:#2B879E;
-  color: white;
-  width: 40%;
-  margin-top: 1rem;
-  margin-left: 8rem;
-  text-transform: capitalize;
-}
-.form {
-  //background-color: red($color: #bd2121);
-  margin-left: 20rem;
-  position: absolute;
-  top: 6rem;
-  left: 20rem;
-  //margin-top: 10rem;
-  background-color: white;
-  width: 35%;
-  height: 460px;
-  border: 1px Solid white;
-}
-h1.MuiTypography-h1 {
-  margin-left: 12rem;
-  margin-top: 2rem;
-  color: #2B879E;
-  font-size: 3.157em;
-  font-weight: 700;
-}
 
 // label.MuiFormLabel-root {
 //   color: black;
