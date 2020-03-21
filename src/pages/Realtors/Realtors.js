@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {fade, makeStyles} from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Paper from '@material-ui/core/Paper';
 import IconButton from '@material-ui/core/IconButton';
@@ -12,10 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
-import Realtor_Table from './Realtor_Table'
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableRow from '@material-ui/core/TableRow';
+import RealtorItem from './RealtorItem'
 
 
 const useStyles = makeStyles(theme => ({
@@ -105,120 +101,88 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable() {
   const classes = useStyles();
-  const [selected, setSelected] = React.useState([]);
 
-   // selecBox
-   const [age, setAge] = React.useState('');
-   const inputLabel = React.useRef(null);
-   const [labelWidth, setLabelWidth] = React.useState(0);
+  const fetchItems = async (filters) => {
+    const queryString = new URLSearchParams(filters);
 
-   React.useEffect(() => {
-     setLabelWidth(inputLabel.current.offsetWidth);
-   }, []);
-   const handleChange = event => {
-     setAge(event.target.value);
-   };
+    let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/realtors?${queryString}`);
+    response = await response.json();
 
-  // API
-  const [users, setUsers] = useState([])
+    return response.data;
+  };
+
+  // selectBox
+  const inputLabel = React.useRef(null);
+  const [labelWidth, setLabelWidth] = React.useState(0);
+
+  React.useEffect(() => {
+      setLabelWidth(inputLabel.current.offsetWidth);
+  }, []);
+
+  const handleFilter = (event) => {
+      setFilters({
+          ...filters,
+          [event.target.name]: event.target.value
+      });
+  };
+
+  //Fetch API
+  const [items, setItems] = useState([]);
+
+  const [filters, setFilters] = useState({
+      status: '',
+      title: '',
+  });
 
   useEffect(() => {
-    async function fetchData() {
-      setUsers(
-        await fetch('https://reqres.in/api/users?page=2')
-        .then(res => res.json())
-        .then(res => res.data)
-        .catch(err => console.log(err, 'Fetch error'))
-      )
-    }
-    fetchData();
-  },[])
+      fetchItems(filters).then(items => setItems(items));
+  }, [filters]);
  
-
-
-
-
- const myToolElement = React.useRef(null);
 
   return (
     <div className={classes.root}>
       <Typography className="title">Realtors</Typography>
       <div className="toolbarWrap">
         {/* SelectBox */}
-        <div className="element01">
+        <div className="element00" >
         <FormControl variant="outlined" className={classes.formControl}>
-          <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">
-            Option
+          <InputLabel ref={inputLabel} id="status">
+              Status
           </InputLabel>
           <Select
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            onChange={handleChange}
+            labelId="status"
+            name="status"
+            onChange={handleFilter}
+            value={filters.status}
             labelWidth={labelWidth}
-          >
-            <MenuItem value="All">All</MenuItem>
-            <MenuItem value="Active">Active</MenuItem>
-            <MenuItem value="Inactive">Inactive</MenuItem>
-            <MenuItem value="Sold">Sold</MenuItem>
+            >
+            <MenuItem value="">All</MenuItem>
+            <MenuItem value={0}>Active</MenuItem>
+            <MenuItem value={1}>Inactive</MenuItem>
           </Select>
         </FormControl>
         </div>
 
         {/* SearchBar */}
-        <div className="element02">
+        <div className="element04" style={{paddingBottom: 10 + 'px'}}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <div class="labelFix">
-                <TextField className={classes.searchInput} id="outlined-search" type="search" variant="outlined" />
+              <TextField
+                  className={classes.searchInput}
+                  onChange={handleFilter}
+                  id="outlined-search"
+                  type="search"
+                  name="name"
+                  value={filters.name}
+                  variant="outlined"
+                  placeholder="Search"/>
               </div>
           </div>
         </div>
-        <div className="element03">
-          {/* Icons */}
-          <Toolbar 
-          className="toolbar" 
-          ref={myToolElement} 
-          >
-          <Tooltip title="Delete">
-          <IconButton aria-label="delete">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 200 200">
-              <g id="Group_1373" data-name="Group 1373" transform="translate(-944 -4320)">
-                <g id="Group_73" data-name="Group 73" transform="translate(-1 265)">
-                  <rect id="Rectangle_108" data-name="Rectangle 108" width="34" height="162" rx="10" transform="translate(964 4124) rotate(-90)" fill="#2b879e"/>
-                  <rect id="Rectangle_117" data-name="Rectangle 117" width="28" height="49" rx="10" transform="translate(1030 4104) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_118" data-name="Rectangle 118" width="28" height="49" rx="10" transform="translate(1084 4104) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_119" data-name="Rectangle 119" width="28" height="77" rx="10" transform="translate(1082.5 4055.5) rotate(90)" fill="#2b879e"/>
-                  <rect id="Rectangle_112" data-name="Rectangle 112" width="28" height="111" rx="10" transform="translate(993 4255) rotate(-90)" fill="#2b879e"/>
-                  <rect id="Rectangle_114" data-name="Rectangle 114" width="12" height="87" rx="6" transform="translate(1035.5 4214.5) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_115" data-name="Rectangle 115" width="12" height="87" rx="6" transform="translate(1051.5 4214.5) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_116" data-name="Rectangle 116" width="12" height="87" rx="6" transform="translate(1067.5 4214.5) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_109" data-name="Rectangle 109" width="28" height="159" rx="10" transform="translate(1014 4255) rotate(180)" fill="#2b879e"/>
-                  <rect id="Rectangle_111" data-name="Rectangle 111" width="28" height="155" rx="10" transform="translate(1104 4255) rotate(180)" fill="#2b879e"/>
-                </g>
-                <rect id="Rectangle_170" data-name="Rectangle 170" width="200" height="200" transform="translate(944 4320)" fill="none"/>
-              </g>
-            </svg>
-          </IconButton>
-          </Tooltip>
-          <Tooltip title="Hide">
-            <IconButton aria-label="hide">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 200 200">
-                <g id="Group_1364" data-name="Group 1364" transform="translate(-144 -4805)">
-                  <g id="Group_75" data-name="Group 75" transform="translate(144 4805)">
-                    <g id="Group_74" data-name="Group 74" transform="translate(3.469 22.496)">
-                      <path id="Union_16" data-name="Union 16" d="M76.682,153.062a98.568,98.568,0,0,1-35.429-14.894,99.281,99.281,0,0,1-35.9-43.547A98.507,98.507,0,0,1,0,77.978c.033-.147.067-.3.1-.442-.034-.147-.068-.3-.1-.442A98.377,98.377,0,0,1,14.491,43.639,99.165,99.165,0,0,1,187.944,60.452,98.4,98.4,0,0,1,193.3,77.094c-.033.147-.067.3-.1.442.034.147.068.295.1.442a98.379,98.379,0,0,1-14.491,33.455,99.373,99.373,0,0,1-43.592,35.861,98.7,98.7,0,0,1-18.6,5.767,100.154,100.154,0,0,1-39.937,0ZM31.046,83.779a71.259,71.259,0,0,0,131.207,0q1.3-3.078,2.305-6.243-1-3.163-2.305-6.243a71.259,71.259,0,0,0-131.207,0q-1.3,3.078-2.305,6.243Q29.743,80.7,31.046,83.779Z" transform="translate(0 0)" fill="#2b879e"/>
-                      <rect id="Rectangle_142" data-name="Rectangle 142" width="63" height="63" rx="31.5" transform="translate(65.588 45.595)" fill="#2b879e"/>
-                    </g>
-                    <rect id="Rectangle_143" data-name="Rectangle 143" width="27.886" height="254.957" rx="10" transform="translate(180.282 0) rotate(45)" fill="#2b879e"/>
-                  </g>
-                  <rect id="Rectangle_171" data-name="Rectangle 171" width="199.182" height="199.182" transform="translate(144 4805)" fill="none"/>
-                </g>
-              </svg>
-            </IconButton>
-          </Tooltip>
-          </Toolbar>
+        <div className="element05">
           {/* Plus button */}
           <Tooltip title="Add Property">
             <IconButton aria-label="Add" component={Link} to={"/newrealtor"}>
@@ -237,25 +201,26 @@ export default function EnhancedTable() {
           </Tooltip>
         </div>
       </div>
-      {/* "toolbarWrap" ends*/}
+
       <Paper 
       className={classes.paper}
       container
       >
-        <Table>
-          <TableBody>
-          {users.map( users =>
-           <TableRow>
-              <Realtor_Table
-                email={users.email}
-                firstname={users.first_name}
-                lastname={users.last_name}
-                avatar={users.avatar}
-                />
-           </TableRow>
-          )}
-          </TableBody>
-        </Table>
+        {items.length > 0 ?
+          items.map(item => (
+            <RealtorItem
+              key={item.id}
+              id={item.id}
+              status={item.status}
+              photos={item.photos}
+              name={item.name}
+              phone={item.phone}
+              created_at={item.created_at}
+            />
+        ))
+          :
+          <div style={{padding: 10}}>No realtors found</div>
+      }
       </Paper>
     </div>
   );

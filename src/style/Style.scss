@@ -407,18 +407,23 @@ img {
 
 .tableGrid {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-
   img {
     width: 100%;
     height: auto;
   }
   .tableElm01 {
-    padding-right: 30px;
+    padding: 1%;
   }
   .tableElm02 {
-    padding-top: 1.1%;
+    padding: 3% 0 1% 2%;
   }
   @media (max-width : $bp-medium){
+    .tableElm01 {
+      padding: 4%;
+    }
+    .tableElm02 {
+      padding: 2% 4% 2%;
+    }
     .tableElm03 {
       padding-top: 15px;
       margin-top: 15px;
@@ -551,8 +556,6 @@ table {
 .element03 {
   grid-row: 1/3;
   grid-column: 3/4;
-}
-.element03{
   justify-content: flex-end;
   display: flex;
 }
@@ -561,6 +564,26 @@ table {
   width: 20px;
   height: 20px;
 }
+.element00 {
+  display: none;
+}
+.element04 {
+  grid-row: 1/3;
+  grid-column: 1/2;
+}
+.element05 {
+  grid-row: 1/3;
+  grid-column: 3/4;
+  justify-content: flex-end;
+  display: flex;
+}
+.element05 > span {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+
 
 @media (max-width: $bp-medium) {
   .toolbarWrap {
@@ -581,6 +604,14 @@ table {
       grid-row: 2/3;
       grid-column: 2/3;
    }
+}
+@media (max-width: $bp-medium) {
+  .element04 {
+    grid-column: 1/3;
+  }
+  .element05 {
+    grid-column: 3/4;
+ }
 }
 
 /*****************************************************/
