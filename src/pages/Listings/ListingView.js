@@ -37,7 +37,6 @@ const useStyles = makeStyles(theme => ({
 
 export default function ListingView({match}) {
     const classes = useStyles();
-    console.log(match);
 
     useEffect(() => {
         fetchListing().then(listing => setItem(listing));
@@ -48,9 +47,18 @@ export default function ListingView({match}) {
     const fetchListing = async () => {
         let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`);
         response = await response.json();
-        console.log(response)
         return response.data;
     };
+
+    if (!item.id) {
+        return <div>Loading...</div>
+    }
+
+    const photoSlides = item.photos.map((photo) =>
+        <div key={`${photo.id}`}>
+            <img src={`http://api.easyrealtysystem.wmdd.ca/listings/photos/${photo.filename}`}/>
+        </div>
+    );
 
     return (
         <div className={classes.root}>
@@ -78,27 +86,24 @@ export default function ListingView({match}) {
                 </div>
                 <Grid container spacing={4} className="viewGrid">
                     <Grid item xs={12} md={4}>
-                        <Carousel>
-                            <div>
-                                <img src="https://dummyimage.com/600x400/000/fff"/>
-                                <p className="legend">Picture 1</p>
-                            </div>
-                            <div>
-                                <img src="https://dummyimage.com/600x400/000/fff"/>
-                                <p className="legend">Picture 2</p>
-                            </div>
-                            <div>
-                                <img src="https://dummyimage.com/600x400/000/fff"/>
-                                <p className="legend">Picture 3</p>
-                            </div>
-                            <div>
-                                <img src="https://dummyimage.com/600x400/000/fff"/>
-                                <p className="legend">Picture 3</p>
-                            </div>
-                        </Carousel>
+                        {
+                            item.photos.length > 0 ?
+                                <Carousel>
+                                    {photoSlides}
+                                </Carousel>
+                                :
+                                <div style={{ padding: 100, textAlign: 'center'}}>
+                                    This listings has no photos
+                                </div>
+                        }
                     </Grid>
-                    <Grid item xs={12} md={8}>
-                        {/* <li class="status">{item.status = 0 ?<em className="active"></em> : item.status = 1 ? <em className="inactive"></em>: <em className="sold"></em>}</li>  */}
+                    <Grid item xs={12} md={8} className="PropertyList">
+                        {
+                            item.status == 1 ?
+                                <div className="status"><em className="active"></em></div> : item.status == 0 ?
+                                <div className="status"><em className="inactive"></em></div> :
+                                <div className="status"><em className="sold"></em></div>
+                        }
                         <div style={{marginBottom: 12}}><h3 className="propertyTitle">{item.title}</h3>{item.description}</div>
                         <Grid container direction="row">
                             {
