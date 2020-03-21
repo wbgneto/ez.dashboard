@@ -1,15 +1,13 @@
-import React, { Component, useState ,useEffect, useRef} from "react";
+import React, { Component } from "react";
 import "../App.js";
-import {Line} from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 export default class LineGraph extends Component {
   constructor(props) {
     super(props);
-    console.log("in line graph")
-    console.log(props)
     this.state = {
       show_by_type: "quantity",
-      data:props.data,
+      data: props.data,
       options: {
         responsive: true,
         scales: {
@@ -19,16 +17,22 @@ export default class LineGraph extends Component {
                 display: false
               }
             }
-          ],
+          ]
         }
       }
     };
   }
-
+  componentWillReceiveProps(prevProps, prevState) {
+    if (prevState.data !== prevProps.data) {
+      this.state.data = this.props.data;
+    } else {
+      return null;
+    }
+  }
   setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext("2d");
     const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(0.70, color);
+    gradient.addColorStop(0.7, color);
     gradient.addColorStop(0.95, "white");
     return gradient;
   };
@@ -56,9 +60,8 @@ export default class LineGraph extends Component {
         }}
       >
         <div style={{ width: "70%", textAlign: "center" }}>
-         
           <Line
-          style={{}}
+            style={{}}
             options={{
               responsive: true
             }}
