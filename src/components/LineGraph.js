@@ -7,6 +7,7 @@ export default class LineGraph extends Component {
     super(props);
     this.state = {
       show_by_type: "quantity",
+      lineGraphLabel: props.lineGraphLabel,
       data: props.data,
       options: {
         responsive: true,
@@ -56,15 +57,16 @@ export default class LineGraph extends Component {
         style={{
           display: "flex",
           alignContent: "center",
-          justifyContent: "space-around"
+          justifyContent: "space-between"
         }}
       >
-        <div style={{ width: "70%", textAlign: "center" }}>
+        <div style={{ width: "100%", textAlign: "center" }}>
           <Line
             style={{}}
             options={{
               responsive: true
             }}
+            label={this.lineGraphLabel}
             data={this.getChartData}
             options={this.state.options}
           />

@@ -55,6 +55,10 @@ const useStyles = makeStyles(theme => ({
   },
   inputBoxes: {
     margin: "1px"
+  },
+  input:{
+    borderRadius:"15%",
+    padding:"32px"
   }
 }));
 
@@ -73,7 +77,7 @@ const GraphContainer = () => {
   );
 
   const [MainGraphdata, setMainGraphData] = React.useState([]);
-
+  const [lineGraphLabel, setLineGraphLabel] = React.useState("No. of Properties Sold")
   const [startDate, setStartDate] = React.useState(
     defaultStartDate.toISOString().slice(0, 10)
   );
@@ -127,6 +131,12 @@ const GraphContainer = () => {
         console.log(err, "Fetch error");
         setisLoading(false);
       });
+
+      if(salesType == "value"){
+        setLineGraphLabel("Total Sales Amount")
+      }else{
+        setLineGraphLabel("No. of Properties Sold")
+      }
   }, [startDate, endDate, distributionType, salesType]);
 
   useEffect(() => {
@@ -244,9 +254,10 @@ const GraphContainer = () => {
             </Grid>
           </div>
 
-          <div style={{ backgroundColor: "white", marginTop: "1em" }}>
-            <h2>Sales Distribution</h2>
+          <div style={{ backgroundColor: "white", margin:"auto", marginTop: "1em", width:"95%" }}>
+           
             <MainGraph
+              lineGraphLabel={lineGraphLabel}
               salesType={salesType}
               distributionType={distributionType}
               isLoading={isLoading}

@@ -20,7 +20,8 @@ class MainGraph extends Component {
       },
       graphDataRealtorIds: props.graphDataId,
       lineGraphData: {},
-      isLineGraphDataLoading: true
+      isLineGraphDataLoading: true,
+      lineGraphLabel: props.lineGraphLabel
     };
 
     let display = this.props.salesType;
@@ -41,6 +42,7 @@ class MainGraph extends Component {
           labels: labels,
           datasets: [
             {
+              label:"Sales in last 12 months",
               data: dataSet
             }
           ]
@@ -81,6 +83,7 @@ class MainGraph extends Component {
           labels: outputGraphDataLabels,
           datasets: [
             {
+              label:"Sales in last 12 months",
               data: outputGraphDataSet
             }
           ]
@@ -96,15 +99,18 @@ class MainGraph extends Component {
   render() {
     return (
       <>
+      <div>
+
         <Grid
           container
           direction="row"
           justify="space-around"
           alignItems="center"
           spacing={4}
-          style={{ width: "100%", margin: "auto" }}
+          style={{ width: "100%", margin: "auto", marginTop:'1em' }}
         >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
+          <h1>Sales Distribution</h1>
             <Doughnut
               ref={ref => (this.doughnut = ref)}
               data={{
@@ -167,10 +173,10 @@ class MainGraph extends Component {
               </ul>
             )}
           </Grid>
-        </Grid>
-        <div
+          <Grid item xs={12} sm={12} md={12} lg={9} xl={9}>
+          <div
           style={{
-            width: "90%",
+            width: "100%",
             margin: "auto",
             marginTop: "2em",
             backgroundColor: "white"
@@ -184,6 +190,9 @@ class MainGraph extends Component {
               data={this.state.lineGraphData}
             ></LineGraph>
           )}
+        </div>
+        </Grid>
+        </Grid>
         </div>
       </>
     );
