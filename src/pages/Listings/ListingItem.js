@@ -12,13 +12,21 @@ return(
     <div>
       <Grid container component="main" className="tableGrid">
         <Grid item xs={12} md={3} className="tableElm01">
-            {/* <img src={photos}></img> */}
-            <img src="/no-photo-available.png"></img>
+            {
+                photos && photos[0] ?
+                    <img src={`http://api.easyrealtysystem.wmdd.ca/listings/photos/${photos[0].filename}`}/> :
+                    <img src="/no-photo-available.png"/>
+            }
         </Grid>
         <Grid item xs={12} md={6} className="tableElm02">
             <ul className="PropertyList">
               <li class="status">
-                  {status == 0 ?<em className="active"></em> : status = 1 ? <em className="inactive"></em>: <em className="sold"></em>}
+                  {
+                      status == 1 ?
+                      <em className="active"></em> : status == 0 ?
+                      <em className="inactive"></em> :
+                      <em className="sold"></em>
+                  }
               </li>
               <li><h3>{title}</h3></li>
               <li>Type: {type} Bed Room</li>

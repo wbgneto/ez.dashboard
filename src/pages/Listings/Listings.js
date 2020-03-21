@@ -188,7 +188,7 @@ export default function Listings() {
                 <div className="element03">
                     {/* Plus button */}
                     <Tooltip title="Add Property">
-                        <IconButton aria-label="Add" component={Link} to={"/newlisting"}>
+                        <IconButton aria-label="Add" component={Link} to={"/listings/new"}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 200 200">
                                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
                                     <path id="Subtraction_23" data-name="Subtraction 23"
