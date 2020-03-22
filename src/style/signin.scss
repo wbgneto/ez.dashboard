@@ -1,8 +1,10 @@
+$login-background: url('../images/Login.png');
+
 * {
   box-sizing: border-box;
 }
 .signin {
-  background-image: url(../images/Login.png);
+  background-image: $login-background;
   height: 100vh;
   width: 100vw;
   display: grid;
@@ -32,20 +34,20 @@
 }
 
 .login_button {
-  background-color: $primary-teal-blue;
+  background-color: $primary-teal-blue !important;
   color: rgba(255,255,255,255);
   width: 40%;
   font-size: 1.333em;
   font-weight: bold;
   padding: 6px 16px;
   border: 3px solid $primary-teal-blue;
-  margin-top: 1rem;
-  margin-left: 8rem;
+  margin-top: 1rem !important;
+  margin-left: 11rem !important;
   text-transform: capitalize;
 }
 
 .login_heading {
-  margin-left: 12rem;
+  margin-left: 9rem !important;
   margin-top: 2rem;
   color: $primary-teal-blue;
   font-size: 3.157em;
@@ -53,19 +55,19 @@
 }
 
 .login_labels {
-  color: black;
-  margin-left: 1.5rem;
+  color: black !important;
+  margin-left: 3rem;
   margin-top: 0.8rem;
-  //font-family: 'Open Sans';
+  font-family: 'Open Sans';
   font-weight: 400;
   font-size: 1em;
 }
 
 .forgot_password {
-  color: black;
-  text-decoration: underline;
-  margin-left: 17rem;
-  margin-top: 1rem;
+  color: black !important;
+  text-decoration: underline !important;
+  margin-left: 18rem !important;
+  margin-top: 1rem !important;
 }
 .new_member {
   margin-left: 6.8rem;
@@ -98,7 +100,9 @@
   }
 }
 .login_input {
-  width: 100%;
+  width: 108% !important;
+  margin-left: 3em !important;
+  margin-top: 1em !important;
 }
 .login_responsive {
   display: none;
@@ -111,6 +115,8 @@
     grid-template-columns: 1fr !important;
     background-size: 100% 100%;
     grid-template-rows: 1fr 1fr !important;
+    overflow: hidden !important;
+    //height: 100em;
     .signin_child1 {
       grid-row: 1 / 2;
       display: block;
@@ -127,29 +133,32 @@
       margin-top: 10em;
       background-color: transparent;
       .login_labels {
-        color: rgba(255,255,255,255);
-        margin-left: 6em;
+        color: rgba(255,255,255,255) !important;
+        margin-left: 8em !important;
       }
       .login_input {
-        width: 80%;
+        width: 100% !important;
         background-color: rgba(255,255,255,255);
-        margin-left: 5em;
+        margin-left: 5em !important;
+        border-radius: 15px;
       }
       .login_heading {
-        //margin-top: 2em;
-        margin-left: 4.5em;
+        //margin-top: 0.1em !important;
+        margin-left: 4.5em !important;
       }
       .forgot_password {
-        color: white;
-        margin-left: 22em;
+        color: white !important;
+        //margin-left: 22em;
       }
       .login_button {
         width: 30%;
         font-size: 1.4em;
-        margin-left: 9em;
+        margin-left: 10em !important;
+        color: white;
+        margin-top: 1em !important;
       }
       .new_member {
-        margin-left: 8em;
+        margin-left: 10em !important;
         // margin-top: 2rem;
         // letter-spacing: 0.1rem;
         color: rgba(255,255,255,255);

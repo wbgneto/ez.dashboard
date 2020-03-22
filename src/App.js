@@ -7,17 +7,20 @@ import Dashboard from './pages/Dashboard';
 import Listings from './pages/Listings/Listings';
 import Realtors from './pages/Realtors/Realtors';
 import Realtors_Edit from './pages/Realtors/Realtors_Edit';
-import Realtors_View from './pages/Realtors/Realtors_View';
+import RealtorsView from './pages/Realtors/RealtorsView';
 import Listings_Edit from './pages/Listings/Listings_Edit';
 import ListingView from './pages/Listings/ListingView';
-import New_Listing from './pages/Listings/New_Listing';
+import CreateListing from './pages/Listings/CreateListing';
 import New_Realtor from './pages/Realtors/New_Realtor';
 import Help from './pages/Help';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import Admin from "./layouts/Admin";
-import New_Listing2 from './pages/Listings/New_Listing2';
-import New_Listing3 from './pages/Listings/New_Listing3';
-import New_Listing4 from './pages/Listings/New_Listing4';
+import CreateListing2 from './pages/Listings/CreateListing2';
+import CreateListing3 from './pages/Listings/CreateListing3';
+import CreateListing4 from './pages/Listings/CreateListing4';
+import New_Realtor2 from './pages/Realtors/New_Realtor2';
+import New_Realtor3 from './pages/Realtors/New_Realtor3';
+import New_Realtor4 from './pages/Realtors/New_Realtor4';
 import "./style/Style.scss";
 
 export default function App() {
@@ -25,22 +28,29 @@ export default function App() {
         <div>
             <Router>
                 <Switch>
-                    <RouteWrapper path="/auth" layout={Blank} component={SignIn}></RouteWrapper>
+                    {/* Auth */}
+                    <RouteWrapper path="/" exact layout={Blank} component={SignIn}></RouteWrapper>
+
+                    {/* Dashboard */}
                     <RouteWrapper path="/dashboard" layout={Admin} component={Dashboard}></RouteWrapper>
-                    <RouteWrapper path="/realtors/edit" layout={Admin} component={Realtors_Edit}></RouteWrapper>
-                    <RouteWrapper path="/realtors/1" layout={Admin} component={Realtors_View}></RouteWrapper>
-                    <RouteWrapper path="/newlisting" layout={Admin} component={New_Listing}></RouteWrapper>
-                    <RouteWrapper path="/newrealtor" layout={Admin} component={New_Realtor}></RouteWrapper>
-                    <RouteWrapper path="/realtors" layout={Admin} component={Realtors}></RouteWrapper>
-                    {/* <RouteWrapper path="/listings/edit/1" layout={Admin} component={Listings_Edit}></RouteWrapper> */}
+
+                    {/* Listings */}
+                    <RouteWrapper path="/listings/new" layout={Admin} component={CreateListing}></RouteWrapper>
                     <RouteWrapper path="/listings/edit/:id" layout={Admin} component={Listings_Edit}></RouteWrapper>
                     <RouteWrapper path="/listings/:id" layout={Admin} component={ListingView}></RouteWrapper>
                     <RouteWrapper path="/listings" exact layout={Admin} component={Listings}></RouteWrapper>
-                    <RouteWrapper path="/newlisting" layout={Admin} component={New_Listing}></RouteWrapper>
+
+                    {/* Realtors */}
+                    <RouteWrapper path="/realtors/edit" layout={Admin} component={Realtors_Edit}></RouteWrapper>
+                    <RouteWrapper path="/realtors/:id" layout={Admin} component={RealtorsView}></RouteWrapper>
+                    <RouteWrapper path="/realtors" layout={Admin} component={Realtors}></RouteWrapper>
+                    <RouteWrapper path="/newrealtor" layout={Admin} component={New_Realtor}></RouteWrapper>
+                    <RouteWrapper path="/newrealtor2" layout={Admin} component={New_Realtor2}></RouteWrapper>
+                    <RouteWrapper path="/newrealtor3" layout={Admin} component={New_Realtor3}></RouteWrapper>
+                    <RouteWrapper path="/newrealtor4" layout={Admin} component={New_Realtor4}></RouteWrapper>
+
+                    {/* Help */}
                     <RouteWrapper path="/help" layout={Admin} component={Help}></RouteWrapper>
-                    <RouteWrapper path="/newlisting2" layout={Admin} component={New_Listing2}></RouteWrapper>
-                    <RouteWrapper path="/newlisting3" layout={Admin} component={New_Listing3}></RouteWrapper>
-                    <RouteWrapper path="/newlisting4" layout={Admin} component={New_Listing4}></RouteWrapper>
                 </Switch>
             </Router>
         </div>
