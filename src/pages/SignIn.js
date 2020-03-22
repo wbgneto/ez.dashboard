@@ -198,7 +198,7 @@ export default function SignIn() {
         <img src={require("../images/Logo2_Loginpage.png")} className="login_image" />
         <img src={require("../images/Logo2_Mobile.png")} className="login_responsive" />
         <div className="loginpage_intro">
-          <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+          <p>A solution for the Real Estate domain.</p>
           <h3>Easy Realty <br /> S y s t e m</h3>
         </div>
       </div>
