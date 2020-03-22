@@ -15,13 +15,12 @@ const theme = createMuiTheme({
     }
   }
 });
-const dateToday = new Date();
 const useStyles = makeStyles(theme => ({
   formContainer: {
     display: "grid",
-    width: "90%",
+    width: "100%",
     gridTemplateColumns: "1fr 1fr",
-    gridGap: "1em"
+    gridGap: "0.5em"
   },
   textField: {
     marginLeft: theme.spacing(1),
@@ -45,7 +44,10 @@ const useStyles = makeStyles(theme => ({
   },
   formElements: {
     border: "1px solid #34AAC7",
-    width: "100%"
+    width: "100%",
+    padding:"15px",
+    borderRadius:"5px"
+
   },
   InputsWrapper: {
     height: "2em",
@@ -54,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     gridTemplateColumns: "1fr 1fr"
   },
   inputBoxes: {
-    margin: "1px"
+    margin: "1px",
   },
   input:{
     borderRadius:"15%",
@@ -76,7 +78,7 @@ const GraphContainer = () => {
     todayDate.getDate()
   );
 
-  const [MainGraphdata, setMainGraphData] = React.useState([]);
+  const [mainGraphdata, setMainGraphData] = React.useState([]);
   const [lineGraphLabel, setLineGraphLabel] = React.useState("No. of Properties Sold")
   const [startDate, setStartDate] = React.useState(
     defaultStartDate.toISOString().slice(0, 10)
@@ -86,7 +88,7 @@ const GraphContainer = () => {
   );
   const [salesType, setSalesType] = React.useState("quantity");
   const [distributionType, setDistributionType] = React.useState("realtor");
-  const [isLoading, setisLoading] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
 
   let graphDataLabels = [];
   let graphDataset = [];
@@ -94,7 +96,7 @@ const GraphContainer = () => {
 
   let getDefaultData = () => {
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${salesType}&display=${distributionType}`
     )
       .then(res => res.json())
       .then(res => {
@@ -117,10 +119,11 @@ const GraphContainer = () => {
   );
   const [mainGraphDataId, setMainGraphDataId] = React.useState(graphDataId);
   useEffect(() => {
-    getDefaultData();
-    setisLoading(true);
+    
+    setisLoading(false);
+    
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?${startDate}&${endDate}&${salesType}&${distributionType}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date${endDate}&type=${salesType}&display=${distributionType}`
     )
       .then(res => res.json())
       .then(res => {
@@ -140,7 +143,7 @@ const GraphContainer = () => {
   }, [startDate, endDate, distributionType, salesType]);
 
   useEffect(() => {
-    MainGraphdata.forEach(item => {
+    mainGraphdata.forEach(item => {
       graphDataLabels.push(item.label);
       graphDataset.push(item.value);
       graphDataId.push(item.ids);
@@ -149,7 +152,7 @@ const GraphContainer = () => {
     setMainGraphDataLabels(graphDataLabels);
     setMainGraphDatasetsData(graphDataset);
     setMainGraphDataId(graphDataId);
-  }, [MainGraphdata]);
+  }, [mainGraphdata]);
 
   return (
     <ThemeProvider theme={theme}>
