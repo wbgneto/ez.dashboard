@@ -32,9 +32,9 @@ export default class LineGraph extends Component {
   }
   setGradientColor = (canvas, color) => {
     const ctx = canvas.getContext("2d");
-    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-    gradient.addColorStop(0.7, color);
-    gradient.addColorStop(0.95, "white");
+    const gradient = ctx.createLinearGradient(0, 0, 0, 280);
+    gradient.addColorStop(0.55, color);
+    gradient.addColorStop(0.75, "white");
     return gradient;
   };
   getChartData = canvas => {
