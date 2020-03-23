@@ -32,20 +32,38 @@ const useStyles = makeStyles(theme => ({
 
 export default function RealtorsView({match}) {
   const classes = useStyles();
-  console.log(match);
+  //console.log(match);
 
+  // Realtor API
   useEffect(() => {
-      fetchListing().then(listing => setItem(listing));
+      fetchRealtor().then(realtor => setItem(realtor));
   }, []);
 
   const [item, setItem] = useState({});
 
-  const fetchListing = async () => {
+  const fetchRealtor = async () => {
       let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/realtors/${match.params.id}`);
       response = await response.json();
-      console.log(response)
+      // console.log(response)
       return response.data;
   };
+
+  // Listing API
+  useEffect(() => {
+    fetchListing().then(listing => setList(listing));
+  }, []);
+
+  const [list, setList] = useState({});
+
+  const fetchListing = async () => {
+      let response1 = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`);
+      response1 = await response1.json();
+      console.log(response1)
+      return response1.data;
+  };
+
+
+
   return (
     <div className={classes.root}>
       <Typography className="title">Realtors</Typography>
@@ -80,7 +98,7 @@ export default function RealtorsView({match}) {
             <div style={{marginBottom: 12}}><h3 className="propertyTitle">{item.name}</h3></div>
             <div className="info" style={{marginBottom: 12}}>
               <div>Phone : {item.phone}</div>
-              <div>Date : {item.created_at}</div>
+              <div>Email : {item.created_at}</div>
           </div>
         </Grid>
         </Grid>
