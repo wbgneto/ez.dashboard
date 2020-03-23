@@ -104,7 +104,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default function EditListing({history, match}) {
+export default function EditListing({showSnackbar, history, match}) {
     const classes = useStyles();
 
     let [photos, setPhotos] = useState([]);
@@ -157,6 +157,7 @@ export default function EditListing({history, match}) {
             }
         );
 
+        showSnackbar("success", "Listing deleted succesfully");
         history.push('/listings');
     };
 
@@ -250,6 +251,7 @@ export default function EditListing({history, match}) {
                 ...item,
                 ...sold
             });
+            showSnackbar("success", "Listing set to sold successfully");
         }
     };
 
@@ -269,8 +271,11 @@ export default function EditListing({history, match}) {
             if (files.length) {
                 uploadFiles(match.params.id);
             } else {
+                showSnackbar("success", "Listing edited successfully");
                 history.push('/listings');
             }
+        } else {
+            showSnackbar("error", "There was an error editing this listing");
         }
     };
 
@@ -289,7 +294,10 @@ export default function EditListing({history, match}) {
         response = await response.json();
 
         if (response.status_code === 200) {
+            showSnackbar("success", "Listing edited successfully");
             history.push('/listings');
+        } else {
+            showSnackbar("error", "There was an error editing this listing");
         }
     };
 
@@ -429,7 +437,7 @@ export default function EditListing({history, match}) {
                         <section>
                             <div {...getRootProps({className: 'dropzone'})} style={{ textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
                                 <input {...getInputProps()} id="files-input"/>
-                                <p>Drag 'n' drop some files here, or click to select files</p>
+                                <p>Drag 'n' drop some photos here, or click to select photos</p>
                             </div>
                             <aside style={thumbsContainer}>
                                 {thumbs}
