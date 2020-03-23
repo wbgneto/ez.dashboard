@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
-import ListingItem from './ListingItem'
+import ListingCard from './ListingCard'
 import Grid from '@material-ui/core/Grid';
 
 
@@ -215,7 +215,7 @@ export default function Listings() {
             >
                 {items.length > 0 ?
                     items.map(item => (
-                      <ListingItem
+                      <ListingCard
                           key={item.id}
                           id={item.id}
                           status={item.status}

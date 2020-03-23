@@ -532,6 +532,17 @@ table {
 .MuiIconButton-colorSecondary:hover {
   background-color: rgba(220,220,220, .3)!important;
 }
+
+.delete-btn {
+  background: #AC0000 !important;
+  color: #fff !important;
+}
+
+.photo-list {
+  display: flex;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
 /*****************************************************/
 /*                     Toolbar                       */
 /*****************************************************/

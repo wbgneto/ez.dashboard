@@ -100,8 +100,6 @@ export default function CreateListing(props) {
 
     const [files, setFiles] = useState([]);
 
-    const filesRef = createRef();
-
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
@@ -184,7 +182,7 @@ export default function CreateListing(props) {
                         </section>
                     </Grid>
                     <Grid item xs={12} md={8} className="inputEdit">
-                        <ListingForm onChange={setFormData} initialData={{title: 'oi'}}/>
+                        <ListingForm onChange={setFormData}/>
                     </Grid>
                 </Grid>
 
