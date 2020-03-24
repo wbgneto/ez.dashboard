@@ -480,6 +480,11 @@ img {
 /*****************************************************/
 /*                     Layout                        */
 /*****************************************************/
+.addBtn {
+  &:hover {
+    background-color: rgba(0,0,0,0) !important;
+  }
+}
 
 .marginT {
   margin: 25px 0 0 0 !important;
@@ -550,6 +555,17 @@ table {
 }
 .MuiIconButton-colorSecondary:hover {
   background-color: rgba(220,220,220, .3)!important;
+}
+
+.delete-btn {
+  background: #AC0000 !important;
+  color: #fff !important;
+}
+
+.photo-list {
+  display: flex;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
 }
 /*****************************************************/
 /*                     Toolbar                       */

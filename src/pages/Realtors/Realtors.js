@@ -185,7 +185,7 @@ export default function EnhancedTable() {
         <div className="element05">
           {/* Plus button */}
           <Tooltip title="Add Realtor">
-            <IconButton aria-label="Add" component={Link} to={"/newrealtor"}>
+            <IconButton aria-label="Add" component={Link} to={"/new"} className="addBtn">
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200">
                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
                   <path id="Subtraction_23" data-name="Subtraction 23" d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z" transform="translate(382 5094)" fill="#2b879e"/>
@@ -211,7 +211,7 @@ export default function EnhancedTable() {
             <RealtorItem
               key={item.id}
               id={item.id}
-              status={item.status}
+              email={item.email}
               photos={item.photos}
               name={item.name}
               phone={item.phone}

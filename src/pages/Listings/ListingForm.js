@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef, useState} from "react";
 import Grid from '@material-ui/core/Grid';
 import TextField from '@material-ui/core/TextField';
 import Select from '@material-ui/core/Select';
@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 12,
     },
     formControl: {
-        margin: theme.spacing(0),
+        "padding-bottom": "8px !important",
         minWidth: "100%",
         '& label.Mui-focused': {
             color: '#2B879E',
@@ -61,13 +61,14 @@ const useStyles = makeStyles(theme => ({
         padding: '26% 0',
     }
 }));
-export default function ListingForm({ onChange }) {
+export default function ListingForm({ onChange, initialData}) {
     const classes = useStyles();
     // selectBox
-    const inputLabel = React.useRef(null);
-    const [labelWidth, setLabelWidth] = React.useState(0);
-    const [realtors, setRealtors] = React.useState([]);
-    const [state, setState] = React.useState({
+    const typeLabel = useRef(null);
+    const realtorLabel = useRef(null);
+    const [labelWidth, setLabelWidth] = useState(0);
+    const [realtors, setRealtors] = useState([]);
+    const [state, setState] = useState(initialData || {
         title: '',
         description: '',
         price: '',
@@ -92,8 +93,8 @@ export default function ListingForm({ onChange }) {
 
     // Fetch realtors on mount
     React.useEffect(() => {
-        setLabelWidth(inputLabel.current.offsetWidth);
         fetchRealtors().then(realtors => setRealtors(realtors));
+        setLabelWidth(realtorLabel.current.offsetWidth);
     }, []);
 
     // Tell parent component about the form data
@@ -150,26 +151,27 @@ export default function ListingForm({ onChange }) {
                     value={state.title}
                     className={classes.formControl}/>
                 <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel ref={inputLabel} id="realtor-input">
+                    <InputLabel ref={realtorLabel} id="realtor-input">
                         Realtor
                     </InputLabel>
-                    <Select
-                        labelId="realtor-input"
-                        name="realtor"
-                        onChange={handleChange}
-                        value={state.realtor}
-                        labelWidth={labelWidth}
-                        required
-                    >
-                        {
-                            realtors.map(realtor => {
-                                return <MenuItem key={realtor.id} value={realtor.id}>{realtor.name}</MenuItem>
-                            })
-                        }
-                    </Select>
+                    { realtors.length && <Select
+                            labelId="realtor-input"
+                            name="realtor"
+                            onChange={handleChange}
+                            value={state.realtor}
+                            labelWidth={labelWidth}
+                            required
+                        >
+                            {
+                                realtors.map(realtor => {
+                                    return <MenuItem key={realtor.id} value={realtor.id}>{realtor.name}</MenuItem>
+                                })
+                            }
+                        </Select>
+                    }
                 </FormControl>
                 <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel ref={inputLabel} id="type-input">
+                    <InputLabel ref={typeLabel} id="type-input">
                         Type
                     </InputLabel>
                     <Select
@@ -206,6 +208,7 @@ export default function ListingForm({ onChange }) {
                                    variant="outlined"
                                    name="1"
                                    type="number"
+                                   defaultValue={initialData && initialData.features && initialData.features[1] ? initialData.features[1].value : 0}
                                    onChange={handleFeature}
                                    className={classes.formControl}/>
                 </Grid>
@@ -214,6 +217,7 @@ export default function ListingForm({ onChange }) {
                                    variant="outlined"
                                    name="0"
                                    type="number"
+                                   defaultValue={initialData && initialData.features && initialData.features[0] ? initialData.features[0].value : 0}
                                    onChange={handleFeature}
                                    className={classes.formControl}/>
                 </Grid>
@@ -222,6 +226,7 @@ export default function ListingForm({ onChange }) {
                                    variant="outlined"
                                    name="2"
                                    type="number"
+                                   defaultValue={initialData && initialData.features && initialData.features[2] ? initialData.features[2].value : 0}
                                    onChange={handleFeature}
                                    className={classes.formControl}/>
                 </Grid>

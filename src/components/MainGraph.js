@@ -28,9 +28,10 @@ class MainGraph extends Component {
     let labels = [];
     let dataSet = [];
     let data = {};
+    this.setState({ isLineGraphDataLoading: true });
 
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?null&null&${display}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?type=null&id=null&display=${display}`
     )
       .then(res => res.json())
       .then(res => {
@@ -71,7 +72,7 @@ class MainGraph extends Component {
     }
 
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?${type}&${id}&${display}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?type=${type}&id=${id}&display${display}`
     )
       .then(res => res.json())
       .then(res => {
@@ -110,7 +111,8 @@ class MainGraph extends Component {
           style={{ width: "100%", margin: "auto", marginTop:'1em' }}
         >
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
-          <h1>Sales Distribution</h1>
+          <label style={{fontWeight:"bold", fontSize:"18px"}}> Sales Distribution</label>
+          {!this.props.isLoading && (
             <Doughnut
               ref={ref => (this.doughnut = ref)}
               data={{
@@ -129,7 +131,7 @@ class MainGraph extends Component {
                 ]
               }}
               options={options}
-            />
+            /> )}
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             {!this.props.isLoading && (
@@ -182,7 +184,7 @@ class MainGraph extends Component {
             backgroundColor: "white"
           }}
         >
-          <h2>Overall Sales</h2>
+          <label style={{fontWeight:"bold", fontSize:"18px"}}>Overall Sales</label>
           {!this.props.isLoading && (
             <LineGraph
               maxWidth="lg"

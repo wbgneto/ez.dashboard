@@ -11,7 +11,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
-import ListingItem from './ListingItem'
+import ListingCard from './ListingCard'
 import Grid from '@material-ui/core/Grid';
 
 
@@ -188,7 +188,7 @@ export default function Listings() {
                 <div className="element03">
                     {/* Plus button */}
                     <Tooltip title="Add Property">
-                        <IconButton aria-label="Add" component={Link} to={"/listings/new"}>
+                        <IconButton aria-label="Add" component={Link} to={"/listings/new"} className="addBtn">
                             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200">
                                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
                                     <path id="Subtraction_23" data-name="Subtraction 23"
@@ -215,7 +215,7 @@ export default function Listings() {
             >
                 {items.length > 0 ?
                     items.map(item => (
-                      <ListingItem
+                      <ListingCard
                           key={item.id}
                           id={item.id}
                           status={item.status}

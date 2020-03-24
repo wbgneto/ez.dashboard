@@ -9,7 +9,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from 'react-responsive-carousel';
 import Tooltip from '@material-ui/core/Tooltip';
 import Feature from "../../components/Feature";
-import Divider from "@material-ui/core/Divider";
+import moment from "moment";
 
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ListingView({match}) {
+export default function ViewListing({match}) {
     const classes = useStyles();
 
     useEffect(() => {
@@ -102,7 +102,7 @@ export default function ListingView({match}) {
                             item.status == 1 ?
                                 <div className="status"><em className="active"></em></div> : item.status == 0 ?
                                 <div className="status"><em className="inactive"></em></div> :
-                                <div className="status"><em className="sold"></em></div>
+                                <div className="status"><em className="sold"></em> at {(() => moment(item.sold_at).format('YYYY-MM-DD'))()} </div>
                         }
                         <div style={{marginBottom: 12}}><h3 className="propertyTitle">{item.title}</h3>{item.description}</div>
                         <Grid container direction="row">

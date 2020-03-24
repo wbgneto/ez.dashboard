@@ -5,7 +5,7 @@ import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 
 
-export default function RealtorItem({id, status, photos, name, phone, created_at}) {
+export default function RealtorItem({id, email, photos, name, phone, created_at}) {
 
 
   return(
@@ -19,8 +19,8 @@ export default function RealtorItem({id, status, photos, name, phone, created_at
             <ul className="PropertyList">
               <li><h3>{name}</h3></li>
               <li>Phone: {phone}</li>
-              <li>Email: {phone}</li>
-              <li>Created_at: {created_at}</li>
+              <li>Email: {email}</li>
+              {/* <li>Created_at: {created_at}</li> */}
             </ul>
         </Grid>
         <Grid className="tableElm03 btnWrapper">
