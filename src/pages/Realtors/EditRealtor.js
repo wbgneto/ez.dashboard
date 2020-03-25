@@ -307,28 +307,6 @@ const uploadFiles = async (realtorId) => {
           </Grid>
         </Grid>
       </Paper>
-      <Paper className={classes.paper}>
-        <Grid container spacing={6} className="homeList">
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-              <span><Typography>Home List1</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-            <span><Typography>Home List2</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-            <span><Typography>Home List3</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-        </Grid>
-      </Paper>
 
       {/* Delete Dialog */}
       <Dialog
