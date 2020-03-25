@@ -87,7 +87,7 @@ export default function SignIn({history, showSnackbar}) {
             Forgot Password?
           </a>
           <Button variant="contained" className="login_button" onClick={handleLogin}>Login</Button>
-          <h3 className="new_member">New Member?<a href="http://easyrealtysystem.wmdd.ca/Contact" target="_blank">Register Now</a></h3>
+          <h3 className="new_member">New Member? <a href="http://easyrealtysystem.wmdd.ca/Contact" target="_blank">Register Now</a></h3>
         </FormControl>
 
 
