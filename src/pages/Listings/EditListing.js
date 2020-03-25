@@ -463,10 +463,9 @@ export default function EditListing({showSnackbar, history, match}) {
                 <Grid container spacing={2} className="marginT">
                     <Grid item xs={12} md={4}>
                         <section>
-                            <div {...getRootProps({className: 'dropzone'})}
-                                 style={{textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
+                            <div {...getRootProps({className: 'dropzone'})} style={{ textAlign: 'center', padding: "100px 15px", border: "1px dashed #eee"}}>
                                 <input {...getInputProps()} id="files-input"/>
-                                <p>Drag 'n' drop some photos here, or click to select photos</p>
+                                <p>Drag 'n' drop some photos here,<br /> or click to select photos</p>
                             </div>
                             <aside style={thumbsContainer}>
                                 {photos}

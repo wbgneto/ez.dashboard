@@ -404,53 +404,59 @@ img {
 /*                        Grid                       */
 /*****************************************************/
 
-
 .tableGrid {
   border-bottom: 1px solid rgba(0,0,0,0.1);
-  img {
-    width: 100%;
-    height: auto;
-  }
+  box-sizing: border-box;
   .tableElm01 {
-    padding: 1%;
+    width: 260px;
+    padding: 20px 20px 15px 20px;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   .tableElm02 {
-    padding: 3% 0 1% 2%;
+    width: calc(100% - 400px);
+    padding: 30px 20px 25px;
+  }
+  .tableElm03 {
+    width: 140px;
+    padding: 45px 20px 0 0;
   }
   @media (max-width : $bp-medium){
     .tableElm01 {
-      padding: 4%;
+      width: 100%;
+      height: auto;
     }
     .tableElm02 {
-      padding: 2% 4% 2%;
+      width: 100%;
+      padding: 0px 20px 10px 20px;
     }
     .tableElm03 {
-      padding-top: 15px;
-      margin-top: 15px;
-      border-top: 1px solid #ccc;
+      width: 100%;
+      padding: 20px 20px;
     }
   }
 }
 .btnWrapper {
   position: relative;
-  div {
-    position: absolute;
-    top: 25%;
-    right: 10%;
-  }
   .blockBtn {
     display: block !important;
     margin: 0 0 10px 0 !important;
   }
+  div {
+    position: absolute;
+    top: 25%;
+  }
   @media (max-width: $bp-medium) {
-    position: static;
     div {
       position: static;
-      text-align: center;
+      padding-top: 15px;
+      border-top: 1px solid #ccc;
     }
     .blockBtn {
       display: inline-block !important;
-      width: 70% !important;
+      width: 100% !important;
       padding: 10px 0;
     }
   }
@@ -474,6 +480,11 @@ img {
 /*****************************************************/
 /*                     Layout                        */
 /*****************************************************/
+.addBtn {
+  &:hover {
+    background-color: rgba(0,0,0,0) !important;
+  }
+}
 
 .marginT {
   margin: 25px 0 0 0 !important;
@@ -495,8 +506,21 @@ img {
 .title {
   color: $primary-teal-blue;
   font-weight: bold !important;
-  font-size: 28px !important;
+  font-size: 3.157em !important;
+  text-transform: uppercase;
   padding: 0 0 20px 0;
+  @media (max-width: $bp-small) {
+    position: absolute;
+    top: 0;
+    z-index: 1300;
+    height: 57px;
+    line-height: 48px !important;
+    left: 50%;
+    transform: translate( -50%, 0);
+    text-align: center;
+    color: white;
+    font-size: 1.777em !important;
+  }
 }
 
 table {
@@ -547,10 +571,15 @@ table {
 /*                     Toolbar                       */
 /*****************************************************/
 .toolbarWrap {
-  margin: 0 auto;
+  width: 100%;
+  height: 56px;
+  margin-bottom: 10px;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 1fr 4fr 1fr;
+  input[type=text]  {
+    width: 100% !important;
+  }
 }
 .toolbarWrap + div {
   width:100%;
@@ -593,11 +622,9 @@ table {
   width: 20px;
   height: 20px;
 }
-
-
-
 @media (max-width: $bp-medium) {
   .toolbarWrap {
+      height: auto;
       grid-template-rows: 2fr;
       grid-template-columns: 1fr 1fr;
       margin-bottom:8px
@@ -605,23 +632,35 @@ table {
   .element01 {
       grid-row: 2/3;
       grid-column: 1/2;
+      height: 56px;
    }
   .element02 {
       grid-row: 1/2;
       grid-column: 1/3;
-      margin-bottom: 15px;
+      margin-bottom: 10px;
+      height: 56px;
+      input {
+        width: 140px !important;
+      }
+   }
+   .element02 + div {
+     margin-right: 0 !important;
    }
    .element03 {
       grid-row: 2/3;
       grid-column: 2/3;
+      height: 56px;
+      text-align: right;
    }
 }
 @media (max-width: $bp-medium) {
   .element04 {
     grid-column: 1/3;
+    height: 56px;
   }
   .element05 {
     grid-column: 3/4;
+    height: 56px;
  }
 }
 

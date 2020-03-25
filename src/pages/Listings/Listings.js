@@ -167,7 +167,7 @@ export default function Listings() {
                 </div>
 
                 {/* SearchBar */}
-                <div className="element02" style={{paddingBottom: 10 + 'px'}}>
+                <div className="element02">
                     <div className={classes.search}>
                         <div className={classes.searchIcon}>
                             <SearchIcon/>
@@ -188,8 +188,8 @@ export default function Listings() {
                 <div className="element03">
                     {/* Plus button */}
                     <Tooltip title="Add Property">
-                        <IconButton aria-label="Add" component={Link} to={"/listings/new"}>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 200 200">
+                        <IconButton aria-label="Add" component={Link} to={"/listings/new"} className="addBtn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 200 200">
                                 <g id="Group_1435" data-name="Group 1435" transform="translate(-679 -5839)">
                                     <path id="Subtraction_23" data-name="Subtraction 23"
                                           d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z"
