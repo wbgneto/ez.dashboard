@@ -103,22 +103,38 @@ export default function CreateListing(props) {
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
-            setFiles(acceptedFiles.map(file => Object.assign(file, {
-                preview: URL.createObjectURL(file)
-            })));
+            setFiles([
+                ...files,
+                ...acceptedFiles.map(file => {
+                    file.preview = URL.createObjectURL(file);
+                    return file;
+                })
+            ]);
         }
     });
 
     const thumbs = files.map(file => (
-        <div style={thumb} key={file.name}>
-            <div style={thumbInner}>
-                <img
-                    src={file.preview}
-                    style={img}
-                />
+        <div key={file.name} style={{margin: '0 8px 8px 0'}}>
+            <div style={{...thumb, margin: 0}}>
+                <div style={thumbInner}>
+                    <img
+                        src={file.preview}
+                        style={img}
+                    />
+                </div>
+            </div>
+            <div>
+                <Button color="secondary" fullWidth onClick={() => {
+                    handleRemoveNewPhoto(file.preview)
+                }}>Remove</Button>
             </div>
         </div>
     ));
+
+    const handleRemoveNewPhoto = (preview) => {
+        const newFiles = files.filter(file => file.preview !== preview);
+        setFiles(newFiles);
+    };
 
     useEffect(() => () => {
         // Make sure to revoke the data uris to avoid memory leaks
