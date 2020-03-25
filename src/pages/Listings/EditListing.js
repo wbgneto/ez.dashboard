@@ -476,7 +476,7 @@ export default function EditListing({showSnackbar, history, match}) {
                     <Grid item xs={12} md={8} className="inputEdit">
                         {item.id && <ListingForm onChange={(newState) => {
                             setFormData({...newState, photos: undefined})
-                        }} initialData={{...item, realtor: (item.realtor ? item.realtor.id : null)}}/>}
+                        }} initialData={{...item, realtor: (item.realtor ? item.realtor.id : '')}}/>}
                     </Grid>
                 </Grid>
 
