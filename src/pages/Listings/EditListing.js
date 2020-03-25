@@ -121,12 +121,19 @@ export default function EditListing({showSnackbar, history, match}) {
     });
 
     const thumbs = files.map(file => (
-        <div style={thumb} key={file.name}>
-            <div style={thumbInner}>
-                <img
-                    src={file.preview}
-                    style={img}
-                />
+        <div key={file.name} style={{margin: '0 8px 8px 0'}}>
+            <div style={{...thumb, margin: 0}}>
+                <div style={thumbInner}>
+                    <img
+                        src={file.preview}
+                        style={img}
+                    />
+                </div>
+            </div>
+            <div>
+                <Button color="secondary" fullWidth onClick={() => {
+                    handleRemoveNewPhoto(file.preview)
+                }}>Remove</Button>
             </div>
         </div>
     ));
@@ -139,11 +146,21 @@ export default function EditListing({showSnackbar, history, match}) {
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
-            setFiles(acceptedFiles.map(file => Object.assign(file, {
-                preview: URL.createObjectURL(file)
-            })));
+            setFiles([
+                ...files,
+                ...acceptedFiles.map(file => {
+                    console.log(file);
+                    file.preview = URL.createObjectURL(file);
+                    return file;
+                })
+            ]);
         }
     });
+
+    const handleRemoveNewPhoto = (preview) => {
+        const newFiles = files.filter(file => file.preview !== preview);
+        setFiles(newFiles);
+    };
 
     const today = moment().format('YYYY-MM-DD');
 
@@ -195,7 +212,9 @@ export default function EditListing({showSnackbar, history, match}) {
                     </div>
                 </div>
                 <div>
-                    <Button color="secondary" fullWidth onClick={() => {handleRemovePhoto(photo.id)}}>Remove</Button>
+                    <Button color="secondary" fullWidth onClick={() => {
+                        handleRemovePhoto(photo.id)
+                    }}>Remove</Button>
                 </div>
             </div>
         )));
@@ -220,7 +239,7 @@ export default function EditListing({showSnackbar, history, match}) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({ status })
+            body: JSON.stringify({status})
         });
 
         if (response.status === 200) {
@@ -365,7 +384,9 @@ export default function EditListing({showSnackbar, history, match}) {
                         </Tooltip>
                         {item.status == 1 &&
                         <Tooltip title="Hide">
-                            <IconButton aria-label="hide" onClick={() => { handleToggleStatus(0) }}>
+                            <IconButton aria-label="hide" onClick={() => {
+                                handleToggleStatus(0)
+                            }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 200 200">
                                     <g id="Group_1364" data-name="Group 1364" transform="translate(-144 -4805)">
                                         <g id="Group_75" data-name="Group 75" transform="translate(144 4805)">
@@ -390,16 +411,23 @@ export default function EditListing({showSnackbar, history, match}) {
                         }
                         {item.status == 0 &&
                         <Tooltip title="Show">
-                            <IconButton aria-label="show" onClick={() => { handleToggleStatus(1) }}>
+                            <IconButton aria-label="show" onClick={() => {
+                                handleToggleStatus(1)
+                            }}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 200 200">
                                     <g id="Group_1445" data-name="Group 1445" transform="translate(-144 -4805)">
                                         <g id="Group_75" data-name="Group 75" transform="translate(144 4805)">
                                             <g id="Group_74" data-name="Group 74" transform="translate(3.469 22.496)">
-                                                <path id="Union_16" data-name="Union 16" d="M76.682,153.062a98.568,98.568,0,0,1-35.429-14.894,99.281,99.281,0,0,1-35.9-43.547A98.507,98.507,0,0,1,0,77.978c.033-.147.067-.3.1-.442-.034-.147-.068-.3-.1-.442A98.377,98.377,0,0,1,14.491,43.639,99.165,99.165,0,0,1,187.944,60.452,98.4,98.4,0,0,1,193.3,77.094c-.033.147-.067.3-.1.442.034.147.068.295.1.442a98.379,98.379,0,0,1-14.491,33.455,99.373,99.373,0,0,1-43.592,35.861,98.7,98.7,0,0,1-18.6,5.767,100.154,100.154,0,0,1-39.937,0ZM31.046,83.779a71.259,71.259,0,0,0,131.207,0q1.3-3.078,2.305-6.243-1-3.163-2.305-6.243a71.259,71.259,0,0,0-131.207,0q-1.3,3.078-2.305,6.243Q29.743,80.7,31.046,83.779Z" transform="translate(0 0)" fill="#2b879e"/>
-                                                <rect id="Rectangle_142" data-name="Rectangle 142" width="63" height="63" rx="31.5" transform="translate(65.588 45.595)" fill="#2b879e"/>
+                                                <path id="Union_16" data-name="Union 16"
+                                                      d="M76.682,153.062a98.568,98.568,0,0,1-35.429-14.894,99.281,99.281,0,0,1-35.9-43.547A98.507,98.507,0,0,1,0,77.978c.033-.147.067-.3.1-.442-.034-.147-.068-.3-.1-.442A98.377,98.377,0,0,1,14.491,43.639,99.165,99.165,0,0,1,187.944,60.452,98.4,98.4,0,0,1,193.3,77.094c-.033.147-.067.3-.1.442.034.147.068.295.1.442a98.379,98.379,0,0,1-14.491,33.455,99.373,99.373,0,0,1-43.592,35.861,98.7,98.7,0,0,1-18.6,5.767,100.154,100.154,0,0,1-39.937,0ZM31.046,83.779a71.259,71.259,0,0,0,131.207,0q1.3-3.078,2.305-6.243-1-3.163-2.305-6.243a71.259,71.259,0,0,0-131.207,0q-1.3,3.078-2.305,6.243Q29.743,80.7,31.046,83.779Z"
+                                                      transform="translate(0 0)" fill="#2b879e"/>
+                                                <rect id="Rectangle_142" data-name="Rectangle 142" width="63"
+                                                      height="63" rx="31.5" transform="translate(65.588 45.595)"
+                                                      fill="#2b879e"/>
                                             </g>
                                         </g>
-                                        <rect id="Rectangle_171" data-name="Rectangle 171" width="199.182" height="199.182" transform="translate(144 4805)" fill="none"/>
+                                        <rect id="Rectangle_171" data-name="Rectangle 171" width="199.182"
+                                              height="199.182" transform="translate(144 4805)" fill="none"/>
                                     </g>
                                 </svg>
                             </IconButton>
@@ -435,20 +463,21 @@ export default function EditListing({showSnackbar, history, match}) {
                 <Grid container spacing={2} className="marginT">
                     <Grid item xs={12} md={4}>
                         <section>
-                            <div {...getRootProps({className: 'dropzone'})} style={{ textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
+                            <div {...getRootProps({className: 'dropzone'})}
+                                 style={{textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
                                 <input {...getInputProps()} id="files-input"/>
                                 <p>Drag 'n' drop some photos here, or click to select photos</p>
                             </div>
                             <aside style={thumbsContainer}>
+                                {photos}
                                 {thumbs}
                             </aside>
                         </section>
                     </Grid>
                     <Grid item xs={12} md={8} className="inputEdit">
-                        <div className="photo-list">
-                            {photos}
-                        </div>
-                        { item.id && <ListingForm onChange={(newState) => { setFormData({...newState, photos: undefined})}} initialData={{...item, realtor: item.realtor.id }}/>}
+                        {item.id && <ListingForm onChange={(newState) => {
+                            setFormData({...newState, photos: undefined})
+                        }} initialData={{...item, realtor: item.realtor.id}}/>}
                     </Grid>
                 </Grid>
 
@@ -529,10 +558,10 @@ export default function EditListing({showSnackbar, history, match}) {
                 <DialogActions>
                     <Button onClick={() => {
                         setShowSold(false);
-                    }} >
+                    }}>
                         Cancel
                     </Button>
-                    <Button onClick={handleSold} style={{ color: '#2B879E'}}>
+                    <Button onClick={handleSold} style={{color: '#2B879E'}}>
                         Save
                     </Button>
                 </DialogActions>
