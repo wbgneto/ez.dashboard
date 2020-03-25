@@ -30,7 +30,7 @@ return(
               </li>
               <li><h3>{title}</h3></li>
               <li>Type: {type} Bed Room</li>
-              <li>Size: {square_foot} sq</li>
+              <li>Size: {square_foot} ft²</li>
               <li>Price: {price} CAD</li>
             </ul>
         </Grid>

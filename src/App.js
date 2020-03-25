@@ -36,9 +36,9 @@ export default function App() {
 
                     {/* Realtors */}
                     <RouteWrapper path="/realtors/edit/:id" layout={Admin} component={EditRealtor}></RouteWrapper>
+                    <RouteWrapper path="/realtors/new" exact layout={Admin} component={CreateRealtor}></RouteWrapper>
                     <RouteWrapper path="/realtors/:id" layout={Admin} component={ViewRealtor}></RouteWrapper>
                     <RouteWrapper path="/realtors" layout={Admin} component={Realtors}></RouteWrapper>
-                    <RouteWrapper path="/new" layout={Admin} component={CreateRealtor}></RouteWrapper>
 
                     {/* Help */}
                     <RouteWrapper path="/help" layout={Admin} component={Help}></RouteWrapper>
