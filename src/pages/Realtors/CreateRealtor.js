@@ -115,7 +115,7 @@ export default function CreateRealtor(props) {
     }, [avatar]);
 
 const save = async () => {
-    let response = await fetch('http://api.easyrealtysystem.wmdd.ca/realtors', {
+    const response = await fetch('http://api.easyrealtysystem.wmdd.ca/realtors', {
         method: 'post',
         headers: {
             'Accept': 'application/json',
@@ -124,18 +124,19 @@ const save = async () => {
         body: JSON.stringify({...formData, status: 1})
     });
 
-    response = await response.json();
+    const responseData = await response.json();
 
     if (response.status === 200 || response.status === 201) {
         if (avatar.preview) {
-            return uploadAvatar(response.data.id);
+            return uploadAvatar(responseData.data.id);
         }
 
         props.showSnackbar("success", "Realtor created successfully");
         props.history.push('/realtors');
-    } else {
-        props.showSnackbar("error", "Please fill all fields");
+        return;
     }
+
+    props.showSnackbar("error", "Please fill all fields");
 };
 
 const uploadAvatar = async (realtorId) => {
@@ -149,12 +150,13 @@ const uploadAvatar = async (realtorId) => {
 
     response = await response.json();
 
-    if (response.status_code === 200) {
+    if (response.status_code === 200 || response.status_code === 201) {
         props.showSnackbar("success", "Realtor created successfully");
         props.history.push('/realtors');
-    } else {
-        props.showSnackbar("error", "There was an error uploading the photos");
+        return;
     }
+
+    props.showSnackbar("error", "There was an error uploading the photos");
 };
 
   return (
