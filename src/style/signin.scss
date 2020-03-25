@@ -9,7 +9,7 @@
   justify-content: center;
   align-content: center;
   background-repeat: no-repeat;
-  overflow: hidden !important;
+  //overflow: hidden !important;
   font-family: "Open Sans";
   background-size: cover;
   grid-template-rows: 1fr 1fr;
@@ -161,7 +161,7 @@
     .signin_child2 {
       grid-row: 1 / 2;
       display: block;
-      width: 100%;
+      width: 100% !important;
       grid-column: 1 / 1;
       margin-top: 0em !important;
       // margin-top: 10em;
@@ -212,6 +212,43 @@
             color: rgba(255, 255, 255, 255);
           }
         }
+      }
+    }
+  }
+}
+/**************************************************************************************************************************************************/
+@media screen and (min-width: 481px) and (max-width: 1024px){
+  .signin{
+    display: grid;
+    grid-template-columns: 1fr !important;
+    background-size: 100% 100% !important;
+    grid-template-rows: 1fr 1fr 0.3fr !important;
+    //overflow: hidden !important;
+    padding: 0px !important;
+    .signin_child1{
+      grid-row: 1 / 2;
+      display: block;
+      width: 100%;
+      margin-top: 0em !important;
+      //height: 200px !important;
+      grid-column: 1 / 1;
+      .loginpage_intro{
+        p{
+          margin: auto !important;
+        }
+      }
+    }
+    .signin_child2{
+      grid-row: 2 / 2;
+      display: block;
+
+      grid-column: 1 / 1;
+      margin-top: 0em !important;
+      padding-left: 3em !important;
+      // margin-top: 0em !important;
+      .login_form{
+        width: 100% !important;
+
       }
     }
   }

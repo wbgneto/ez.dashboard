@@ -6,6 +6,7 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import { Link } from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
+import RealtorListings from "./RealtorListings";
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -29,7 +30,7 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 12,
   },
 }));
-export default function ViewRealtor({match}) {
+export default function ViewRealtor({match, history}) {
   const classes = useStyles();
   useEffect(() => {
     fetchItem();
@@ -54,7 +55,7 @@ export default function ViewRealtor({match}) {
       <Paper className={classes.paper}>
       <div>
           <div className="backtolist" style={{float:'left'}}>
-          <Tooltip title="" component={Link} to={"/Realtors"}>
+          <Tooltip title="" component={Link} to={"/realtors"}>
               <IconButton aria-label="back to list">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
                   <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
@@ -71,7 +72,7 @@ export default function ViewRealtor({match}) {
         <Grid container spacing={4} className="viewGrid">
           <Grid item xs={12} md={4}>
               <div>
-                <img style={{width:'100%', height:'100%'}} src="https://dummyimage.com/300x200/000/fff&text=picture"></img>
+                  { item.avatar ? <img src={`http://api.easyrealtysystem.wmdd.ca/realtors/${item.id}/avatar`} style={{maxWidth:'100%', maxHeight: 300}}/> : <img src="/no-photo-available.png" style={{width:'100%', height:'100%'}}/>}
               </div>
           </Grid>
           <Grid item xs={12} md={8}>
@@ -85,28 +86,7 @@ export default function ViewRealtor({match}) {
           </Grid>
         </Grid>
       </Paper>
-      <Paper className={classes.paper}>
-        <Grid container spacing={10} className="homeList">
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-              <span><Typography>Home List1</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-            <span><Typography>Home List2</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-          <Grid item xs={12} md={4}>
-            <div className="homePic">
-            <span><Typography>Home List3</Typography></span>
-              <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img>
-            </div>
-          </Grid>
-        </Grid>
-      </Paper>
+      <RealtorListings realtorId={match.params.id} history={history}></RealtorListings>
     </div>
   );
 }

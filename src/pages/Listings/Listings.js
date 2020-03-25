@@ -13,6 +13,7 @@ import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
 import ListingCard from './ListingCard'
 import Grid from '@material-ui/core/Grid';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const useStyles = makeStyles(theme => ({
@@ -103,15 +104,18 @@ const useStyles = makeStyles(theme => ({
 
 export default function Listings() {
     const classes = useStyles();
-
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchItems = async (filters) => {
+      setIsLoading(true);
+
       const queryString = new URLSearchParams(filters);
 
       let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings?${queryString}`);
       response = await response.json();
-
+      setIsLoading(false);
       return response.data;
+      
     };
 
     // selectBox
@@ -208,7 +212,13 @@ export default function Listings() {
                     </Tooltip>
                 </div>
             </div>
-
+            {isLoading ? (
+        <div className="loading">
+            {/* Loading ... */}
+            <CircularProgress disableShrink />
+            <span>Loading...</span>
+        </div>
+      ) : (
             <Paper
                 className={classes.paper}
                 container
@@ -229,6 +239,7 @@ export default function Listings() {
                     <div style={{padding: 10}}>No listings found</div>
                 }
             </Paper>
+      )}
         </div>
     );
 }

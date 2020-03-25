@@ -196,7 +196,7 @@ export default function ListingForm({ onChange, initialData}) {
                            className={classes.formControl}/>
             <Grid container spacing={1} className="twoColumnGrid">
                 <Grid item xs={12} sm={6}>
-                        <TextField label="Size"
+                        <TextField label="Size ft²"
                                    variant="outlined"
                                    name="square_foot"
                                    value={state.square_foot}
