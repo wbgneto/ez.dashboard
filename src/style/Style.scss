@@ -374,35 +374,6 @@ img {
 /*****************************************************/
 
 
-// .tableGrid {
-//   border-bottom: 1px solid rgba(0,0,0,0.1);
-//   img {
-//     width: 100%;
-//     height: auto;
-//   }
-//   .tableElm01 {
-//     padding: 1%;
-//   }
-//   .tableElm02 {
-//     padding: 3% 0 1% 2%;
-//   }
-//   @media (max-width : $bp-medium){
-//     .tableElm01 {
-//       padding: 4%;
-//     }
-//     .tableElm02 {
-//       padding: 2% 4% 2%;
-//     }
-//     .tableElm03 {
-//       padding-top: 15px;
-//       margin-top: 15px;
-//       border-top: 1px solid #ccc;
-//     }
-//   }
-// }
-
-
-
 .tableGrid {
   border-bottom: 1px solid rgba(0,0,0,0.1);
   box-sizing: border-box;
@@ -513,7 +484,7 @@ img {
     top: 0;
     z-index: 1300;
     height: 57px;
-    line-height: 57px !important;
+    line-height: 48px !important;
     left: 50%;
     transform: translate( -50%, 0);
     text-align: center;
@@ -555,6 +526,25 @@ table {
 .MuiIconButton-colorSecondary:hover {
   background-color: rgba(220,220,220, .3)!important;
 }
+
+.delete-btn {
+  background: #AC0000 !important;
+  color: #fff !important;
+}
+
+.photo-list {
+  display: flex;
+  padding-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.addBtn {
+    &:hover {
+      background-color: rgba(0,0,0,0) !important;
+    }
+}
+
+
 /*****************************************************/
 /*                     Toolbar                       */
 /*****************************************************/

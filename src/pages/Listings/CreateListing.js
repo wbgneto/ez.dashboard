@@ -100,8 +100,6 @@ export default function CreateListing(props) {
 
     const [files, setFiles] = useState([]);
 
-    const filesRef = createRef();
-
     const {getRootProps, getInputProps} = useDropzone({
         accept: 'image/*',
         onDrop: acceptedFiles => {
@@ -143,8 +141,11 @@ export default function CreateListing(props) {
             if (files.length) {
                 uploadFiles(response.data.id);
             } else {
+                props.showSnackbar("success", "Listing created successfully");
                 props.history.push('/listings');
             }
+        } else {
+            props.showSnackbar("error", "Please fill all fields");
         }
     };
 
@@ -163,7 +164,10 @@ export default function CreateListing(props) {
         response = await response.json();
 
         if (response.status_code === 200) {
+            props.showSnackbar("success", "Listing created successfully");
             props.history.push('/listings');
+        } else {
+            props.showSnackbar("error", "There was an error uploading the photos");
         }
     };
 
@@ -176,7 +180,7 @@ export default function CreateListing(props) {
                         <section>
                             <div {...getRootProps({className: 'dropzone'})} style={{ textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
                                 <input {...getInputProps()} id="files-input"/>
-                                <p>Drag 'n' drop some files here, or click to select files</p>
+                                <p>Drag 'n' drop some photos here, or click to select photos</p>
                             </div>
                             <aside style={thumbsContainer}>
                                 {thumbs}
@@ -184,7 +188,7 @@ export default function CreateListing(props) {
                         </section>
                     </Grid>
                     <Grid item xs={12} md={8} className="inputEdit">
-                        <ListingForm onChange={setFormData} initialData={{title: 'oi'}}/>
+                        <ListingForm onChange={setFormData}/>
                     </Grid>
                 </Grid>
 
