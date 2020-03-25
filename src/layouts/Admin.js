@@ -152,7 +152,7 @@ function ResponsiveDrawer(props) {
                             <Paper>
                                 <ClickAwayListener onClickAway={handleClose}>
                                 <MenuList autoFocusItem={open} id="menu-list-grow" onKeyDown={handleListKeyDown}>
-                                    <MenuItem onClick={handleClose}>
+                                    <MenuItem onClick={() => {props.history.push('/')}}>
                                         <span style={{ lineHeight:'1', margin: '0px 8px' }}>
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 200 200">
                                                 <g id="Group_1372" data-name="Group 1372" transform="translate(-142 -5296)">
@@ -161,9 +161,7 @@ function ResponsiveDrawer(props) {
                                                 </g>
                                             </svg>
                                         </span>
-                                        <a href="/" style={{color: 'black', textDecoration: 'none'}}>
-                                            Log out
-                                        </a>
+                                        Log out
                                     </MenuItem>
                                 </MenuList>
                                 </ClickAwayListener>
