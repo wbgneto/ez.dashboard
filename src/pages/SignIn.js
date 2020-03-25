@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -30,7 +30,33 @@ function Copyright() {
     </Typography>
   );
 }
-export default function SignIn() {
+export default function SignIn({history, showSnackbar}) {
+
+  const [formData, setFormData] = useState({
+    email: 'realtor@easyrealtysystem.wmdd.ca',
+    password: "123456"
+  });
+
+  const handleLogin = async () => {
+    let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/auth/login`, {
+      method: 'post',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(formData)
+    });
+
+    response = await response.json();
+
+    if (response.statusCode === 400) {
+      showSnackbar('error', response.message);
+    } else {
+      showSnackbar('success', response.message);
+      history.push('/dashboard');
+    }
+  };
+
   return (
     <div className="signin">
 
@@ -52,16 +78,16 @@ export default function SignIn() {
           <FormLabel className="login_labels">
             Email
           </FormLabel>
-          <TextField type="email" variant="outlined" className="login_input"></TextField>
+          <TextField type="email" variant="outlined" className="login_input" value={formData.email} onChange={(event) => setFormData({...formData, email: event.target.value})}></TextField>
           <FormLabel className="login_labels">
             Password
           </FormLabel>
-          <TextField type="password" variant="outlined" className="login_input"></TextField>
+          <TextField type="password" variant="outlined" className="login_input" value={formData.password} onChange={(event) => setFormData({...formData, password: event.target.value})}></TextField>
           <a href="#" className="forgot_password">
             Forgot Password?
           </a>
-          <Button variant="contained" className="login_button">Login</Button>
-          <h3 className="new_member">New Member?<a href="#">Register Now</a></h3>
+          <Button variant="contained" className="login_button" onClick={handleLogin}>Login</Button>
+          <h3 className="new_member">New Member?<a href="http://easyrealtysystem.wmdd.ca/Contact" target="_blank">Register Now</a></h3>
         </FormControl>
 
 
