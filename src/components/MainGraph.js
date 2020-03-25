@@ -29,13 +29,13 @@ class MainGraph extends Component {
     let dataSet = [];
     let data = {};
     this.setState({ isLineGraphDataLoading: true });
-
+    
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?type=null&id=null&display=${display}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?display=${display}`
     )
       .then(res => res.json())
       .then(res => {
-        res.data.forEach(item => {
+        res.forEach(item => {
           labels.push(item.label);
           dataSet.push(item.value);
         });
@@ -64,19 +64,27 @@ class MainGraph extends Component {
     let outputGraphDataLabels = [];
     let outputGraphDataSet = [];
     let outputGraphData = {};
-    if (type == "house") {
-      id = null;
-    }
-    if (type == "realtor") {
+    let url;
+    let topLabel=""
+    if (type === "realtors" || type==="houses") {
       id = this.props.graphDataId[e.target.id];
+      
     }
-
+    
+    topLabel = this.props.data.labels[e.target.id];
+    console.log(topLabel)
+    
+      url=`http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?type=${type}&id=[${id}]&display=${display}`;
+    
+   
+    console.log(url)
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/overall-sales?type=${type}&id=${id}&display${display}`
+      url
     )
       .then(res => res.json())
       .then(res => {
-        res.data.forEach(item => {
+        
+        res.forEach(item => {
           outputGraphDataLabels.push(item.label);
           outputGraphDataSet.push(item.value);
         });
@@ -84,7 +92,7 @@ class MainGraph extends Component {
           labels: outputGraphDataLabels,
           datasets: [
             {
-              label:"Sales in last 12 months",
+              label:`sales of ${topLabel} in last 12 months `,
               data: outputGraphDataSet
             }
           ]
@@ -135,7 +143,7 @@ class MainGraph extends Component {
           </Grid>
           <Grid item xs={12} sm={12} md={12} lg={6} xl={6}>
             {!this.props.isLoading && (
-              <ul className="mt-8">
+              <ul >
                 {this.props.data.labels.length &&
                   this.props.data.labels.map((item, key) => {
                     return (
@@ -148,11 +156,13 @@ class MainGraph extends Component {
                               width: "20px",
                               height: "20px",
                               border: `2px solid ${this.props.data.datasets[0].backgroundColor[key]}`,
-                              borderRadius: "100%"
+                              borderRadius: "100%",
                             }}
                           />
-                          <label>{item}</label>
-                          <label>{this.props.data.datasets[0].data[key]}</label>
+                          <label style={{
+                              flex: "0 0 35%"}}>{item}</label>
+                          <label style={{
+                              flex: "0 0 10%"}}>{this.props.data.datasets[0].data[key]}</label>
 
                           <button
                             id={key}
@@ -161,7 +171,8 @@ class MainGraph extends Component {
                               backgroundColor: "white",
                               color: "blue",
                               textDecoration: "underline",
-                              fontWeight: "bold"
+                              fontWeight: "bold",
+                              flex: "0 0 5%"
                             }}
                             onClick={e => this.getOverallSales(e)}
                           >
@@ -210,7 +221,8 @@ const listItemStyle = {
   justifyContent: "space-between",
   display: "flex",
   flexDirection: "row",
-  alignContent: "flex-start"
+  alignContent: "flex-start",
+  alignItems:"flex-start"
 };
 
 const options = {

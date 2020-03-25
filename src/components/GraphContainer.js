@@ -70,7 +70,7 @@ const GraphContainer = () => {
   var defaultStartDate = new Date(
     todayDate.getFullYear(),
     todayDate.getMonth(),
-    todayDate.getDate()
+    todayDate.getDate()-1
   );
   var defaultEndDate = new Date(
     todayDate.getFullYear(),
@@ -87,29 +87,30 @@ const GraphContainer = () => {
     defaultEndDate.toISOString().slice(0, 10)
   );
   const [salesType, setSalesType] = React.useState("quantity");
-  const [distributionType, setDistributionType] = React.useState("realtor");
+  const [distributionType, setDistributionType] = React.useState("realtors");
   const [isLoading, setisLoading] = useState(true);
 
   let graphDataLabels = [];
   let graphDataset = [];
   let graphDataId = [];
 
-  let getDefaultData = () => {
-    fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${salesType}&display=${distributionType}`
-    )
-      .then(res => res.json())
-      .then(res => {
-        res.data.forEach(item => {
-          graphDataLabels.push(item.label);
-          graphDataset.push(item.value);
-          graphDataId.push(item.ids);
-        });
-      })
-      .catch(err => {
-        console.log(err, "Fetch error");
-      });
-  };
+  // let getDefaultData = () => {
+  //   fetch(
+  //     `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${salesType}&display=${distributionType}`
+  //   )
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       console.log(res.data);
+  //       res.data.forEach(item => {
+  //         graphDataLabels.push(item.label);
+  //         graphDataset.push(item.value);
+  //         graphDataId.push(item.ids);
+  //       });
+  //     })
+  //     .catch(err => {
+  //       console.log(err, "Fetch error");
+  //     });
+  // };
 
   const [mainGraphDataLabels, setMainGraphDataLabels] = React.useState(
     graphDataLabels
@@ -121,13 +122,13 @@ const GraphContainer = () => {
   useEffect(() => {
     
     setisLoading(false);
-    
     fetch(
-      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date${endDate}&type=${salesType}&display=${distributionType}`
+      `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${distributionType}&display=${salesType}`
     )
       .then(res => res.json())
       .then(res => {
-        setMainGraphData(res.data);
+        setMainGraphData(res);
+        console.log(res)
         setisLoading(false);
       })
       .catch(err => {
@@ -146,7 +147,7 @@ const GraphContainer = () => {
     mainGraphdata.forEach(item => {
       graphDataLabels.push(item.label);
       graphDataset.push(item.value);
-      graphDataId.push(item.ids);
+      graphDataId.push(item.id);
     });
 
     setMainGraphDataLabels(graphDataLabels);
@@ -250,8 +251,8 @@ const GraphContainer = () => {
                     setDistributionType(e.target.value);
                   }}
                 >
-                  <option value="realtor">Realtor</option>
-                  <option value="house">Type of Property</option>
+                  <option value="realtors">Realtor</option>
+                  <option value="houses">Type of Property</option>
                 </select>
               </Grid>
             </Grid>

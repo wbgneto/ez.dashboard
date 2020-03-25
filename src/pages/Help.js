@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
-    fontWeight: theme.typography.fontWeightRegular,
+    fontWeight: theme.typography.fontWeightBold,
   },
 }));
 
@@ -39,12 +39,12 @@ export default function CenteredGrid() {
             aria-controls="panel1a-content"
             id="panel1a-header"
           >
-            <Typography className={classes.heading}>Expansion Panel 1</Typography>
+            <Typography className={classes.heading}>Thinking to upgrade your plan?</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget.
+              Easy Realty Systems offer three plans after the free trial. Each plan has different services regarding no. of users supported,
+              storage provided. If you are thinking about choosing a different plan, Kindly visit <span style={{textDecoration:"underline"}}>http://easyrealtysystem.wmdd.ca/Pricing</span> and select the plan best suitable to you. 
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -54,12 +54,18 @@ export default function CenteredGrid() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-            <Typography className={classes.heading}>Expansion Panel 2</Typography>
+            <Typography className={classes.heading}>Have to mark a listing sold?</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget.
+              Easy Realty System makes it easy for you to update status of listing. If you want to mark a property sold or if you want to hide a listing. 
+              Follow the following steps <br/>
+              1. Go to the listings by clicking on 'listings' on the left navigation panel. <br/>
+              2. Search the listing you want to update on the search bad or scroll and locate the listing.<br/>
+              3. Click on edit on the right side of the listing. <br/>
+              4. Click on the sold icon just below your profile image.
+              5. Enter the price and date the listing was sold at and save.
+
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
@@ -69,12 +75,14 @@ export default function CenteredGrid() {
             aria-controls="panel2a-content"
             id="panel2a-header"
           >
-            <Typography className={classes.heading}>Expansion Panel 3</Typography>
+            <Typography className={classes.heading}>Want to see just the active listings?</Typography>
           </ExpansionPanelSummary>
           <ExpansionPanelDetails>
             <Typography>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada lacus ex,
-              sit amet blandit leo lobortis eget.
+              To see only the active listings. Follow the following steps.<br/>
+              1. Go to the listings by clicking on 'listings' on the left navigation panel. <br/>
+              2. Click on the status dropdown and select "active".
+
             </Typography>
           </ExpansionPanelDetails>
         </ExpansionPanel>
