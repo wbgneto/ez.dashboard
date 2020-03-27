@@ -52,14 +52,14 @@ export default function RealtorListings({realtorId, history}) {
       <Paper className={classes.paper}>
         <Grid container spacing={10} className="homeList">
           {
-            listings.length === 0 ? (<Grid item xs={12} md={4}>No listings found</Grid>) : (
+            listings.length === 0 ? (<Grid item xs={12} md={4}>Realtor has no listings</Grid>) : (
               listings.map(listing => (
                 <Grid item xs={12} md={4}>
                   <div className="homePic" onClick={() => history.push(`/listings/${listing.id}`)}>
                     <span><Typography>{ listing.title }</Typography></span>
                     {
                       listing.photos.length === 0 ?
-                      <img src="https://dummyimage.com/300x200/ccc/000&text=home+picture"></img> :
+                      <img src="/no-photo-available.png"></img> :
                       <img src={`http://api.easyrealtysystem.wmdd.ca/listings/photos/${listing.photos[0].filename}`}></img>
                     }
                   </div>
