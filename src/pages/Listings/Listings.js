@@ -229,6 +229,7 @@ export default function Listings() {
                           type={item.type}
                           photos={item.photos}
                           title={item.title}
+                          status={item.status}
                           square_foot={item.square_foot}
                           price={item.price}
                       />
