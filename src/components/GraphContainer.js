@@ -146,7 +146,7 @@ const GraphContainer = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="graphFlex">
-        <div style={{ width: "100%", margin: "auto", padding: "2em" }}>
+        <div>
           <div className={classes.formContainer}>
             <Grid container>
               <Grid
