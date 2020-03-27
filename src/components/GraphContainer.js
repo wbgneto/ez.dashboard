@@ -3,6 +3,7 @@ import MainGraph from "./MainGraph";
 import { createMuiTheme, makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import { ThemeProvider } from "@material-ui/styles";
+import Paper from "@material-ui/core/Paper";
 
 const theme = createMuiTheme({
   breakpoints: {
@@ -45,9 +46,8 @@ const useStyles = makeStyles(theme => ({
   formElements: {
     border: "1px solid #34AAC7",
     width: "100%",
-    padding:"15px",
-    borderRadius:"5px"
-
+    padding: "15px",
+    borderRadius: "5px"
   },
   InputsWrapper: {
     height: "2em",
@@ -56,11 +56,16 @@ const useStyles = makeStyles(theme => ({
     gridTemplateColumns: "1fr 1fr"
   },
   inputBoxes: {
-    margin: "1px",
+    flexGrow: "0",
+    margin: "1px"
   },
-  input:{
-    borderRadius:"15%",
-    padding:"32px"
+  input: {
+    flexGrow: "0",
+    borderRadius: "15%",
+    padding: "32px"
+  },
+  paperComponent: {
+    position: "relative"
   }
 }));
 
@@ -69,17 +74,19 @@ const GraphContainer = () => {
   var todayDate = new Date();
   var defaultStartDate = new Date(
     todayDate.getFullYear(),
-    todayDate.getMonth(),
-    todayDate.getDate()-1
+    todayDate.getMonth() - 4,
+    todayDate.getDate()
   );
   var defaultEndDate = new Date(
     todayDate.getFullYear(),
-    todayDate.getMonth() + 3,
-    todayDate.getDate()
+    todayDate.getMonth(),
+    todayDate.getDate() - 1
   );
 
   const [mainGraphdata, setMainGraphData] = React.useState([]);
-  const [lineGraphLabel, setLineGraphLabel] = React.useState("No. of Properties Sold")
+  const [lineGraphLabel, setLineGraphLabel] = React.useState(
+    "No. of Properties Sold"
+  );
   const [startDate, setStartDate] = React.useState(
     defaultStartDate.toISOString().slice(0, 10)
   );
@@ -94,24 +101,6 @@ const GraphContainer = () => {
   let graphDataset = [];
   let graphDataId = [];
 
-  // let getDefaultData = () => {
-  //   fetch(
-  //     `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${salesType}&display=${distributionType}`
-  //   )
-  //     .then(res => res.json())
-  //     .then(res => {
-  //       console.log(res.data);
-  //       res.data.forEach(item => {
-  //         graphDataLabels.push(item.label);
-  //         graphDataset.push(item.value);
-  //         graphDataId.push(item.ids);
-  //       });
-  //     })
-  //     .catch(err => {
-  //       console.log(err, "Fetch error");
-  //     });
-  // };
-
   const [mainGraphDataLabels, setMainGraphDataLabels] = React.useState(
     graphDataLabels
   );
@@ -120,7 +109,6 @@ const GraphContainer = () => {
   );
   const [mainGraphDataId, setMainGraphDataId] = React.useState(graphDataId);
   useEffect(() => {
-    
     setisLoading(false);
     fetch(
       `http://api.easyrealtysystem.wmdd.ca/reports/sales-distribution?start_date=${startDate}&end_date=${endDate}&type=${distributionType}&display=${salesType}`
@@ -128,7 +116,7 @@ const GraphContainer = () => {
       .then(res => res.json())
       .then(res => {
         setMainGraphData(res);
-        console.log(res)
+        console.log(res);
         setisLoading(false);
       })
       .catch(err => {
@@ -136,11 +124,11 @@ const GraphContainer = () => {
         setisLoading(false);
       });
 
-      if(salesType == "value"){
-        setLineGraphLabel("Total Sales Amount")
-      }else{
-        setLineGraphLabel("No. of Properties Sold")
-      }
+    if (salesType == "value") {
+      setLineGraphLabel("Total Sales Amount");
+    } else {
+      setLineGraphLabel("No. of Properties Sold");
+    }
   }, [startDate, endDate, distributionType, salesType]);
 
   useEffect(() => {
@@ -158,7 +146,7 @@ const GraphContainer = () => {
   return (
     <ThemeProvider theme={theme}>
       <div className="graphFlex">
-        <div style={{ width: "100%", margin: "auto" }}>
+        <div style={{ width: "100%", margin: "auto", padding: "2em" }}>
           <div className={classes.formContainer}>
             <Grid container>
               <Grid
@@ -258,8 +246,7 @@ const GraphContainer = () => {
             </Grid>
           </div>
 
-          <div style={{ backgroundColor: "white", margin:"auto", marginTop: "1em", width:"95%" }}>
-           
+          <Paper className={classes.paperComponent}>
             <MainGraph
               lineGraphLabel={lineGraphLabel}
               salesType={salesType}
@@ -281,7 +268,7 @@ const GraphContainer = () => {
                 ]
               }}
             ></MainGraph>
-          </div>
+          </Paper>
         </div>
       </div>
     </ThemeProvider>
