@@ -136,7 +136,7 @@ export default function Listings() {
     const [items, setItems] = useState([]);
 
     const [filters, setFilters] = useState({
-        status: '',
+        status: '1',
         title: '',
     });
 
