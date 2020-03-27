@@ -19,8 +19,8 @@ export default function RealtorItem({id, email, avatar, name, phone}) {
         <Grid className="tableElm02">
             <ul className="PropertyList">
               <li><h3>{name}</h3></li>
-              <li>Phone: {phone}</li>
-              <li>Email: {email}</li>
+              <li><span className="iTitle">Phone</span>: {phone}</li>
+              <li><span className="iTitle">Email</span>: {email}</li>
             </ul>
         </Grid>
         <Grid className="tableElm03 btnWrapper">

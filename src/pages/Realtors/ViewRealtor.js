@@ -71,7 +71,7 @@ export default function ViewRealtor({match, history}) {
       </div>
         <Grid container spacing={4} className="viewGrid">
           <Grid item xs={12} md={4}>
-              <div>
+              <div className="avatar">
                   { item.avatar ? <img src={`http://api.easyrealtysystem.wmdd.ca/realtors/${item.id}/avatar`} style={{maxWidth:'100%', maxHeight: 300}}/> : <img src="/no-photo-available.png" style={{width:'100%', height:'100%'}}/>}
               </div>
           </Grid>
@@ -79,8 +79,8 @@ export default function ViewRealtor({match, history}) {
            <Typography>
             <ul className="PropertyList PropertyView">
               <li className="propertyTitle"><h3>{item.name}</h3></li>
-              <li>Phone Number : {item.phone}</li>
-              <li>Email : {item.email}</li>
+              <li><span className="iTitle">Phone</span>: {item.phone}</li>
+              <li><span className="iTitle">Email</span>: {item.email}</li>
             </ul>
             </Typography>
           </Grid>

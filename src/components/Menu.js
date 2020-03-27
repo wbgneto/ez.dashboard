@@ -17,9 +17,8 @@ const useStyles = makeStyles(theme => ({
 export default () => {
     const classes = useStyles();
 
-    return <div>
+    return <div className="menuWrapper">
         <div className={classes.toolbar} />
-
         <Typography 
         variant="h6" 
         align="center" 
@@ -29,7 +28,7 @@ export default () => {
         <img className={classes.logo} src={Logo} alt="logo"></img>
         </Typography>
 
-        <List>
+        <List className="drawer">
             <ListItem button component={Link} to={"/dashboard"} className="listStyle menu01">
                 <span className="lineHeight">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
@@ -105,6 +104,5 @@ export default () => {
                 <ListItemText primary="Log out" />
             </ListItem>
         </List>
-
     </div>
 }

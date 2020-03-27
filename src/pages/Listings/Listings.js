@@ -12,7 +12,6 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
 import ListingCard from './ListingCard'
-import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 
 
@@ -213,12 +212,11 @@ export default function Listings() {
                 </div>
             </div>
             {isLoading ? (
-        <div className="loading">
-            {/* Loading ... */}
-            <CircularProgress disableShrink />
-            <span>Loading...</span>
-        </div>
-      ) : (
+            <div className="loading">
+                <CircularProgress disableShrink />
+                <span>Loading...</span>
+            </div>
+            ) : (
             <Paper
                 className={classes.paper}
                 container
@@ -228,7 +226,7 @@ export default function Listings() {
                       <ListingCard
                           key={item.id}
                           id={item.id}
-                          status={item.status}
+                          type={item.type}
                           photos={item.photos}
                           title={item.title}
                           square_foot={item.square_foot}
