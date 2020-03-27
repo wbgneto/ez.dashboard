@@ -16,6 +16,7 @@
 header {
   position:relative;
 }
+
 .userBox {
   position: absolute;
   top: 5px;
@@ -28,12 +29,12 @@ header {
     line-height: 1;
   }
   .spanMar {
-   margin: 0 10px 
+   margin: 0 10px
   }
   .displayNone {
     @media (max-width: $bp-small) {
       display: none;
-    } 
+    }
   }
 }
 .alarmIcon {
@@ -43,7 +44,7 @@ header {
   display:none;
     @media (max-width: $bp-small) {
     display: block;
-  } 
+  }
 }
 .logo {
 display:block;
@@ -126,7 +127,12 @@ img {
   }
 }
 .menu05 {
+  width: 240px !important;
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 0 !important;
   visibility: hidden;
+
   &:hover {
     #Subtraction_28 {
       fill: #FFFFFF;
@@ -140,7 +146,7 @@ img {
   }
   @media (max-width: $bp-small) {
     visibility: visible;
-  } 
+  }
 }
 /*****************************************************/
 /*                     SignIn.js                     */
@@ -234,6 +240,14 @@ img {
       margin-bottom: 5px;
     }
   }
+  .cTitle {
+    width:40px;
+    display:inline-block;
+  }
+  .iTitle {
+    width:48px;
+    display:inline-block;
+  }
   .active {
     background-color: $primary-teal-blue;
     &:before{
@@ -256,7 +270,8 @@ img {
 
 .PropertyView {
   li {
-    color:$secondary-grey;
+    color:rgba(0, 0, 0, 0.87);
+    font-size:14px;
     h3 {
       font-weight: bold;
       font-size: 18px;
@@ -265,7 +280,7 @@ img {
     }
   } 
   .propertyRealtor {
-    color:#212121;
+    // color:#212121;
   }
 }
 
@@ -409,16 +424,17 @@ img {
   border-bottom: 1px solid rgba(0,0,0,0.1);
   box-sizing: border-box;
   .tableElm01 {
-    width: 260px;
+    width: 245px;
     padding: 20px 20px 15px 20px;
     img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      max-height: 136px;
     }
   }
   .tableElm02 {
     width: calc(100% - 400px);
-    padding: 30px 20px 25px;
+    padding: 20px 20px 25px;
   }
   .tableElm03 {
     width: 140px;
@@ -452,8 +468,6 @@ img {
   @media (max-width: $bp-medium) {
     div {
       position: static;
-      padding-top: 15px;
-      border-top: 1px solid #ccc;
     }
     .blockBtn {
       display: inline-block !important;
@@ -477,6 +491,11 @@ img {
     margin-bottom: 2px;
   }
 }
+.avatar{
+  img {
+    width:100% !important
+  }
+}
 
 /*****************************************************/
 /*                     Layout                        */
@@ -488,7 +507,7 @@ img {
 }
 
 .marginT {
-  margin: 25px 0 0 0 !important;
+  padding: 25px 0 0 0 !important;
 }
 
 .container {
@@ -515,7 +534,7 @@ img {
     top: 0;
     z-index: 1300;
     height: 57px;
-    line-height: 48px !important;
+    line-height: 52px !important;
     left: 50%;
     transform: translate( -50%, 0);
     text-align: center;
@@ -721,8 +740,8 @@ table {
     display: block;
     padding-top: 20px;
   }
-  .MuiCircularProgress-svg {
-   
+  .MuiCircularProgress-svg{
+    color: $primary-teal-blue;
   }
   @media (max-width: $bp-medium) {
     transform: translate(0%, -25%);

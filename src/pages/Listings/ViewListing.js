@@ -10,7 +10,7 @@ import {Carousel} from 'react-responsive-carousel';
 import Tooltip from '@material-ui/core/Tooltip';
 import Feature from "../../components/Feature";
 import moment from "moment";
-
+import ListingType from "../../data/ListingType";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -118,9 +118,9 @@ export default function ViewListing({match}) {
                         </Grid>
                         <div className="info" style={{marginBottom: 12}}>
                             {item.realtor ? <div className="propertyRealtor">Realtor : {item.realtor.name}</div> : ''}
-                            <div>Type : {item.type} Bed Room</div>
-                            <div>Price : {item.price} CAD</div>
-                            <div>Size : {item.square_foot} sq</div>
+                            <div><span className="cTitle">Type</span>: { ListingType[item.type].label }</div>
+                            <div><span className="cTitle">Price</span>: {item.price} CAD</div>
+                            <div><span className="cTitle">Size</span>: {item.square_foot} sq</div>
                         </div>
                         {item.address ?
                             <>

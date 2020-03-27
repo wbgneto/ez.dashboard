@@ -12,6 +12,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import {Link} from 'react-router-dom';
 import RealtorItem from './RealtorItem'
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 
 const useStyles = makeStyles(theme => ({
@@ -101,13 +102,15 @@ const useStyles = makeStyles(theme => ({
 
 export default function EnhancedTable() {
   const classes = useStyles();
+  const [isLoading, setIsLoading] = useState(false);
 
   const fetchItems = async (filters) => {
+    setIsLoading(true);
     const queryString = new URLSearchParams(filters);
 
     let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/realtors?${queryString}`);
     response = await response.json();
-
+    setIsLoading(false);
     return response.data;
   };
 
@@ -201,11 +204,16 @@ export default function EnhancedTable() {
           </Tooltip>
         </div>
       </div>
-
+      {isLoading ? (
+      <div className="loading">
+            <CircularProgress disableShrink />
+            <span>Loading...</span>
+        </div>
+      ) : (
       <Paper 
-      className={classes.paper}
-      container
-      >
+        className={classes.paper}
+        container
+        >
         {items.length > 0 ?
           items.map(item => (
             <RealtorItem
@@ -221,6 +229,7 @@ export default function EnhancedTable() {
           <div style={{padding: 10}}>No realtors found</div>
       }
       </Paper>
+    )}
     </div>
   );
 }

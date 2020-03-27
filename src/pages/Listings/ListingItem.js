@@ -4,7 +4,7 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 import Typography from '@material-ui/core/Typography';
-
+import ListingType from "../../data/ListingType";
 
 export default function ListingItem({id, status, photos, title, type, square_foot, price}) {
 
@@ -29,7 +29,13 @@ return(
                   }
               </li>
               <li><h3>{title}</h3></li>
-              <li>Type: {type} Bed Room</li>
+              <li>Type: 
+              {
+                  ListingType.map(type => {
+                      return <span key={type.value} value={type.value}>{type.label}</span>
+                  })
+              }
+              </li>
               <li>Size: {square_foot} ft²</li>
               <li>Price: {price} CAD</li>
             </ul>

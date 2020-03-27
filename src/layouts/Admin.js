@@ -109,11 +109,17 @@ function ResponsiveDrawer(props) {
                         edge="start"
                         onClick={handleDrawerToggle}
                         className={classes.menuButton}
+                        style={{ margin: '0px 0px 0 5px' }}
                     >
-                        <MenuIcon/>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 200 200">
+                    <g id="Group_59" data-name="Group 59" transform="translate(-701 -3843.333)">
+                        <rect id="Rectangle_104" data-name="Rectangle 104" width="36" height="200" rx="10" transform="translate(701 3879.333) rotate(-90)" fill="#ffffff"/>
+                        <rect id="Rectangle_105" data-name="Rectangle 105" width="37" height="200" rx="10" transform="translate(701 3961.833) rotate(-90)" fill="#ffffff"/>
+                        <rect id="Rectangle_106" data-name="Rectangle 106" width="37" height="200" rx="10" transform="translate(701 4043.333) rotate(-90)" fill="#ffffff"/>
+                    </g>
+                    </svg>
                     </IconButton>
                     <Typography variant="h6" noWrap>
-                        {/* App Bar */}
                     </Typography>
                     <div className="userBox">
                         <Button
@@ -123,6 +129,22 @@ function ResponsiveDrawer(props) {
                         onClick={handleToggle}
                         className="displayNone"
                         >
+                        <span 
+                            className="displayNone"
+                            style={{marginRight:"15px"}}
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 200 200">
+                                <g id="Group_78" data-name="Group 78" transform="translate(-139.44 -4789)">
+                                    <g id="Group_77" data-name="Group 77" transform="translate(139.44 4789)">
+                                    <rect id="Rectangle_144" data-name="Rectangle 144" width="25" height="84" rx="10" transform="translate(24.5 75.607)" fill="#2b879e"/>
+                                    <rect id="Rectangle_145" data-name="Rectangle 145" width="25" height="86" rx="10" transform="translate(154.5 75.655)" fill="#2b879e"/>
+                                    <path id="Union_18" data-name="Union 18" d="M10,158.5a10,10,0,0,1-10-10v-5a10,10,0,0,1,10-10H49.493c-.734-.677-1.453-1.367-2.143-2.053a77.139,77.139,0,0,1-16.585-24.476A76.6,76.6,0,0,1,37.9,33.948a77.518,77.518,0,0,1,135.475,13.08,76.612,76.612,0,0,1-7.134,73.023,77.772,77.772,0,0,1-9.45,11.4c-.7.693-1.416,1.382-2.145,2.053H190a10,10,0,0,1,10,10v5a10,10,0,0,1-10,10Zm144.333-25V75h-.038a51.7,51.7,0,0,0-15.269-34.77A52.365,52.365,0,0,0,53.916,56.759,51.4,51.4,0,0,0,49.847,75H49.81v58.5Z" transform="translate(0 7.001)" fill="#2b879e"/>
+                                    <path id="Intersection_5" data-name="Intersection 5" d="M0,0H103.99c-12.018,13.99-30.84,23-52,23S12.018,13.99,0,0Z" transform="translate(50.082 177)" fill="#2b879e"/>
+                                    <path id="Intersection_6" data-name="Intersection 6" d="M0,0H39.99a25.07,25.07,0,0,1-20,10A25.07,25.07,0,0,1,0,0Z" transform="translate(122.063 10) rotate(180)" fill="#2b879e"/>
+                                    </g>
+                                </g>
+                            </svg>
+                        </span>
                         <span className="displayNone">
                             <b>Administrator</b>
                         </span>
@@ -130,19 +152,21 @@ function ResponsiveDrawer(props) {
                             <Avatar alt="" src="././images/profile.png" />
                         </span>
                         </Button>
+                        
                         <span className="alarmIcon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 200 200">
-                                <g id="Group_78" data-name="Group 78" transform="translate(-139.44 -4789)">
-                                    <g id="Group_77" data-name="Group 77" transform="translate(139.44 4789)">
-                                    <rect id="Rectangle_144" data-name="Rectangle 144" width="25" height="84" rx="10" transform="translate(24.5 75.607)" fill="#ffffff"/>
-                                    <rect id="Rectangle_145" data-name="Rectangle 145" width="25" height="86" rx="10" transform="translate(154.5 75.655)" fill="#ffffff"/>
-                                    <path id="Union_18" data-name="Union 18" d="M10,158.5a10,10,0,0,1-10-10v-5a10,10,0,0,1,10-10H49.493c-.734-.677-1.453-1.367-2.143-2.053a77.139,77.139,0,0,1-16.585-24.476A76.6,76.6,0,0,1,37.9,33.948a77.518,77.518,0,0,1,135.475,13.08,76.612,76.612,0,0,1-7.134,73.023,77.772,77.772,0,0,1-9.45,11.4c-.7.693-1.416,1.382-2.145,2.053H190a10,10,0,0,1,10,10v5a10,10,0,0,1-10,10Zm144.333-25V75h-.038a51.7,51.7,0,0,0-15.269-34.77A52.365,52.365,0,0,0,53.916,56.759,51.4,51.4,0,0,0,49.847,75H49.81v58.5Z" transform="translate(0 7.001)" fill="#ffffff"/>
-                                    <path id="Intersection_5" data-name="Intersection 5" d="M0,0H103.99c-12.018,13.99-30.84,23-52,23S12.018,13.99,0,0Z" transform="translate(50.082 177)" fill="#ffffff"/>
-                                    <path id="Intersection_6" data-name="Intersection 6" d="M0,0H39.99a25.07,25.07,0,0,1-20,10A25.07,25.07,0,0,1,0,0Z" transform="translate(122.063 10) rotate(180)" fill="#ffffff"/>
-                                    </g>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 200 200">
+                            <g id="Group_78" data-name="Group 78" transform="translate(-139.44 -4789)">
+                                <g id="Group_77" data-name="Group 77" transform="translate(139.44 4789)">
+                                <rect id="Rectangle_144" data-name="Rectangle 144" width="25" height="84" rx="10" transform="translate(24.5 75.607)" fill="#ffffff"/>
+                                <rect id="Rectangle_145" data-name="Rectangle 145" width="25" height="86" rx="10" transform="translate(154.5 75.655)" fill="#ffffff"/>
+                                <path id="Union_18" data-name="Union 18" d="M10,158.5a10,10,0,0,1-10-10v-5a10,10,0,0,1,10-10H49.493c-.734-.677-1.453-1.367-2.143-2.053a77.139,77.139,0,0,1-16.585-24.476A76.6,76.6,0,0,1,37.9,33.948a77.518,77.518,0,0,1,135.475,13.08,76.612,76.612,0,0,1-7.134,73.023,77.772,77.772,0,0,1-9.45,11.4c-.7.693-1.416,1.382-2.145,2.053H190a10,10,0,0,1,10,10v5a10,10,0,0,1-10,10Zm144.333-25V75h-.038a51.7,51.7,0,0,0-15.269-34.77A52.365,52.365,0,0,0,53.916,56.759,51.4,51.4,0,0,0,49.847,75H49.81v58.5Z" transform="translate(0 7.001)" fill="#ffffff"/>
+                                <path id="Intersection_5" data-name="Intersection 5" d="M0,0H103.99c-12.018,13.99-30.84,23-52,23S12.018,13.99,0,0Z" transform="translate(50.082 177)" fill="#ffffff"/>
+                                <path id="Intersection_6" data-name="Intersection 6" d="M0,0H39.99a25.07,25.07,0,0,1-20,10A25.07,25.07,0,0,1,0,0Z" transform="translate(122.063 10) rotate(180)" fill="#ffffff"/>
                                 </g>
-                            </svg>
+                            </g>
+                        </svg>
                         </span>
+                        
                         <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
                         {({ TransitionProps, placement }) => (
                             <Grow

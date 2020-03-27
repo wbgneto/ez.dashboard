@@ -330,6 +330,10 @@ header {
   fill: #FFFFFF; }
 
 .menu05 {
+  width: 240px !important;
+  position: fixed !important;
+  bottom: 20px !important;
+  left: 0 !important;
   visibility: hidden; }
   .menu05:hover #Subtraction_28 {
     fill: #FFFFFF; }
@@ -389,6 +393,14 @@ header {
   color: white;
   margin-bottom: 5px; }
 
+.PropertyList .cTitle {
+  width: 40px;
+  display: inline-block; }
+
+.PropertyList .iTitle {
+  width: 48px;
+  display: inline-block; }
+
 .PropertyList .active {
   background-color: #2B879E; }
   .PropertyList .active:before {
@@ -405,15 +417,13 @@ header {
     content: "sold"; }
 
 .PropertyView li {
-  color: #9b9a9a; }
+  color: rgba(0, 0, 0, 0.87);
+  font-size: 14px; }
   .PropertyView li h3 {
     font-weight: bold;
     font-size: 18px;
     padding-bottom: 5px;
     color: #2B879E; }
-
-.PropertyView .propertyRealtor {
-  color: #212121; }
 
 .twoColumnGrid div {
   margin-bottom: 0px !important; }
@@ -534,14 +544,15 @@ header {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box; }
   .tableGrid .tableElm01 {
-    width: 260px;
+    width: 245px;
     padding: 20px 20px 15px 20px; }
     .tableGrid .tableElm01 img {
       width: 100%;
-      height: auto; }
+      height: 100%;
+      max-height: 136px; }
   .tableGrid .tableElm02 {
     width: calc(100% - 400px);
-    padding: 30px 20px 25px; }
+    padding: 20px 20px 25px; }
   .tableGrid .tableElm03 {
     width: 140px;
     padding: 45px 20px 0 0; }
@@ -566,9 +577,7 @@ header {
     top: 25%; }
   @media (max-width: 960px) {
     .btnWrapper div {
-      position: static;
-      padding-top: 15px;
-      border-top: 1px solid #ccc; }
+      position: static; }
     .btnWrapper .blockBtn {
       display: inline-block !important;
       width: 100% !important;
@@ -583,6 +592,9 @@ header {
 .inputEdit div {
   margin-bottom: 2px; }
 
+.avatar img {
+  width: 100% !important; }
+
 /*****************************************************/
 /*                     Layout                        */
 /*****************************************************/
@@ -590,7 +602,7 @@ header {
   background-color: rgba(0, 0, 0, 0) !important; }
 
 .marginT {
-  margin: 25px 0 0 0 !important; }
+  padding: 25px 0 0 0 !important; }
 
 .container {
   width: 100vw;
@@ -611,11 +623,11 @@ header {
   padding: 0 0 20px 0; }
   @media (max-width: 600px) {
     .title {
-      position: absolute;
+      position: fixed;
       top: 0;
       z-index: 1300;
       height: 57px;
-      line-height: 48px !important;
+      line-height: 52px !important;
       left: 50%;
       transform: translate(-50%, 0);
       text-align: center;
@@ -784,13 +796,26 @@ table {
     border: 2px solid #2B879E; }
 
 .loading {
-  width: 100px;
-  height: 100px;
-  border-radius: 5px;
+  width: 200px !important;
+  height: 140px !important;
+  padding: 30px 0 0 0;
+  border-radius: 20px;
   border: 1px solid #eee;
   box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
   background-color: white;
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-25%, -25%); }
+  transform: translate(-25%, -25%);
+  text-align: center; }
+  .loading span {
+    display: block;
+    padding-top: 20px; }
+  .loading .MuiCircularProgress-svg {
+    color: #2B879E; }
+  @media (max-width: 960px) {
+    .loading {
+      transform: translate(0%, -25%); } }
+  @media (max-width: 600px) {
+    .loading {
+      transform: translate(-50%, -25%); } }
