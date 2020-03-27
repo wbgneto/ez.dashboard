@@ -3,7 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
-
+import Typography from '@material-ui/core/Typography';
 
 
 export default function ListingItem({id, status, photos, title, type, square_foot, price}) {
@@ -30,7 +30,7 @@ return(
               </li>
               <li><h3>{title}</h3></li>
               <li>Type: {type} Bed Room</li>
-              <li>Size: {square_foot} sq</li>
+              <li>Size: {square_foot} ft²</li>
               <li>Price: {price} CAD</li>
             </ul>
         </Grid>

@@ -5,21 +5,22 @@ import Button from '@material-ui/core/Button';
 import {Link} from 'react-router-dom';
 
 
-export default function RealtorItem({id, photos, email, name, phone, created_at}) {
+export default function RealtorItem({id, email, avatar, name, phone}) {
+
 
   return(
     <div>
       <Grid container component="main" className="tableGrid">
-        <Grid item className="tableElm01">
+        <Grid className="tableElm01">
             {/* <img src={photos}></img> */}
-            <img src="/no-photo-available.png"></img>
+            { avatar ? <img src={`http://api.easyrealtysystem.wmdd.ca/realtors/${id}/avatar`}></img> : <img src="/no-photo-available.png"></img>}
+
         </Grid>
-        <Grid item className="tableElm02">
+        <Grid className="tableElm02">
             <ul className="PropertyList">
               <li><h3>{name}</h3></li>
               <li>Phone: {phone}</li>
               <li>Email: {email}</li>
-              <li>Created_at: {created_at}</li>
             </ul>
         </Grid>
         <Grid className="tableElm03 btnWrapper">

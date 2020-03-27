@@ -1,4 +1,4 @@
-import React from "react";
+import React, {createRef, useEffect, useState} from "react";
 import {makeStyles} from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
@@ -8,7 +8,39 @@ import IconButton from '@material-ui/core/IconButton';
 import TextField from '@material-ui/core/TextField';
 import {Link} from 'react-router-dom';
 import Tooltip from '@material-ui/core/Tooltip';
+import RealtorForm from "./RealtorForm";
+import {useDropzone} from 'react-dropzone';
 
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16
+};
+
+const thumb = {
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: 100,
+  height: 100,
+  padding: 4,
+  boxSizing: 'border-box'
+};
+
+const thumbInner = {
+  display: 'flex',
+  minWidth: 0,
+  overflow: 'hidden'
+};
+
+const img = {
+  display: 'block',
+  width: 'auto',
+  height: '100%'
+};
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -64,81 +96,111 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function CenteredGrid() {
+export default function CreateRealtor(props) {
   const classes = useStyles();
 
+  const [formData, setFormData] = useState({});
+
+  const [files, setFiles] = useState([]);
+
+  const {getRootProps, getInputProps} = useDropzone({
+      accept: 'image/*',
+      onDrop: acceptedFiles => {
+          setFiles(acceptedFiles.map(file => Object.assign(file, {
+              preview: URL.createObjectURL(file)
+          })));
+      }
+  });
+
+  const thumbs = files.map(file => (
+      <div style={thumb} key={file.name}>
+          <div style={thumbInner}>
+              <img
+                  src={file.preview}
+                  style={img}
+              />
+          </div>
+      </div>
+  ));
+
+  useEffect(() => () => {
+    // Make sure to revoke the data uris to avoid memory leaks
+    files.forEach(file => URL.revokeObjectURL(file.preview));
+}, [files]);
+
+const save = async () => {
+    let response = await fetch('http://api.easyrealtysystem.wmdd.ca/realtors', {
+        method: 'post',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({...formData, status: 1})
+    });
+
+    response = await response.json();
+
+    if (response.status_code === 200) {
+        if (files.length) {
+            uploadFiles(response.data.id);
+        } else {
+            props.showSnackbar("success", "Realtor created successfully");
+            props.history.push('/realtors');
+        }
+    } else {
+        props.showSnackbar("error", "Please fill all fields");
+    }
+};
+
+const uploadFiles = async (realtorId) => {
+    const formData = new FormData();
+
+    files.forEach(file => {
+        formData.append('files', file, file.name);
+    });
+
+    let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/realtors/${realtorId}/photos`, {
+        method: 'post',
+        body: formData
+    });
+
+    response = await response.json();
+
+    if (response.status_code === 200) {
+        props.showSnackbar("success", "Realtor created successfully");
+        props.history.push('/realtors');
+    } else {
+        props.showSnackbar("error", "There was an error uploading the photos");
+    }
+};
 
   return (
     <div className={classes.root}>
       <Typography className="title">Realtors</Typography>
       <Paper className={classes.paper}>
-        <div>
-        <div className="backtolist" style={{float: 'left'}}>
-            <Tooltip title="" component={Link} to={"/Realtors"}>
-                <IconButton aria-label="back to list">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 200 200">
-                        <g id="Group_1444" data-name="Group 1444" transform="translate(-945 -5840)">
-                            <g id="Group_1441" data-name="Group 1441" transform="translate(266 1)">
-                                <path id="Subtraction_23" data-name="Subtraction 23"
-                                  d="M487,945H307a10.011,10.011,0,0,1-10-10V755a10.011,10.011,0,0,1,10-10H487a10.011,10.011,0,0,1,10,10V935A10.011,10.011,0,0,1,487,945ZM327,765a10.011,10.011,0,0,0-10,10V915a10.011,10.011,0,0,0,10,10H467a10.011,10.011,0,0,0,10-10V775a10.011,10.011,0,0,0-10-10Z"
-                                  transform="translate(382 5094)" fill="#2b879e"/>
-                            </g>
-                            <path id="Union_25" data-name="Union 25"
-                              d="M333.77,827.033,302.656,795.92a12.4,12.4,0,0,1,0-14.151l31.113-31.113a8,8,0,0,1,11.314,11.314l-26.874,26.874,26.874,26.874a8,8,0,0,1-11.314,11.314Z"
-                              transform="translate(720.686 5150.686)" fill="#2b879e"/>
-                        </g>
-                    </svg>
-                </IconButton>
-            </Tooltip>
-          </div>
-          <span className="step">
-            <em className="on">1</em>
-            <em>2</em>
-            <em>3</em>
-          </span>
-        </div>
-        <Grid container spacing={2} className="marginT">
-          <Grid item xs={12} md={4} className="center">
-            <input
-              accept="image/*"
-              className={classes.input}
-              id="contained-button-file"
-              multiple
-              type="file"
-            />
-            <p>Add information about this property</p>
-          </Grid>
-          <Grid item xs={12} md={8} className="inputEdit">
-            <div><TextField id="outlined-basic" label="Name of Realtor" variant="outlined" className={classes.formControl}/></div>
-            <div><TextField id="outlined-basic" label="Email" variant="outlined"  className={classes.formControl}/></div>
-            <div><TextField id="outlined-basic" label="Phone Number" variant="outlined" className={classes.formControl}/></div>
-            <Grid container spacing={1} className="twoColumnGrid">
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Street" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Number" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="City" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Province" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Country" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <div><TextField id="outlined-basic" label="Postal Code" variant="outlined"  className={classes.formControl}/></div>
-              </Grid>
-            </Grid>
-            <div>
-              <Button variant="outlined" className="btnStyle" component={Link} to={"/Realtors"}>Cancel</Button>
-              <Button variant="outlined" className="btnStyle btnOn" component={Link} to={"/newrealtor2"} style={{float:'right'}}>Next</Button>
-            </div>
-          </Grid>
-        </Grid>
-      </Paper>
+                <Grid container spacing={2} className="marginT">
+                    <Grid item xs={12} md={4}>
+                        <section>
+                            <div {...getRootProps({className: 'dropzone'})} style={{ textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
+                                <input {...getInputProps()} id="files-input"/>
+                                <p>Drag 'n' drop some photos here, or click to select photos</p>
+                            </div>
+                            <aside style={thumbsContainer}>
+                                {thumbs}
+                            </aside>
+                        </section>
+                    </Grid>
+                    <Grid item xs={12} md={8} className="inputEdit">
+                        <RealtorForm onChange={setFormData}/>
+                    </Grid>
+                </Grid>
+
+                <Grid item xs={12} md={12} className="marginT">
+                    <Button variant="outlined" className="btnStyle" component={Link} to={"/Realtors"}>Cancel</Button>
+                    <Button variant="outlined" className="btnStyle btnOn" style={{float: 'right'}}
+                            onClick={save}>Save</Button>
+                </Grid>
+            </Paper>
     </div>
   );
 }

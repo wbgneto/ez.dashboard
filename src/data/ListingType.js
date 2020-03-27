@@ -31,3 +31,12 @@ export default [
         value: Triplex,
     }
 ]
+
+// export default {
+//     0: 'Detached',
+//     1: 'Townhouse',
+//     2: 'Condo',
+//     3: 'SemiDetached',
+//     4: 'Duplex',
+//     5: 'Triple'
+// }
