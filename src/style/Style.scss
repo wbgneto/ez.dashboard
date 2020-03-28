@@ -494,7 +494,7 @@ img {
   text-transform: uppercase;
   padding: 0 0 20px 0;
   @media (max-width: $bp-small) {
-    position: absolute;
+    position: fixed;
     top: 0;
     z-index: 1300;
     height: 57px;
@@ -552,13 +552,7 @@ table {
   flex-wrap: wrap;
 }
 
-.loading {
-  .MuiCircularProgress-svg{
-    color: $primary-teal-blue;
-  }
-}
 
-// <CircularProgress className="loading" color="inherit" />
 
 
 /*****************************************************/
@@ -699,3 +693,30 @@ table {
 
 
 
+.loading {
+  width: 200px !important;
+  height: 140px !important;
+  padding: 30px 0 0 0;
+  border-radius: 20px;
+  border:1px solid #eee;
+  box-shadow: 2px 2px 2px rgba(0,0,0,0.1);
+  background-color: white;
+  position: absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-25%, -25%);
+  text-align:center;
+  span {
+    display: block;
+    padding-top: 20px;
+  }
+  .MuiCircularProgress-svg{
+    color: $primary-teal-blue;
+  }
+  @media (max-width: $bp-medium) {
+    transform: translate(0%, -25%);
+  }
+  @media (max-width: $bp-small) {
+    transform: translate(-50%, -25%);
+  }
+}

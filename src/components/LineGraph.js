@@ -53,24 +53,16 @@ export default class LineGraph extends Component {
 
   render() {
     return (
-      <div
-        style={{
-          display: "flex",
-          alignContent: "center",
-          justifyContent: "space-between"
-        }}
-      >
-        <div style={{ width: "100%", textAlign: "center" }}>
-          <Line
-            style={{}}
-            options={{
-              responsive: true
-            }}
-            label={this.lineGraphLabel}
-            data={this.getChartData}
-            options={this.state.options}
-          />
-        </div>
+      <div style={{ width: "100%", textAlign: "center", paddingTop: "3em" }}>
+        <Line
+          style={{}}
+          options={{
+            responsive: true
+          }}
+          label={this.lineGraphLabel}
+          data={this.getChartData}
+          options={this.state.options}
+        />
       </div>
     );
   }
