@@ -17,7 +17,7 @@ const useStyles = makeStyles(theme => ({
   paper: {
     width: '100%',
     marginBottom: theme.spacing(2),
-    padding: '16px',
+    // padding: '16px',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -41,7 +41,7 @@ export default function CenteredGrid() {
           >
             <Typography className={classes.heading}>Thinking to upgrade your plan?</Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
+          <ExpansionPanelDetails className="textOverflow">
             <Typography>
               Easy Realty Systems offer three plans after the free trial. Each plan has different services regarding no. of users supported,
               storage provided. If you are thinking about choosing a different plan, Kindly visit <span style={{textDecoration:"underline"}}>http://easyrealtysystem.wmdd.ca/Pricing</span> and select the plan best suitable to you. 
@@ -56,7 +56,7 @@ export default function CenteredGrid() {
           >
             <Typography className={classes.heading}>Have to mark a listing sold?</Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
+          <ExpansionPanelDetails className="textOverflow">
             <Typography>
               Easy Realty System makes it easy for you to update status of listing. If you want to mark a property sold or if you want to hide a listing. 
               Follow the following steps <br/>
@@ -77,7 +77,7 @@ export default function CenteredGrid() {
           >
             <Typography className={classes.heading}>Want to see just the active listings?</Typography>
           </ExpansionPanelSummary>
-          <ExpansionPanelDetails>
+          <ExpansionPanelDetails className="textOverflow">
             <Typography>
               To see only the active listings. Follow the following steps.<br/>
               1. Go to the listings by clicking on 'listings' on the left navigation panel. <br/>

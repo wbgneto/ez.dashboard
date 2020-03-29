@@ -160,6 +160,7 @@ export default function Listings() {
                             onChange={handleFilter}
                             value={filters.status}
                             labelWidth={labelWidth}
+                            className="selectBox"
                         >
                             <MenuItem value="">All</MenuItem>
                             <MenuItem value={1}>Active</MenuItem>
@@ -184,7 +185,9 @@ export default function Listings() {
                                 name="title"
                                 value={filters.title}
                                 variant="outlined"
-                                placeholder="Search"/>
+                                placeholder="Search"
+                                className="searchInput"
+                                />
                         </div>
                     </div>
                 </div>
