@@ -48,9 +48,20 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-input {
-	font-family: 'Open Sans', sans-serif !important;
+
+input, select {
+    font-family: 'Open Sans', sans-serif !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    -webkit-border-radius:0;
+    padding:0;
+    // font-size: 1rem !important;
+    background-color: transparent;
+}
+select {
+    background: url('../images/arrow.png') no-repeat 96% 50% !important;
+    background-size: 11px 9px !important;
 }
 
-
-// seource form https://cssreset.com/scripts/eric-meyer-reset-css/
+// source form https://cssreset.com/scripts/eric-meyer-reset-css/

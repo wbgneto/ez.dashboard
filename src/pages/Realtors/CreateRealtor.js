@@ -187,7 +187,7 @@ const uploadAvatar = async (realtorId) => {
         <Grid container spacing={2} className="marginT">
             <Grid item xs={12} md={4}>
                 <section>
-                    <div {...getRootProps()} style={{ textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
+                    <div {...getRootProps()} style={{ textAlign: 'center', padding: "20px 20px 50px 20px", border: "1px dashed #eee"}}>
                         <input {...getInputProps()} id="files-input"/>
                         <div style={{textAlign: 'center', marginBottom: 12}}>
                             { avatar && <img

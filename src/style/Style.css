@@ -192,7 +192,7 @@ input {
           width: 100% !important;
           background-color: white;
           margin-left: 0em !important;
-          border-radius: 15px; }
+          border-radius: 5px; }
         .signin .signin_child2 .login_form .login_heading {
           margin-top: 0em !important;
           text-align: center !important; }
@@ -345,9 +345,6 @@ header {
     .menu05 {
       visibility: visible; } }
 
-/*****************************************************/
-/*                     SignIn.js                     */
-/*****************************************************/
 /*****************************************************/
 /*                     Listings.js                   */
 /*****************************************************/
@@ -540,6 +537,9 @@ header {
 /*****************************************************/
 /*                        Grid                       */
 /*****************************************************/
+main {
+  min-width: 0; }
+
 .tableGrid {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   box-sizing: border-box; }
@@ -818,3 +818,9 @@ table {
   @media (max-width: 600px) {
     .loading {
       transform: translate(-50%, -25%); } }
+
+/*****************************************************/
+/*                     Help                          */
+/*****************************************************/
+.textOverflow p {
+  overflow: hidden; }

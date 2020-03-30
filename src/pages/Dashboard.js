@@ -15,7 +15,7 @@ export default function CenteredGrid() {
   const classes = useStyles();
   return (
     <div style={{width:"100%"}}>
-      <Typography className={classes.title}>DASHBOARD</Typography>
+      <Typography className="title">DASHBOARD</Typography>
       <GraphContainer></GraphContainer>
     </div>
   );

@@ -151,7 +151,7 @@ export default function ListingForm({ onChange, initialData}) {
                     value={state.title}
                     className={classes.formControl}/>
                 <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel ref={realtorLabel} id="realtor-input">
+                    <InputLabel ref={realtorLabel} id="realtor-input" style={{color:'rgba(0, 0, 0, 0.87'}}>
                         Realtor
                     </InputLabel>
                     { realtors.length && <Select

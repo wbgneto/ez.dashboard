@@ -158,6 +158,7 @@ export default function EnhancedTable() {
             onChange={handleFilter}
             value={filters.status}
             labelWidth={labelWidth}
+            className="selectBox"
             >
             <MenuItem value="">All</MenuItem>
             <MenuItem value={0}>Active</MenuItem>
@@ -181,7 +182,9 @@ export default function EnhancedTable() {
                   name="name"
                   value={filters.name}
                   variant="outlined"
-                  placeholder="Search"/>
+                  placeholder="Search"
+                  className="searchInput"
+                  />
               </div>
           </div>
         </div>

@@ -137,6 +137,7 @@
 
 /******************************************************Responsive Media Queries******************************************************************/
 @media screen and (min-width: 320px) and (max-width: 480px) {
+
   .signin {
     display: grid;
     grid-template-columns: 1fr !important;
@@ -195,6 +196,7 @@
           //background-color: rgba(255, 255, 255, 255);
          // background-color: yellow;
           margin-left: 0em !important;
+          border-radius: 6px;
           border: 1px solid black;
           //border-radius: 15px !important;
           }
@@ -202,6 +204,7 @@
           outline: none !important;
           border: 1px solid $primary-teal-blue !important;
         }
+        
         .login_heading {
           margin-top: 0em !important;
           //margin-left: 1em !important;
