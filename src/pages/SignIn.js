@@ -30,6 +30,7 @@ function Copyright() {
     </Typography>
   );
 }
+
 export default function SignIn({history, showSnackbar}) {
 
   const [formData, setFormData] = useState({
@@ -64,7 +65,7 @@ export default function SignIn({history, showSnackbar}) {
         <img src={require("../images/Logo2_Loginpage.png")} className="login_image" />
         <img src={require("../images/Logo2_Mobile.png")} className="login_responsive" />
         <div className="loginpage_intro">
-          <p>A solution for the Real Estate domain.</p>
+          <p>A solution for the Real Estate domain to help both the real estate companies and independent realtors.</p>
           <h3>Easy Realty <br /> S y s t e m</h3>
         </div>
       </div>
@@ -72,17 +73,17 @@ export default function SignIn({history, showSnackbar}) {
 
 
         <FormControl className="login_form">
-          <Typography variant="h1" className="login_heading">
+          <Typography variant="h3" className="login_heading">
             Log In
         </Typography>
           <FormLabel className="login_labels">
             Email
           </FormLabel>
-          <TextField type="email" variant="outlined" className="login_input" value={formData.email} onChange={(event) => setFormData({...formData, email: event.target.value})}></TextField>
+          <input type="email" variant="outlined" className="login_input" value={formData.email} onChange={(event) => setFormData({...formData, email: event.target.value})} />
           <FormLabel className="login_labels">
             Password
           </FormLabel>
-          <TextField type="password" variant="outlined" className="login_input" value={formData.password} onChange={(event) => setFormData({...formData, password: event.target.value})}></TextField>
+          <input type="password" variant="outlined" className="login_input" value={formData.password} onChange={(event) => setFormData({...formData, password: event.target.value})} />
           <a href="#" className="forgot_password">
             Forgot Password?
           </a>
