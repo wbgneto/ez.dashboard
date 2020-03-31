@@ -52,8 +52,18 @@ table {
   border-collapse: collapse;
   border-spacing: 0; }
 
-input {
-  font-family: 'Open Sans', sans-serif !important; }
+input, select {
+  font-family: 'Open Sans', sans-serif !important;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-border-radius: 0;
+  padding: 0;
+  background-color: transparent; }
+
+select {
+  background: url("../images/arrow.png") no-repeat 96% 50% !important;
+  background-size: 11px 9px !important; }
 
 .propertyTitle {
   font-weight: bold;
@@ -192,7 +202,7 @@ input {
           width: 100% !important;
           background-color: white;
           margin-left: 0em !important;
-          border-radius: 5px; }
+          border-radius: 6px; }
         .signin .signin_child2 .login_form .login_heading {
           margin-top: 0em !important;
           text-align: center !important; }
@@ -682,7 +692,7 @@ table {
   margin-bottom: 10px;
   display: grid;
   grid-template-rows: 1fr;
-  grid-template-columns: 1fr 4fr 1fr; }
+  grid-template-columns: 180px 4fr 1fr !important; }
   .toolbarWrap input[type=text] {
     width: 100% !important; }
 
@@ -794,6 +804,21 @@ table {
     padding: 18px 13px;
     border: 2px solid #2B879E; }
 
+.searchInput {
+  width: 300px !important; }
+  @media (max-width: 960px) {
+    .searchInput {
+      width: 100% !important; } }
+
+.selectBox {
+  width: 175px !important; }
+  @media (max-width: 960px) {
+    .selectBox {
+      width: 100% !important; } }
+
+/*****************************************************/
+/*                     loading                       */
+/*****************************************************/
 .loading {
   width: 200px !important;
   height: 140px !important;
