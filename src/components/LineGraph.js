@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "../App.js";
 import { Line } from "react-chartjs-2";
+import millify from 'millify';
 
 export default class LineGraph extends Component {
   constructor(props) {
@@ -18,7 +19,15 @@ export default class LineGraph extends Component {
                 display: false
               }
             }
-          ]
+          ],
+          yAxes: [{
+            ticks: {
+                // Abbreviate the millions
+                callback: function(value, index, values) {
+                    return millify(value);
+                },
+            }
+        }]
         }
       }
     };

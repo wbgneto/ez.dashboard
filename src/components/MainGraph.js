@@ -3,6 +3,8 @@ import { Doughnut } from "react-chartjs-2";
 import PropTypes from "prop-types";
 import Grid from "@material-ui/core/Grid";
 import LineGraph from "./LineGraph";
+import millify from 'millify';
+
 
 class MainGraph extends Component {
   constructor(props) {
@@ -182,7 +184,7 @@ class MainGraph extends Component {
                                 flex: "0 0 10%"
                               }}
                             >
-                              {this.props.data.datasets[0].data[key]}
+                              {millify(this.props.data.datasets[0].data[key])}
                             </label>
 
                             <button
