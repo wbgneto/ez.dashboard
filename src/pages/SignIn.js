@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -31,7 +31,7 @@ function Copyright() {
   );
 }
 
-export default function SignIn({history, showSnackbar}) {
+export default function SignIn({ history, showSnackbar }) {
 
   const [formData, setFormData] = useState({
     email: 'realtor@easyrealtysystem.wmdd.ca',
@@ -79,11 +79,11 @@ export default function SignIn({history, showSnackbar}) {
           <FormLabel className="login_labels">
             Email
           </FormLabel>
-          <input type="email" variant="outlined" className="login_input" value={formData.email} onChange={(event) => setFormData({...formData, email: event.target.value})} />
+          <input type="email" variant="outlined" className="login_input" value={formData.email} onChange={(event) => setFormData({ ...formData, email: event.target.value })} />
           <FormLabel className="login_labels">
             Password
           </FormLabel>
-          <input type="password" variant="outlined" className="login_input" value={formData.password} onChange={(event) => setFormData({...formData, password: event.target.value})} />
+          <input type="password" variant="outlined" className="login_input" value={formData.password} onChange={(event) => setFormData({ ...formData, password: event.target.value })} />
           <a href="#" className="forgot_password">
             Forgot Password?
           </a>
@@ -95,4 +95,6 @@ export default function SignIn({history, showSnackbar}) {
       </div>
     </div>
   );
-} 
+}
+
+//References: https://material-ui.com/
