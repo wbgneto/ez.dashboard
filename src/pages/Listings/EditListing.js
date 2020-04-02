@@ -247,6 +247,8 @@ export default function EditListing({showSnackbar, history, match}) {
                 ...item,
                 status
             });
+
+            showSnackbar("success", "Listing visibility changed successfully");
         }
     };
 
