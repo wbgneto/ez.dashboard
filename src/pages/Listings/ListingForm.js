@@ -69,10 +69,6 @@ export default function ListingForm({ onChange, initialData}) {
     const [labelWidth, setLabelWidth] = useState(0);
     const [realtors, setRealtors] = useState([]);
 
-    if (initialData.status) {
-        delete initialData.status;
-    }
-
     const [state, setState] = useState(initialData || {
         title: '',
         description: '',
@@ -104,6 +100,10 @@ export default function ListingForm({ onChange, initialData}) {
 
     // Tell parent component about the form data
     React.useEffect(() => {
+        if (state.status) {
+            delete state.status;
+        }
+
         onChange(state);
     }, [state]);
 
