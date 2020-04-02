@@ -195,7 +195,6 @@ export default function EditListing({showSnackbar, history, match}) {
             }`
         );
         const item = await fetchItem.json();
-        delete item.data.status;
         setItem(item.data);
         setSold({
             ...sold,

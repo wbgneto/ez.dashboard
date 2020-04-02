@@ -68,6 +68,11 @@ export default function ListingForm({ onChange, initialData}) {
     const realtorLabel = useRef(null);
     const [labelWidth, setLabelWidth] = useState(0);
     const [realtors, setRealtors] = useState([]);
+
+    if (initialData.status) {
+        delete initialData.status;
+    }
+
     const [state, setState] = useState(initialData || {
         title: '',
         description: '',
