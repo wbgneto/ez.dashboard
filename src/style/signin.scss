@@ -1,5 +1,8 @@
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #9b9a9a;
 }
 .signin {
   background-image: url(../images/Login.jpg);
@@ -13,16 +16,11 @@
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1.2fr 1fr 0.6fr;
   align-items: center;
-  //justify-items: center;
-  //grid-gap: 10px !important;
   .signin_child1 {
     grid-row: 1 / 2;
     grid-column: 1 / 2;
     .login_image {
-     // margin-top: 15em;
       margin-left: 10em;
-      
-      
     }
     .loginpage_intro {
       p {
@@ -35,7 +33,6 @@
         margin-top: 1em;
         //padding: 2em;
         margin-left: 12em;
-
       }
       h3 {
         color: rgba(255, 255, 255, 255);
@@ -60,7 +57,7 @@
       width: 100%;
       background-color: rgba(255, 255, 255, 255);
       border-radius: 5px;
-      
+
       .login_heading {
         margin-left: 0em !important;
         color: $primary-teal-blue !important;
@@ -73,27 +70,21 @@
         background-color: $primary-teal-blue !important;
         color: rgba(255, 255, 255, 255);
         width: 50%;
-        //justify-items: center !important;
-        //align-items: center ;
         font-size: 1.333em !important;
         font-weight: bold;
         padding: 6px 16px !important;
-        //padding: 6px 16px;
         border: 3px solid $primary-teal-blue;
         margin: auto;
         margin-top: 1em !important;
-        //margin-left: 6em !important;
         text-transform: capitalize;
       }
-      .login_button:hover{
-        background-color: #34AAC7 !important;
-        border: 3px solid #34AAC7 !important;
+      .login_button:hover {
+        background-color: #34aac7 !important;
+        border: 3px solid #34aac7 !important;
         box-shadow: none !important;
       }
       .login_labels {
         color: black !important;
-        //margin-left: 3em;
-        //margin-top: 0.7em;
         font-family: "Open Sans";
         font-weight: 400 !important;
         font-size: 1em !important;
@@ -103,13 +94,10 @@
         color: black !important;
         text-decoration: underline !important;
         text-align: right !important;
-        //margin-left: 22em;
-        //margin-top: 1em !important;
         font-weight: bold;
       }
       .new_member {
         text-align: center;
-        //margin-left: 9.5em !important;
         margin-top: 2em !important;
         font-weight: bold;
         letter-spacing: 0.1em;
@@ -120,24 +108,16 @@
       }
 
       .login_input {
-        //swidth: 108% !important;
-        //margin-left: 3em !important;
-        //padding: 20px !important;
         padding: 1em !important;
         margin-top: 0.2em !important;
         margin-bottom: 1.6em !important;
-        //border-radius: 6px !important;
-        //padding-left: 2em !important;
-        
       }
-      
     }
   }
 }
 
 /******************************************************Responsive Media Queries******************************************************************/
 @media screen and (min-width: 320px) and (max-width: 480px) {
-
   .signin {
     display: grid;
     grid-template-columns: 1fr !important;
@@ -150,7 +130,6 @@
       grid-row: 1 / 2;
       display: block;
       width: 100%;
-      //height: 200px !important;
       grid-column: 1 / 2;
       margin-top: 3em;
       margin-bottom: 0em;
@@ -158,7 +137,7 @@
       padding: 0em !important;
       .login_responsive {
         display: block !important;
-         margin:auto;     
+        margin: auto;
       }
       .login_image {
         display: none;
@@ -168,7 +147,6 @@
           display: none;
         }
       }
-      
     }
     .signin_child2 {
       grid-row: 1 / 2;
@@ -177,15 +155,13 @@
       grid-column: 1 / 1;
       margin-top: 0em !important;
       padding: 1em !important;
-      // margin-top: 10em;
 
       .login_form {
-        background-color: rgba(255, 255, 255, 255)  !important;
+        background-color: rgba(255, 255, 255, 255) !important;
         margin-top: 10em !important;
         width: 100% !important;
         padding: 1.8em !important;
         .login_labels {
-          //color: rgba(255, 255, 255, 255) !important;
           margin-left: 0em !important;
           font-family: "Open Sans" !important;
           font-weight: 400 !important;
@@ -193,21 +169,16 @@
         }
         .login_input {
           width: 100% !important;
-          //background-color: rgba(255, 255, 255, 255);
-         // background-color: yellow;
           margin-left: 0em !important;
           border-radius: 6px;
-          border: 1px solid black;
-          //border-radius: 15px !important;
-          }
-        .login_input:focus{
+        }
+        .login_input:focus {
           outline: none !important;
           border: 1px solid $primary-teal-blue !important;
         }
-        
+
         .login_heading {
           margin-top: 0em !important;
-          //margin-left: 1em !important;
           text-align: center !important;
         }
         .forgot_password {
@@ -225,14 +196,10 @@
           color: white;
           margin-top: 1em !important;
           border-radius: 5px !important;
-          // align-content: center;
         }
         .new_member {
           margin: auto !important ;
           margin-top: 2em !important;
-          //margin: 0em !important;
-          //text-align: left !important;
-          //display: block !important;
           color: black;
           letter-spacing: normal;
           a {
@@ -245,46 +212,43 @@
   }
 }
 /**************************************************************************************************************************************************/
-@media screen and (min-width: 481px) and (max-width: 1024px){
-  .signin{
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .signin {
     display: grid;
     grid-template-columns: 1fr !important;
     background-size: 100% 100% !important;
     grid-template-rows: 1fr 1fr 0.3fr !important;
-    //overflow: hidden !important;
     padding: 0px !important;
-    .signin_child1{
+    .signin_child1 {
       grid-row: 1 / 2;
       display: block;
       width: 100%;
       margin-top: 0em !important;
-      //height: 200px !important;
       grid-column: 1 / 1;
-      .login_image{
+      .login_image {
         margin: auto !important;
       }
-      .loginpage_intro{
-        p{
-         margin: auto !important;
+      .loginpage_intro {
+        p {
+          margin: auto !important;
         }
       }
     }
-    .signin_child2{
+    .signin_child2 {
       grid-row: 2 / 2;
       display: block;
-
       grid-column: 1 / 1;
       margin-top: 0em !important;
       padding-left: 3em !important;
-      // margin-top: 0em !important;
-      .login_form{
+      .login_form {
         width: 100% !important;
-        .login_input:focus{
+        .login_input:focus {
           outline: none !important;
           border: 1px solid $primary-teal-blue !important;
         }
-
       }
     }
   }
 }
+
+//References: https://material-ui.com/
