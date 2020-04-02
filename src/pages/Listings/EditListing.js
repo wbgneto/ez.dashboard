@@ -195,12 +195,13 @@ export default function EditListing({showSnackbar, history, match}) {
             }`
         );
         const item = await fetchItem.json();
+        delete item.data.status;
         setItem(item.data);
         setSold({
             ...sold,
             sold_at: item.data.sold_at ? item.data.sold_at : today,
             price: item.data.price,
-        })
+        });
         setPhotos(item.data.photos.map(photo => (
             <div key={photo.id} style={{margin: '0 8px 8px 0'}}>
                 <div style={{...thumb, margin: 0}} key={photo.id}>
