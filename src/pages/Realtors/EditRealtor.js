@@ -270,7 +270,7 @@ export default function EditRealtor({showSnackbar, match, history}) {
                     <Grid item xs={12} md={4}>
                         <section>
                             <div {...getRootProps()}
-                                 style={{textAlign: 'center', padding: 100, border: "1px dashed #eee"}}>
+                                 style={{textAlign: 'center', padding: "20px 20px 50px 20px", border: "1px dashed #eee"}}>
                                 <input {...getInputProps()} id="files-input"/>
                                 <div style={{textAlign: 'center', marginBottom: 12}}>
                                     {(!avatar.preview && item.avatar) && <img src={`http://api.easyrealtysystem.wmdd.ca/realtors/${item.id}/avatar`} style={{maxWidth:'100%', maxHeight: 300}}/>

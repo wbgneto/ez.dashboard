@@ -156,7 +156,7 @@ const GraphContainer = () => {
                 xm={12}
                 sm={12}
                 md={12}
-                lg={6}
+                lg={12}
                 xl={6}
               >
                 From:
@@ -179,7 +179,7 @@ const GraphContainer = () => {
                 xm={12}
                 sm={12}
                 md={12}
-                lg={6}
+                lg={12}
                 xl={6}
               >
                 To:
@@ -204,7 +204,7 @@ const GraphContainer = () => {
                 xm={12}
                 sm={12}
                 md={12}
-                lg={6}
+                lg={12}
                 xl={6}
               >
                 Show Sales By:
@@ -227,7 +227,7 @@ const GraphContainer = () => {
                 xm={12}
                 sm={12}
                 md={12}
-                lg={6}
+                lg={12}
                 xl={6}
               >
                 Show Sales of:

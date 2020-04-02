@@ -160,6 +160,7 @@ export default function Listings() {
                             onChange={handleFilter}
                             value={filters.status}
                             labelWidth={labelWidth}
+                            className="selectBox"
                         >
                             <MenuItem value="">All</MenuItem>
                             <MenuItem value={1}>Active</MenuItem>
@@ -184,7 +185,9 @@ export default function Listings() {
                                 name="title"
                                 value={filters.title}
                                 variant="outlined"
-                                placeholder="Search"/>
+                                placeholder="Search"
+                                className="searchInput"
+                                />
                         </div>
                     </div>
                 </div>
@@ -242,3 +245,33 @@ export default function Listings() {
         </div>
     );
 }
+
+// Listing image References
+// https://unsplash.com/photos/L7EwHkq1B2s
+// https://unsplash.com/photos/CbZ4EDP__VQ
+// https://unsplash.com/photos/f1Rd2HsoKnk
+// https://unsplash.com/photos/tHkJAMcO3QE
+// https://unsplash.com/photos/WQysERfYbog
+// https://unsplash.com/photos/IYfp2Ixe9nM
+// https://unsplash.com/photos/3LjBfGTbTJY
+// https://unsplash.com/photos/M8ikiivUAOM
+// https://unsplash.com/photos/MJeyFglfq9E
+// https://unsplash.com/photos/h5QNclJUiA8
+// https://unsplash.com/photos/rGgkCUpCiVE
+// https://unsplash.com/photos/R-w5Q-4Mqm0
+// https://unsplash.com/photos/1ddol8rgUH8
+// https://unsplash.com/photos/z3QZ6gjGRt4
+// https://unsplash.com/photos/_TPTXZd9mOo
+// https://unsplash.com/photos/FqqiAvJejto
+// https://unsplash.com/photos/02iWOgPEbU8
+// https://unsplash.com/photos/qCjolcMFaLI
+// https://unsplash.com/photos/MP0bgaS_d1c
+// https://unsplash.com/photos/_hw4aUQ81ic
+// https://unsplash.com/photos/FJZtZldA-uE
+// https://unsplash.com/photos/sqc9yv6iueE
+// https://unsplash.com/photos/H7SqlUp4JVE
+// https://unsplash.com/photos/z51kvn9IRqw
+// https://unsplash.com/photos/tAjm5YzFklI
+// https://unsplash.com/photos/koH7IVuwRLw
+// https://unsplash.com/photos/bx2ttjQsamc
+// https://unsplash.com/photos/oNThRU9PUfk
