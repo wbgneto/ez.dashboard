@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
     }
 }));
 
-export default () => {
+export default (props) => {
     const classes = useStyles();
 
     return <div className="menuWrapper">
@@ -92,7 +92,7 @@ export default () => {
                 </span>
                 <ListItemText primary="Help" />
             </ListItem>
-            <ListItem button className="listStyle menu05">
+            <ListItem button className="listStyle menu05" onClick={() => {props.history.push('/')}}>
                 <span className="lineHeight">
                 <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 200 200">
                     <g id="Group_1372" data-name="Group 1372" transform="translate(-142 -5296)">

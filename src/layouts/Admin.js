@@ -211,7 +211,7 @@ function ResponsiveDrawer(props) {
                             keepMounted: true, // Better open performance on mobile.
                         }}
                     >
-                        <Menu/>
+                        <Menu history={props.history}/>
                     </Drawer>
                 </Hidden>
                 <Hidden xsDown implementation="css">
@@ -222,7 +222,7 @@ function ResponsiveDrawer(props) {
                         variant="permanent"
                         open
                     >
-                        <Menu/>
+                        <Menu history={props.history}/>
                     </Drawer>
                 </Hidden>
             </div>
