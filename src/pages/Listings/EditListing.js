@@ -277,6 +277,10 @@ export default function EditListing({showSnackbar, history, match}) {
     };
 
     const save = async () => {
+        if (formData.status) {
+            delete formData.status;
+        }
+
         let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`, {
             method: 'PUT',
             headers: {
