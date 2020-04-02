@@ -13,6 +13,7 @@ import CreateRealtor from './pages/Realtors/CreateRealtor';
 import Help from './pages/Help';
 import Admin from "./layouts/Admin";
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import 'normalize.css';
 import "./style/Style.scss";
 import Snackbar from "@material-ui/core/Snackbar";
 import Alert from '@material-ui/lab/Alert';
