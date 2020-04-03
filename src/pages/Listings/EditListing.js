@@ -248,7 +248,11 @@ export default function EditListing({showSnackbar, history, match}) {
                 status
             });
 
-            showSnackbar("success", "Listing visibility changed successfully");
+            if (status === 0) {
+                showSnackbar("warning", "Listing is now inactive");
+            } else {
+                showSnackbar("success", "Listing is now active");
+            }
         }
     };
 
