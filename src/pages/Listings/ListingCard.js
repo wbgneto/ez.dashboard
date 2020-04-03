@@ -7,10 +7,10 @@ import ListingType from "../../data/ListingType";
 export default function ListingCard({id, status, photos, title, type, square_foot, price}) {
 
 
-    price = new Intl.NumberFormat('en-CAD', {
-        currency: 'CAD',
-        style: 'decimal',
-    }).format(price);
+    // price = new Intl.NumberFormat('en-CAD', {
+    //     currency: 'CAD',
+    //     style: 'decimal',
+    // }).format(price);
 
     return (
         <div>
