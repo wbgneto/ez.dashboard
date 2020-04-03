@@ -44,6 +44,11 @@ export default function ViewListing({match}) {
 
     const [item, setItem] = useState({});
 
+    const formatter = new Intl.NumberFormat('en-CAD', {
+        currency: 'CAD',
+        style: 'decimal',
+    });
+
     const fetchListing = async () => {
         let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`);
         response = await response.json();
@@ -119,7 +124,7 @@ export default function ViewListing({match}) {
                         <div className="info" style={{marginBottom: 12}}>
                             {item.realtor ? <div className="propertyRealtor">Realtor : {item.realtor.name}</div> : ''}
                             <div><span className="cTitle">Type</span>: { ListingType[item.type].label }</div>
-                            <div><span className="cTitle">Price</span>: {item.price} CAD</div>
+                            <div><span className="cTitle">Price</span>: {formatter.format(item.price)} CAD</div>
                             <div><span className="cTitle">Size</span>: {item.square_foot} sq</div>
                         </div>
                         {item.address ?

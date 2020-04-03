@@ -5,7 +5,13 @@ import {Link} from 'react-router-dom';
 import ListingType from "../../data/ListingType";
 
 export default function ListingCard({id, status, photos, title, type, square_foot, price}) {
-    // console.log(type);
+
+
+    price = new Intl.NumberFormat('en-CAD', {
+        currency: 'CAD',
+        style: 'decimal',
+    }).format(price);
+
     return (
         <div>
             <Grid container component="main" className="tableGrid">
@@ -21,13 +27,13 @@ export default function ListingCard({id, status, photos, title, type, square_foo
                         <li className="status">
                             {
                                 status == 1 ?
-                                <em className="active"></em> : status == 0 ?
-                                <em className="inactive"></em> :
-                                <em className="sold"></em>
+                                    <em className="active"></em> : status == 0 ?
+                                    <em className="inactive"></em> :
+                                    <em className="sold"></em>
                             }
                         </li>
                         <li><h3>{title}</h3></li>
-                        <li><span className="cTitle">Type</span>: { ListingType[type].label }</li>
+                        <li><span className="cTitle">Type</span>: {ListingType[type].label}</li>
                         <li><span className="cTitle">Size</span>: {square_foot} ft²</li>
                         <li><span className="cTitle">Price</span>: {price} CAD</li>
                     </ul>

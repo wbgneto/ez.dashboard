@@ -192,6 +192,7 @@ export default function ListingForm({ onChange, initialData}) {
                 <TextField label="Price"
                            variant="outlined"
                            name="price"
+                           type="number"
                            value={state.price}
                            onChange={handleChange}
                            className={classes.formControl}/>
