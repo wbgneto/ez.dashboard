@@ -277,9 +277,8 @@ export default function EditListing({showSnackbar, history, match}) {
     };
 
     const save = async () => {
-        if (formData.status) {
-            delete formData.status;
-        }
+        const payload = {...formData};
+        delete payload.status;
 
         let response = await fetch(`http://api.easyrealtysystem.wmdd.ca/listings/${match.params.id}`, {
             method: 'PUT',
@@ -287,7 +286,7 @@ export default function EditListing({showSnackbar, history, match}) {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({...formData})
+            body: JSON.stringify(payload)
         });
 
         response = await response.json();

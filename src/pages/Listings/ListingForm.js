@@ -100,10 +100,6 @@ export default function ListingForm({ onChange, initialData}) {
 
     // Tell parent component about the form data
     React.useEffect(() => {
-        if (state.status) {
-            delete state.status;
-        }
-
         onChange(state);
     }, [state]);
 
