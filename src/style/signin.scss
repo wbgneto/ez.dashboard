@@ -51,6 +51,14 @@
     margin-top: 11rem;
     padding-left: 2em !important;
     padding-right: 2em !important;
+    .back {
+      padding: 1em;
+      text-align: center;
+      a {
+        color: rgba(255, 255, 255, 255);
+        //text-decoration: none;
+      }
+    }
     .login_form {
       padding: 2em !important;
       width: 100%;
